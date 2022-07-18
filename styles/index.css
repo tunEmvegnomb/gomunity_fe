@@ -1,0 +1,66 @@
+body{
+    margin: 0px;
+}
+
+.container {
+    background: beige;
+    height: 100vh;
+    display: flex;
+}
+
+.item1 {
+    width: 30%;
+    background-color: #84BF8B;
+}
+
+.item2 {
+    width: 70%;
+    background-color: #F8FAFC;
+}
+
+.main-text {
+    width: 250px;
+    height: 250px;
+    margin: 0 0 0 20px;
+}
+
+.main-button {
+    padding: 0px;
+    display: flex;
+}
+
+.btn-header {
+    margin: 70px 0 0 0;
+    height: 80px;
+    flex-grow: 1;
+}
+
+.main-login {
+    display:flex;
+    justify-content: space-between;;
+}
+
+.main-signinup > button {
+    width: 130px;
+    height: 40px;
+}
+
+
+.left-down {
+    height: 32.4vh;
+    display: flex;
+    justify-content: center;
+    /* text-align: center; */
+    align-items: center;
+    background-color: #9185A7;
+}
+
+.signin {
+    display: row;
+}
+
+.signin > div > input {
+    width: 300px;
+    height: 50px;
+    /* background-color: transparent; */
+}
