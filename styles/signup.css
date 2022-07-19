@@ -1,0 +1,70 @@
+.container {
+    background: beige;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+}
+.side {
+    background: pink;
+    height: 100vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+}
+.title {
+    width: 40vw;
+    height: 100vh;
+    background: rgb(231, 196, 42);
+    flex-basis: 30%;
+    cursor: pointer;
+    padding: 10px 10px;
+    font-size: 50px;
+    color: white;
+    font-weight: bold;
+    -webkit-text-stroke: 1px black;
+}
+.title_img {
+    width: 40vw;
+    height: 100vh;
+    background: rgb(231, 196, 42);
+    flex-basis: 70%;
+    padding: 10px 10px;
+    font-size: 50px;
+    color: white;
+    font-weight: bold;
+    -webkit-text-stroke: 1px black;
+}
+.signup {
+    background: white;
+    height: 100vh;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid black;
+}
+input {
+    font-size: 15px;
+    width: 500px;
+    height: 35px;
+    border: 0; 
+    border-bottom: 1.5px solid black;
+    margin: 5px 5px;
+}
+button {
+    background: rgb(253, 98, 190);
+    border-radius: 8px;
+    width: 200px;
+    height: 50px;
+    margin: 10px 10px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px
+    , rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    -webkit-text-stroke: 0.5px black;
+}
+
+

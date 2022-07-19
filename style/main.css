@@ -1,0 +1,57 @@
+* {
+    font-family: 'Jua', sans-serif;
+}
+
+nav {
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 60px;
+
+}
+
+
+.nav {
+    /* background-color:darksalmon; */
+    width: 800px;
+    max-width: 30%;
+    margin-right: 50px;
+    padding-top: 30px;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+.cards {
+    padding: 100px;
+}
+
+.search_bar {
+    width: 700px;
+    max-width: 45%;
+}
+
+.main_icon {
+    width: 200px;
+    max-width: 15%;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.collapse { 
+    justify-content: center;
+}
+
+.d-flex {
+    width: 700px;
+}
+
+.btn-info {
+    margin-right: 20px;
+}
