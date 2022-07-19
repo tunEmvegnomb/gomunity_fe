@@ -1,0 +1,31 @@
+.create_article {
+    min-width: 50%;
+    min-height: 70%;
+    margin-left: 50vh;
+}
+
+.article_title {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.article_category {
+    width: 150px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.article_content {
+    width: 100%;
+    height: 400px;
+    resize: none;
+}
+
+.btn_create_article {
+    float: right;
+    width: 300px;
+    height: 40px;
+    background-color: dodgerblue;
+    color: white;
+}

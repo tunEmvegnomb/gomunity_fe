@@ -1,42 +1,46 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>거북이반 커뮤니티, 거뮤니티 🐢메인페이지</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style/main.css">
-  </head>
-  <body>
-    <!-- <nav>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>거북이반 커뮤니티, 거뮤니티 🐢메인페이지</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style/main.css">
+</head>
+
+<body>
+  <!-- <nav>
         <div class="main_icon">📌 ICON</div>
         <div class="search_bar">🕵️‍♀️ SEARCH BAR</div>
         <div>😁 USER INFO</div>
         <div>🙌 LOGOUT</div>
         
     </nav> -->
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="main.html">거뮤니티</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
-          </div>
-          <button type="button" class="btn btn-info">사용자정보</button>
-          <button type="button" class="btn btn-warning">로그아웃</button>
-        </div>
-      </nav>
-    <main>
-        <!-- <div class="bulletin_board">
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="main.html">거뮤니티</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+      <button type="button" class="btn btn-info">사용자정보</button>
+      <button type="button" class="btn btn-warning">로그아웃</button>
+    </div>
+  </nav>
+  <main>
+    <!-- <div class="bulletin_board">
             <ul>
                 <li><a href="">공지사항 게시판</a></li>
                 <li><a href="">질의응답 게시판</a></li>
@@ -45,66 +49,71 @@
 
             </ul>
         </div> -->
-        <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">공지사항 게시판</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">질의응답 게시판</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">자유게시판</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">자료게시판</a>
-              </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">거북이반 커뮤니티, 거뮤니티</a>
-            </li>
-          </ul>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">공지사항 게시판</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">질의응답 게시판</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">자유게시판</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">자료게시판</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled">거북이반 커뮤니티, 거뮤니티</a>
+      </li>
+    </ul>
 
-        <div class="row row-cols-1 row-cols-md-3 g-4 cards">
-            <div class="col">
-              <div class="card h-100">
-                <img src="https://velog.velcdn.com/images/migdracios/post/9388cf6f-17e2-4e24-8dd6-fe558804c07b/image.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">질문글 제목입니다. 알려줘잉 ㅠㅠ</h5>
-                  <p class="card-text">제가 파이썬을 공부하고 있는데, 왜이렇게 어렵고 강의에는 없는지 도무지 모르겠는데 한 번 봐주세요 ㅠㅠ</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                  <img src="https://velog.velcdn.com/images/migdracios/post/9388cf6f-17e2-4e24-8dd6-fe558804c07b/image.png" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">질문글 제목입니다. 알려줘잉 ㅠㅠ</h5>
-                    <p class="card-text">제가 파이썬을 공부하고 있는데, 왜이렇게 어렵고 강의에는 없는지 도무지 모르겠는데 한 번 봐주세요 ㅠㅠ</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card h-100">
-                  <img src="https://velog.velcdn.com/images/migdracios/post/9388cf6f-17e2-4e24-8dd6-fe558804c07b/image.png" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">질문글 제목입니다. 알려줘잉 ㅠㅠ</h5>
-                    <p class="card-text">제가 파이썬을 공부하고 있는데, 왜이렇게 어렵고 강의에는 없는지 도무지 모르겠는데 한 번 봐주세요 ㅠㅠ</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-              <div class="card h-100">
-                <img src="https://velog.velcdn.com/images/migdracios/post/9388cf6f-17e2-4e24-8dd6-fe558804c07b/image.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">질문글 제목입니다. 알려줘잉 ㅠㅠ</h5>
-                  <p class="card-text">제가 파이썬을 공부하고 있는데, 왜이렇게 어렵고 강의에는 없는지 도무지 모르겠는데 한 번 봐주세요 ㅠㅠ</p>
-                </div>
-              </div>
-            </div>
-            
-            
-            
+    <div class="row row-cols-1 row-cols-md-3 g-4 cards">
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://velog.velcdn.com/images/migdracios/post/9388cf6f-17e2-4e24-8dd6-fe558804c07b/image.png"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">질문글 제목입니다. 알려줘잉 ㅠㅠ</h5>
+            <p class="card-text">제가 파이썬을 공부하고 있는데, 왜이렇게 어렵고 강의에는 없는지 도무지 모르겠는데 한 번 봐주세요 ㅠㅠ</p>
           </div>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-  </body>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://velog.velcdn.com/images/migdracios/post/9388cf6f-17e2-4e24-8dd6-fe558804c07b/image.png"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">질문글 제목입니다. 알려줘잉 ㅠㅠ</h5>
+            <p class="card-text">제가 파이썬을 공부하고 있는데, 왜이렇게 어렵고 강의에는 없는지 도무지 모르겠는데 한 번 봐주세요 ㅠㅠ</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://velog.velcdn.com/images/migdracios/post/9388cf6f-17e2-4e24-8dd6-fe558804c07b/image.png"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">질문글 제목입니다. 알려줘잉 ㅠㅠ</h5>
+            <p class="card-text">제가 파이썬을 공부하고 있는데, 왜이렇게 어렵고 강의에는 없는지 도무지 모르겠는데 한 번 봐주세요 ㅠㅠ</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://velog.velcdn.com/images/migdracios/post/9388cf6f-17e2-4e24-8dd6-fe558804c07b/image.png"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">질문글 제목입니다. 알려줘잉 ㅠㅠ</h5>
+            <p class="card-text">제가 파이썬을 공부하고 있는데, 왜이렇게 어렵고 강의에는 없는지 도무지 모르겠는데 한 번 봐주세요 ㅠㅠ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
