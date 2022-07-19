@@ -1,0 +1,137 @@
+*{
+    font-family: 'Oswald', sans-serif;
+}
+
+main {
+    /* display: flex;
+    flex-direction: row; */
+    height : 100vh;
+}
+
+.small_main {
+    background-color: red;
+    width : 35vw;
+    /* flex-direction: column; */
+
+    display: flex;
+    flex-direction: column;
+    position : fixed;
+}
+
+.big_main {
+    /* background-color: rgb(255, 255, 255); */
+    width : 65vw;
+    margin-left: 35vw;
+    height: 100vh;
+    border: 1px solid black
+}
+
+.main_post {
+    padding-top: 80px;
+}
+
+header {
+    background-color: transparent;
+    width: 96vw;
+    height: 30px;
+    position: fixed;
+
+    top: 30px;
+    left: 2vw;
+    z-index: 1;
+}
+
+
+.big_square {
+    background-color: #84BF8B;
+    height: 50vh;
+    border: 1px solid black
+}
+
+.middle_square {
+    background-color: #9185A7;
+    height: 40vh;
+    
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    border: 1px solid black
+}
+
+.side_comment {
+    height: 15vh;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid black;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0 0 0 15px;
+
+    font-weight: bold;
+}
+
+.small_square {
+    background-color: #84BF8B;
+    height: 10vh;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.small_square button {
+    border: black solid 1px;
+    width: 33vw;
+}
+
+input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    width: 250px;
+    height: 50px;
+}
+
+.input_flex {
+    display : flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.btn-outline-dark {
+    height: 100px;
+}
+
+.signin_box {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.top {
+    display : flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.top div button {
+    shape-outside: 20px;
+}
+
+.top span {
+    font-size: 45px;
+    color: white;
+    font-weight: bold;
+    /* text-shadow: 1px 1px 1px gray; */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+.big_square img{
+    padding: 130px 0 0 85px;
+}
+
