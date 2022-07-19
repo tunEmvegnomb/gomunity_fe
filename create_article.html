@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>거북이반 커뮤니티, 거뮤니티 🐢메인페이지</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/create_article.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="main.html">거뮤니티</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+            <button type="button" class="btn btn-info">사용자정보</button>
+            <button type="button" class="btn btn-warning">로그아웃</button>
+        </div>
+    </nav>
+    <main>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">공지사항 게시판</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">질의응답 게시판</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">자유게시판</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">자료게시판</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link disabled">거북이반 커뮤니티, 거뮤니티</a>
+                </li>
+            </ul>
+            <div class="create_article">
+                <div>
+                    <input class="article_title" type="text" placeholder="제목을 입력해주세요.">
+                </div>
+                <div>
+                    <select class="article_category" name="article_category">
+                        <option value="none">=== 선택 ===</option>
+                        <option value="freeboard">자유</option>
+                        <option value="qnaboard">질의응답</option>
+                        <option value="docboard">자료</option>
+                    </select>
+                </div>
+                <div>
+                    <textarea class="article_content" placeholder="내용을 입력해주세요."></textarea>
+                </div>
+                <div>
+                    <button type="button" class="btn_create_article">작성하기</button>
+                </div>    
+            </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    
+
+</body>
+
+</html>
