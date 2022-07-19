@@ -1,0 +1,63 @@
+
+
+.wrap {
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px
+}
+
+main {
+    margin-right: 180px;
+}
+
+.detail {
+    display:flex;
+    flex-direction: column;
+    background-color: royalblue;
+    width: 85vh;
+    height: 100%;
+    margin-left: 30vh;
+}
+
+.question_post {
+    background-color: azure;
+    /* width: 80vh; */
+    height: 40vh;
+}
+
+.user_info {
+    color: gray;
+    font-size: 14px;
+}
+
+.answer_comment{
+    display: flex;
+    flex-direction: column;
+}
+
+.title_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title_box_child {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-danger {
+    height: 100%
+}
+
+.btn {
+    border-radius: 4px !important;
+}
+
+.recommend_question{
+    display: flex;
+    margin-left: 20px;
+    width: 15vw;
+    background-color: pink;
+}
+

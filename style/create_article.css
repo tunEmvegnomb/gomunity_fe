@@ -1,7 +1,7 @@
 .create_article {
     min-width: 50%;
     min-height: 70%;
-    margin-left: 50vh;
+    margin-left: 48vh;
 }
 
 .article_title {
@@ -29,3 +29,4 @@
     background-color: dodgerblue;
     color: white;
 }
+
