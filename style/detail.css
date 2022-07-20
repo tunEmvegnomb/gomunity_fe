@@ -1,11 +1,14 @@
 .wrap {
     display: flex;
     flex-direction: row;
-    margin-top: 60px
+    margin-top: 60px;
+    font-family: '강원에듀', 'GangwonEdu_OTFBoldA';
 }
+
 
 main {
     margin-right: 180px;
+    
 }
 
 .detail {

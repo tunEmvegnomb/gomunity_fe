@@ -12,21 +12,36 @@
     font-style: normal;
 }
 
-* {
-    font-family: 'HS유지체', 'HSYuji-Regular'
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
-.title {
-    /* font-family: '산토끼체', 'HS-Regular' */
+* {
+    /* font-family: '강원에듀', 'GangwonEdu_OTFBoldA' */
+}
+
+
+
+
+
+ul li {
+    font-family: '산토끼', 'HS-Regular';
 }
 
 nav {
-    
+    font-family: '산토끼', 'HS-Regular';
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     height: 60px;
     /* position: fixed !important; */
+}
+
+main {
+    font-family: '강원에듀', 'GangwonEdu_OTFBoldA'
 }
 
 .navbar {

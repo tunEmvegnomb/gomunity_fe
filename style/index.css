@@ -181,3 +181,6 @@ input {
     padding: 130px 0 0 85px;
 }
 
+.btn-outline-success {
+    border-radius: 1px;
+}
