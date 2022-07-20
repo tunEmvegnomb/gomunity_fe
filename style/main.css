@@ -1,9 +1,27 @@
+@font-face {
+    font-family: 'HS-Regular';
+    src: url('http://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/HS-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HSYuji-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
-    font-family: 'Jua', sans-serif;
+    font-family: 'HS유지체', 'HSYuji-Regular'
+}
+
+.title {
+    /* font-family: '산토끼체', 'HS-Regular' */
 }
 
 nav {
-    background-color: whitesmoke;
+    
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,6 +29,9 @@ nav {
     /* position: fixed !important; */
 }
 
+.navbar {
+    background-color: #84BF8B !important;
+}
 
 .nav {
     /* background-color:darksalmon; */
@@ -59,5 +80,22 @@ main {
 
 .btn-info {
     margin-right: 20px;
+}
+
+.row {
+    width: 850px
+}
+
+.navbar-brand {
+    margin-left: 260px;
+}
+
+.btn-warning {
+    margin-right: 300px;
+}
+
+body {
+    border: black solid 1px;
+    height: 100vh;
 }
 
