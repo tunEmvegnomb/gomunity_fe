@@ -1,11 +1,25 @@
-*{
-    font-family: 'Oswald', sans-serif;
+@font-face {
+    font-family: 'HS-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/HS-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 main {
     /* display: flex;
     flex-direction: row; */
     height : 100vh;
+}
+
+.mainname{
+    font-family: 'HS-Regular';
 }
 
 .small_main {
@@ -28,6 +42,8 @@ main {
 
 .main_post {
     padding-top: 80px;
+
+    font-family: 'GangwonEdu_OTFBoldA';
 }
 
 header {
@@ -70,7 +86,9 @@ header {
     align-items: center;
     padding: 0 0 0 15px;
 
-    font-weight: bold;
+    font-size: 22px;
+    font-family: 'GangwonEdu_OTFBoldA';
+    /* font-weight: bold; */
 }
 
 .small_square {
@@ -118,8 +136,36 @@ input {
     align-items: center;
 }
 
-.top div button {
-    shape-outside: 20px;
+.loginbutton {
+    background: rgb(252, 231, 51);
+    border-radius: 8px;
+    width: 150px;
+    height: 50px;
+    margin: 10px 10px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px
+    , rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
+    font-size: 20px;
+    color: white;
+    font-family: 'HS-Regular';
+    font-weight: bold;
+    -webkit-text-stroke: 0.5px black;
+}
+
+.signupbutton{
+    background: rgb(253, 98, 190);
+    border-radius: 8px;
+    width: 150px;
+    height: 50px;
+    margin: 10px 10px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px
+    , rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
+    font-size: 20px;
+    color: white;
+    font-family: 'HS-Regular';
+    font-weight: bold;
+    -webkit-text-stroke: 0.5px black;
 }
 
 .top span {
