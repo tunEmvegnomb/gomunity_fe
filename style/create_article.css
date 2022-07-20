@@ -1,5 +1,5 @@
 .create_article {
-    min-width: 50%;
+    min-width: 100vh;
     min-height: 70%;
     margin-left: 48vh;
 }
@@ -26,7 +26,7 @@
     float: right;
     width: 300px;
     height: 40px;
-    background-color: dodgerblue;
+    background-color: #0dcaf0;
     color: white;
 }
 
