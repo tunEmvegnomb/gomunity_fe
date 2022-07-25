@@ -81,10 +81,29 @@ async function signup(){
 
 
 //로그아웃
-async function logout(){
+function logout(){
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
     alert("로그아웃했습니다 안녕히 가세요")
     window.location.replace(`${frontend_base_url}/index.html`);
+}
+
+// 공지사항 조회
+
+async function getNotices(){
+    const response = await fetch(`${backend_base_url}/webmaster/`,{
+        method: 'GET',
+    });
+    response_json = await response.json();
+    return response_json
+}
+
+// 질문글 목록 조회
+async function getQuestions(){
+    const response = await fetch(`${backend_base_url}/qna/list/`,{
+        method: 'GET',
+    });
+    response_json = await response.json();
+    return response_json
 }
