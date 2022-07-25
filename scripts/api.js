@@ -42,41 +42,43 @@ async function login_api(){
             }).join("")
         );
         localStorage.setItem("payload", jsonPayload);
-        window.location.replace(`${frontend_base_url}/main.html`);
-        
+        alert("로그인 성공했다북")
+        window.location.replace('main.html')
     }else{
-        alert(response.status)
+        alert("잘못된 정보입니다")
     }
 }
 
+
 // 회원가입 
 async function signup(){
+
     const signupData = {
         username : document.getElementById("username").value,
         password : document.getElementById("password").value,
         nickname : document.getElementById("nickname").value,
         email : document.getElementById("email").value,
     }
-    console.log(signupData)
-    const response = await fetch(`${backend_base_url}/user/signup/`, {
+
+    const response = await fetch(`${backend_base_url}/user/signup/`,{
         headers:{
             Accept:"application/json",
             'Content-type':'application/json',
         },
         method:'POST',
         body:JSON.stringify(signupData)
-    }
-    )
+    })
 
-    response_json = await response.json()
-    console.log(response_json)
+    const result = await response.json()
+
     if (response.status == 200){
-        alert("회원가입에 성공했다북!")
-        window.location.replace(`${frontend_base_url}/login.html`);
-    }else{
-        alert("회원가입에 실패했다북");
+        alert(result['message'])
+            window.location.replace(`${frontend_base_url}/login.html`);
+        }else{
+        alert(result['message']);
+        }
     }
-}
+
 
 //로그아웃
 async function logout(){
