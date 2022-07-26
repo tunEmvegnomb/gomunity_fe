@@ -107,3 +107,74 @@ async function getQuestions(){
     response_json = await response.json();
     return response_json
 }
+
+// 질문글 작성
+async function createQuestion(){
+    
+    const category = document.getElementsByClassName("article_category")[0];
+    const category_value = category.options[category.selectedIndex].textContent;
+    const question_data = {
+        title : document.getElementById("article_title").value,
+        content : document.getElementById("article_content").value    
+    }
+    if (category_value === "질의응답"){
+        const response = await fetch(`${backend_base_url}/qna/`,{
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("access"),
+                Accept:"application/json",
+                'Content-type':'application/json',
+            },
+            method:'POST',
+            body:JSON.stringify(question_data)
+        })
+        const response_json = await response.json()
+        console.log(response_json)
+        if (response.status == 200){
+            alert(response_json.message);
+        }
+        else {
+            alert(response_json.message);
+        }
+        window.location.replace('main.html');
+    }
+}
+
+
+async function goDetail(question_id){
+    localStorage.setItem("question_id", question_id);
+    window.location.replace(`detail.html`);
+}
+
+async function QuestionDetail(question_id){
+    const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
+        method: 'GET',
+    });
+    response_json = await response.json();
+    return response_json
+}
+
+async function postComment(){
+    const question_id = localStorage.getItem("question_id")
+    const comment_data = {
+        "content":document.getElementById("create_comment").value
+        
+    }
+    const response = await fetch(`${backend_base_url}/qna/${question_id}/answer/`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+            Accept:"application/json",
+            'Content-type':'application/json',
+        },
+        method:'POST',
+        body:JSON.stringify(comment_data)
+    })
+    const response_json = await response.json()
+    console.log(response_json)
+    if (response.status == 200){
+        alert(response_json.message);
+    }
+    else {
+        alert(response_json.message);
+    }
+    window.location.replace(`detail.html`);
+}

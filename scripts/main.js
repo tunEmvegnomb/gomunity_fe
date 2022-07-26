@@ -19,7 +19,9 @@ window.onload = async function loadQuestions(){
     div_card_body.setAttribute("class", "card-body")
     h5_title.setAttribute("class", "card-title title")
     a_title.setAttribute("class", "font_title")
+    a_title.setAttribute("onclick", `goDetail(${question.id})`)
     p_text.setAttribute("class", "card-text")
+    
 
     a_title.innerText = question.title;
     p_text.innerText = question.content;
@@ -31,12 +33,7 @@ window.onload = async function loadQuestions(){
     div_card_body.appendChild(h5_title);
     div_card_body.appendChild(p_text);
     h5_title.appendChild(a_title);
-
-
-
-  
-
-    
+ 
    })
 }
 

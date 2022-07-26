@@ -35,20 +35,3 @@ window.onload = async function loadNotices(){
 //         article_list.appendChild(newArticle)
 //     });
 // }
-
-
-window.onload = async function loadQuestions(){
-    const questions = await getQuestions();
-    console.log(questions);
-   
-   questions.forEach((question) => {
-    const newQuestionTitle = document.createElement("h5");
-    const newQuestionContent = document.createElement("p");
-    const newQuestionImage = ducoment.createElement("div")
-    newQuestionTitle.innerText = question.title;
-    newQuestionContent.innerText = question.content;
-    questionImage.setAttribute("src", `${backend_base_url}${question.image}`)
-    question_list.appendChild(noticeTitle);
-    question_list.appendChild(noticeContent);   
-   })
-}

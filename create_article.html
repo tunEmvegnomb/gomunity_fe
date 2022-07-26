@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="style/create_article.css">
+    <script src="scripts/api.js"></script>
 </head>
 
 <body>
@@ -53,21 +54,21 @@
             </ul>
             <div class="create_article">
                 <div>
-                    <input class="article_title" type="text" placeholder="제목을 입력해주세요.">
+                    <input id="article_title" class="article_title" type="text" placeholder="제목을 입력해주세요.">
                 </div>
                 <div>
                     <select class="article_category" name="article_category">
                         <option value="none">=== 선택 ===</option>
-                        <option value="freeboard">자유</option>
-                        <option value="qnaboard">질의응답</option>
-                        <option value="docboard">자료</option>
+                        <option value="freeboard" disabled>자유</option>
+                        <option value="qnaboard" selected>질의응답</option>
+                        <option value="docboard" disabled>자료</option>
                     </select>
                 </div>
                 <div>
-                    <textarea class="article_content" placeholder="내용을 입력해주세요."></textarea>
+                    <textarea id="article_content" class="article_content" placeholder="내용을 입력해주세요."></textarea>
                 </div>
                 <div>
-                    <button type="button" class="btn_create_article">작성하기</button>
+                    <button type="button" class="btn_create_article" onclick="createQuestion()">작성하기</button>
                 </div>    
             </div>
     </main>
