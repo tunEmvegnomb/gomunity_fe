@@ -16,6 +16,9 @@ window.onload = async function loadDetails(){
     const comments = details.answer;
     console.log(comments.length);
     const div_answer_list = document.getElementsByClassName("answer_list")[0];
+
+    const payload_token = localStorage.getItem("payload");
+    const username = JSON.parse(payload_token).username;
         
     comments.forEach((comment)=>{
 
@@ -83,5 +86,13 @@ window.onload = async function loadDetails(){
         div_answer_list.appendChild(hr_underbar);
 
         hidden_edit_box.style.visibility = 'hidden';
+
+        if (username !== comment.user) {
+            div_answer_edit.style.visibility = 'hidden';
+        }
     })
+}
+
+function openEditBox() {
+
 }
