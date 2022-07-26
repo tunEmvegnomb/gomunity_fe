@@ -10,6 +10,15 @@ window.onload = async function loadDetails(){
     document.getElementById("question_main_title").innerText = details.title;
     document.getElementsByClassName("question_post")[0].innerText = details.content;
 
+    const button_like_question = document.getElementsByClassName("title_like_box")[0];
+    button_like_question.setAttribute("onclick", `likeQuestion(${question_id})`);
+
+    if (details.like.length == 0){
+        button_like_question.setAttribute("class", "btn btn-primary");
+    } else {
+        button_like_question.setAttribute("class", "btn btn-danger");
+    }
+
     // 댓글
     console.log(details.user);
     console.log(details.answer);
@@ -19,6 +28,7 @@ window.onload = async function loadDetails(){
 
     const payload_token = localStorage.getItem("payload");
     const username = JSON.parse(payload_token).username;
+    
         
     comments.forEach((comment)=>{
 
