@@ -81,10 +81,125 @@ async function signup(){
 
 
 //로그아웃
-async function logout(){
+function logout(){
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
     alert("로그아웃했습니다 안녕히 가세요")
     window.location.replace(`${frontend_base_url}/index.html`);
+}
+
+// 공지사항 조회
+
+async function getNotices(){
+    const response = await fetch(`${backend_base_url}/webmaster/`,{
+        method: 'GET',
+    });
+    response_json = await response.json();
+    return response_json
+}
+
+// 질문글 목록 조회
+async function getQuestions(){
+    const response = await fetch(`${backend_base_url}/qna/list/`,{
+        method: 'GET',
+    });
+    response_json = await response.json();
+    return response_json
+}
+
+// 질문글 작성
+async function createQuestion(){
+    
+    const category = document.getElementsByClassName("article_category")[0];
+    const category_value = category.options[category.selectedIndex].textContent;
+    const question_data = {
+        title : document.getElementById("article_title").value,
+        content : document.getElementById("article_content").value    
+    }
+    if (category_value === "질의응답"){
+        const response = await fetch(`${backend_base_url}/qna/`,{
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("access"),
+                Accept:"application/json",
+                'Content-type':'application/json',
+            },
+            method:'POST',
+            body:JSON.stringify(question_data)
+        })
+        const response_json = await response.json()
+        console.log(response_json)
+        if (response.status == 200){
+            alert(response_json.message);
+        }
+        else {
+            alert(response_json.message);
+        }
+        window.location.replace('main.html');
+    }
+}
+
+
+async function goDetail(question_id){
+    localStorage.setItem("question_id", question_id);
+    window.location.replace(`detail.html`);
+}
+
+//질문글 상세조회
+async function QuestionDetail(question_id){
+    const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
+        method: 'GET',
+    });
+    response_json = await response.json();
+    return response_json
+}
+
+//답변 작성
+async function postComment(){
+    const question_id = localStorage.getItem("question_id")
+    const comment_data = {
+        "content":document.getElementById("create_comment").value
+        
+    }
+    const response = await fetch(`${backend_base_url}/qna/${question_id}/answer/`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+            Accept:"application/json",
+            'Content-type':'application/json',
+        },
+        method:'POST',
+        body:JSON.stringify(comment_data)
+    })
+    const response_json = await response.json()
+    console.log(response_json)
+    if (response.status == 200){
+        alert(response_json.message);
+    }
+    else {
+        alert(response_json.message);
+    }
+    window.location.replace(`detail.html`);
+}
+//
+
+
+//답변 수정
+async function updateComment(){
+    const response = await fetch(`${backend_base_url}/qna/${question_id}/answer/`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+            Accept:"application/json",
+            'Content-type':'application/json',
+        },
+        method:'PUT',
+        body:JSON.stringify(comment_data)
+    })
+    const response_json = await response.json()
+    console.log(response_json)
+    if (response.status == 200){
+        alert(response_json.message);
+    }
+    else {
+        alert(response_json.message);
+    }
 }

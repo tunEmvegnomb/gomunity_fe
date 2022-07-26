@@ -9,8 +9,8 @@
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gowun-Batang&display=swap" rel="stylesheet">
   <script src="scripts/api.js"></script>
+  <script src="scripts/main.js"></script>
   <link rel="stylesheet" href="style/main.css">
 </head>
 
@@ -51,7 +51,7 @@
         </div> -->
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">공지사항 게시판</a>
+        <a class="nav-link active" aria-current="page" href="index.html">공지사항 게시판</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">질의응답 게시판</a>
@@ -65,10 +65,13 @@
       <li class="nav-item">
         <a class="nav-link disabled">거북이반 커뮤니티, 거뮤니티</a>
       </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-danger" onclick="window.location.href='create_article.html'">울지마 바보야 질문해!🐢</button>
+      </li>
     </ul>
 
     <div class="row row-cols-1 row-cols-md-3 g-4 cards">
-      <div class="col">
+      <!-- <div class="col">
         <div class="card h-100">
           <img src="https://velog.velcdn.com/images/migdracios/post/9388cf6f-17e2-4e24-8dd6-fe558804c07b/image.png"
             class="card-img-top" alt="..." onclick="location.href='detail.html'">
@@ -107,7 +110,7 @@
             <p class="card-text">제가 파이썬을 공부하고 있는데, 왜이렇게 어렵고 강의에는 없는지 도무지 모르겠는데 한 번 봐주세요 ㅠㅠ</p>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
   </main>

@@ -1,39 +1,37 @@
-const backend_base_url = "http://127.0.0.1:8000" 
-const frontend_base_url = "http://127.0.0.1:5500"
 
+// const notice_list = getNotices();
+// console.log(notice_list)
 
-async function login_api(){
-    
-    const loginData = {
-        username : document.getElementById("username").value,
-        password : document.getElementById("password").value
-    }
+window.onload = async function loadNotices(){
+    const notices = await getNotices();
+    console.log(notices);
+    const notice_list = document.getElementById("notices")
 
-    const response = await fetch(`${backend_base_url}/user/api/token/`,{
-        headers:{
-            Accept:"application/json",
-            'Content-type':'application/json'
-        },
-        method : 'POST',
-        body:JSON.stringify(loginData)
-    }
-    )
+    notices.forEach(notice => {
+        // const newNotice = document.createElement("div");
+        const noticeTitle = document.createElement("h1");
+        const noticeContent = document.createElement("p");
+        noticeTitle.innerText = notice.title;
+        noticeContent.innerText = notice.content;
+        notice_list.appendChild(noticeTitle);
+        notice_list.appendChild(noticeContent);
 
-    response_json = await response.json()
-    console.log(response_json)
-
-    if (response.status == 200){
-        localStorage.setItem("access", response_json.access)
-        localStorage.setItem("refresh", response_json.refresh)
-
-        const base64Url = response_json.access.split(".")[1];
-        const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-        const jsonPayload = decodeURIComponent(atob(base64).split("").map(function (c) {
-            return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-            }).join("")
-        );
-        localStorage.setItem("payload", jsonPayload);
-    }else{
-        alert(response.status)
-    }
+    })
 }
+
+// window.onload = async function loadArticles(){
+//     articles = await getArticles()
+//     console.log(articles)
+//     const article_list = document.getElementById("articles")
+
+//     articles.forEach(article => {
+//         const newArticle = document.createElement("div");
+//         const articleImage = document.createElement("img")
+//         articleImage.setAttribute("src", `${backend_base_url}${article.image}`)
+//         newArticle.setAttribute("id", article.id) //모달
+//         newArticle.innerText = article.title
+//         newArticle.setAttribute("onclick", "articleDetail(this.id)") //모달
+//         newArticle.appendChild(articleImage)
+//         article_list.appendChild(newArticle)
+//     });
+// }
