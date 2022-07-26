@@ -235,3 +235,29 @@ async function deleteComment(answer_id){
     }
     window.location.reload();
 }
+
+// 답변 좋아요
+async function likeAnswer(answer_id){
+   
+    const comment_data = {
+        "content":document.getElementById("create_comment").value
+        
+    }
+    const response = await fetch(`${backend_base_url}/qna/like/answer/${answer_id}`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+            Accept:"application/json",
+            'Content-type':'application/json',
+        },
+        method:'POST',
+        body:JSON.stringify(comment_data)
+    })
+    const response_json = await response.json()
+    console.log(response_json)
+    if (response.status == 200){
+        alert(response_json.message);
+    }
+    else {
+        alert(response_json.message);
+    }
+}

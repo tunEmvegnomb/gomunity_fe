@@ -29,6 +29,7 @@ window.onload = async function loadDetails(){
         const div_answer_user = document.createElement("div");
         const div_answer_text = document.createElement("div");
         const div_answer_like = document.createElement("div");
+        const button_answer_like = document.createElement("button");
         const div_answer_edit = document.createElement("div");
         const button_answer_edit = document.createElement("button");
         const button_answer_delete = document.createElement("button");
@@ -37,6 +38,7 @@ window.onload = async function loadDetails(){
         const hidden_edit_box = document.createElement("div");
         const hidden_input = document.createElement("textarea");
         const hidden_edit_button = document.createElement("button");
+        
         
         div_answer_box.setAttribute("class", "answer_box");
         div_answer_profile_image.setAttribute("class", "answer_profile_image");
@@ -61,6 +63,16 @@ window.onload = async function loadDetails(){
         hidden_edit_button.setAttribute("class", "btn btn-success answer-btn");
         hidden_edit_button.setAttribute("onclick", `updateComment(${comment.id})`);
         hidden_edit_button.innerText = "수정완료";
+
+        button_answer_like.setAttribute("type", "button");
+        if (comment.like.length === 0){
+            console.log("좋아요가 있다", comment.like);
+            button_answer_like.setAttribute("class", "btn btn-success");
+        } else {
+            button_answer_like.setAttribute("class", "btn btn-danger");
+        }
+        
+        button_answer_like.setAttribute("onclick", `likeAnswer(${comment.id})`);
         
 
         div_answer_user.innerText = comment.user;
@@ -87,6 +99,8 @@ window.onload = async function loadDetails(){
         div_answer_edit.appendChild(button_answer_delete);
 
         div_answer_list.appendChild(hr_underbar);
+
+        div_answer_like.appendChild(button_answer_like);
 
         hidden_edit_box.style.visibility = 'hidden';
 
