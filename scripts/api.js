@@ -278,3 +278,6 @@ async function likeQuestion(question_id){
     }
     window.location.reload();
 }
+
+
+
