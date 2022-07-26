@@ -47,16 +47,19 @@ window.onload = async function loadDetails(){
         div_answer_like.setAttribute("class","answer_like");
         div_answer_edit.setAttribute("class", "answer_edit");
         button_answer_edit.setAttribute("class", "btn btn-warning answer-btn");
+        button_answer_edit.setAttribute("onclick", `openEditBox(${comment.id})`);
         button_answer_edit.setAttribute("type", "button");
         button_answer_edit.innerText = "수정"
         button_answer_delete.setAttribute("class", "btn btn-danger answer-btn");
         button_answer_delete.setAttribute("type", "button");
+        button_answer_delete.setAttribute("onclick", `deleteComment(${comment.id})`);
         button_answer_delete.innerText = "삭제";
 
         hidden_edit_box.setAttribute("id", "answer_edit_box");
         hidden_edit_box.setAttribute("class", comment.id);
         hidden_input.setAttribute("class", "answer_edit_input");
         hidden_edit_button.setAttribute("class", "btn btn-success answer-btn");
+        hidden_edit_button.setAttribute("onclick", `updateComment(${comment.id})`);
         hidden_edit_button.innerText = "수정완료";
         
 
@@ -71,11 +74,11 @@ window.onload = async function loadDetails(){
         
         div_answer_box.appendChild(div_answer_comment);
         div_answer_comment.appendChild(div_answer_user);
+        
         div_answer_comment.appendChild(hidden_edit_box);
 
         hidden_edit_box.appendChild(hidden_input);
         hidden_edit_box.appendChild(hidden_edit_button);
-
         div_answer_comment.appendChild(div_answer_text);
         div_answer_comment.appendChild(div_answer_like);
 
@@ -93,6 +96,14 @@ window.onload = async function loadDetails(){
     })
 }
 
-function openEditBox() {
-
+function openEditBox(answer_number) {
+    console.log(answer_number);
+    const hidden_edit_box = document.getElementsByClassName(answer_number)[0];
+    hidden_edit_box.style.visibility = 'visible';
+    let find_comment_text = hidden_edit_box.parentElement;
+    find_comment_text = find_comment_text.childNodes[2];
+    const find_comment_text_value = find_comment_text.innerText;
+    find_comment_text.style.visibility = 'hidden';
+    hidden_edit_box.childNodes[0].innerText = find_comment_text_value;
+    console.log(hidden_edit_box.childNodes[0].value)
 }
