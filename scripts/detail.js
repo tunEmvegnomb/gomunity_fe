@@ -131,3 +131,4 @@ function openEditBox(answer_number) {
     hidden_edit_box.childNodes[0].innerText = find_comment_text_value;
     console.log(hidden_edit_box.childNodes[0].value)
 }
+
