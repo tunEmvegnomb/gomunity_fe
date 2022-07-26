@@ -71,28 +71,31 @@
                     <a class="nav-link disabled">거북이반 커뮤니티, 거뮤니티</a>
                 </li>
             </ul>
-    
+
         </main>
-    
+
         <div class="detail">
             <div class="title_box">
                 <div class="title_box_child">
                     <div class="question_title">
                         <h1 id="question_main_title">질문글 상세조회(제목)</h1>
                     </div>
-                    <div class="user_info">
-                        유저정보
-                        1. 질문 날짜
-                        2. 적용날짜
-                        3. 조회수
+                    <div id="user_info" class="user_info">
+                        <div id="user_name">
+                            이름
+                        </div>
+                        <div id="created_at">
+                            1. 질문 날짜
+                        </div>                        
                     </div>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-danger" onclick="window.location.href='create_article.html'">나도 질문하기🐢</button>
-                </div> 
+                    <button type="button" class="btn btn-danger" onclick="window.location.href='create_article.html'">나도
+                        질문하기🐢</button>
+                </div>
             </div>
-            
-            
+
+
             <hr style="margin-top: 30px;">
             <div class="question_post">
                 <!-- 쿵따리 샤바라 빠빠빠
@@ -109,43 +112,44 @@
                 좋아요 사랑해요1
             </div>
             <div class="input-group">
-                <span class="input-group-text">코드 이미지 다 넣고싶다</span>
+                <span class="input-group-text">이미지를 넣으세요</span>
                 <textarea class="form-control" id="create_comment" aria-label="With textarea">토끼들 출동하세요</textarea>
                 <button type="button" class="btn btn-info" onclick="postComment()">작성</button>
             </div>
-            <hr>
             <div class="answer_list">
-                <!-- <div class="answer_box">
-                    <div class="answer_profile_image">
-                        <img src="../profile.png">
-                    </div>
-                    <div class="answer_comment">
-                        <div id="answer_user" class="answer_user">유저명</div>
-                        <div id="answer_text" class="answer_text">아 그거 그렇게 하는거 아닌데 아...진짜 열받네</div>
-                        <div id="answer_like" class="answer_like">좋아요 아이콘👍</div>
-                    </div>
-                </div>
+                <hr>
                 <div class="answer_box">
                     <div class="answer_profile_image">
                         <img src="../profile.png">
                     </div>
                     <div class="answer_comment">
                         <div id="answer_user" class="answer_user">유저명</div>
+                        <div id="answer_edit_box">
+                            <input class="answer_edit_input">
+                            <button type="button" class="btn btn-success answer-btn" onclick="">수정</button>
+                        </div>
+                    </div>
                         <div id="answer_text" class="answer_text">아 그거 그렇게 하는거 아닌데 아...진짜 열받네</div>
                         <div id="answer_like" class="answer_like">좋아요 아이콘👍</div>
                     </div>
-                </div> -->
+                    <div class="answer_edit">
+                        <button type="button" class="btn btn-warning answer-btn" onclick="">수정</button>
+                        <button type="button" class="btn btn-danger answer-btn" onclick="">삭제</button>
+                    </div>
+
+                </div>
+                <hr>
             </div>
-            
+
         </div>
         <aside class="recommend_question">
-            <div>이봐 거북이! 이 글도 보라구! 네수준의 질문이야! 반갑지!?   (☞ﾟヮﾟ)☞☜(ﾟヮﾟ☜)(☞ﾟヮﾟ)☞☜(ﾟヮﾟ☜)</div>
-            
-            
+            <div>이봐 거북이! 이 글도 보라구! 네수준의 질문이야! 반갑지!? (☞ﾟヮﾟ)☞☜(ﾟヮﾟ☜)(☞ﾟヮﾟ)☞☜(ﾟヮﾟ☜)</div>
+
+
         </aside>
     </div>
-    
-        
+
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -157,4 +161,3 @@
 
 
 </html>
-

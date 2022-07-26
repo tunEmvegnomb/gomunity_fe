@@ -82,3 +82,30 @@ main {
 .answer_box {
     display: flex;
 }
+
+.answer_edit{
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.answer-btn {
+    height: 20%;
+    margin: 5px !important;
+    font-size: 13px;
+    align-items: center;
+    padding: 0 !important;
+}
+
+.input-group button {
+    z-index: 0 !important;
+}
+
+.answer_box{
+    margin-top: 15px;
+}
+
+.answer_edit_input {
+    width: 100%;
+    resize: none;
+}
