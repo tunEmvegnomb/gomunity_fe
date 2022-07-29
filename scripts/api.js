@@ -18,7 +18,7 @@ async function login_api(){
         password : document.getElementById("password").value
     }
 
-    const response = await fetch(`${backend_base_url}/user/api/token/`,{
+    const response = await fetch(`${backend_base_url}/user/api/custom/token/`,{
         headers:{
             Accept:"application/json",
             'Content-type':'application/json'
@@ -184,8 +184,12 @@ async function postComment(){
 
 
 //답변 수정
-async function updateComment(){
-    const response = await fetch(`${backend_base_url}/qna/${question_id}/answer/`,{
+async function updateComment(answer_id){
+    const comment_data = {
+        content : document.getElementsByClassName(answer_id)[0].childNodes[0].value
+    } 
+
+    const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
             Accept:"application/json",
@@ -202,4 +206,78 @@ async function updateComment(){
     else {
         alert(response_json.message);
     }
+    window.location.reload();
 }
+
+
+// 답변 삭제
+async function deleteComment(answer_id){
+    const comment_data = {
+        content : document.getElementsByClassName(answer_id)[0].childNodes[0].value
+    } 
+    console.log('comment_data', comment_data)
+    const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+            Accept:"application/json",
+            'Content-type':'application/json',
+        },
+        method:'DELETE',
+        body:JSON.stringify(comment_data)
+    })
+    const response_json = await response.json()
+    console.log(response_json)
+    if (response.status == 200){
+        alert(response_json.message);
+    }
+    else {
+        alert(response_json.message);
+    }
+    window.location.reload();
+}
+
+// 답변 좋아요
+async function likeAnswer(answer_id){
+   
+    const response = await fetch(`${backend_base_url}/qna/like/answer/${answer_id}`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+            Accept:"application/json",
+            'Content-type':'application/json',
+        },
+        method:'POST',
+    })
+    const response_json = await response.json()
+    console.log(response_json)
+    if (response.status == 200){
+        alert(response_json.message);
+    }
+    else {
+        alert(response_json.message);
+    }
+    window.location.reload();
+}
+
+async function likeQuestion(question_id){
+   
+    const response = await fetch(`${backend_base_url}/qna/like/question/${question_id}`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+            Accept:"application/json",
+            'Content-type':'application/json',
+        },
+        method:'POST',
+    })
+    const response_json = await response.json()
+    console.log(response_json)
+    if (response.status == 200){
+        alert(response_json.message);
+    }
+    else {
+        alert(response_json.message);
+    }
+    window.location.reload();
+}
+
+
+

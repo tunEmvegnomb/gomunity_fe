@@ -40,7 +40,7 @@ main {
     flex-direction: column;
 }
 
-.btn-danger {
+.btn-danger, .btn-primary {
     height: 100%
 }
 
