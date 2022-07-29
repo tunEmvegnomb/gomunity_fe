@@ -7,7 +7,9 @@
 
 
 const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5500"
+const deploy_base_url = "http://3.34.167.27"
+// const frontend_base_url = "http://127.0.0.1:5500"
+const frontend_base_url = "http://gomunity.shop.s3-website.ap-northeast-2.amazonaws.com"
 
 
 //로그인
@@ -18,7 +20,7 @@ async function login_api(){
         password : document.getElementById("password").value
     }
 
-    const response = await fetch(`${backend_base_url}/user/api/custom/token/`,{
+    const response = await fetch(`${deploy_base_url}/user/api/custom/token/`,{
         headers:{
             Accept:"application/json",
             'Content-type':'application/json'
@@ -60,7 +62,7 @@ async function signup(){
         email : document.getElementById("email").value,
     }
 
-    const response = await fetch(`${backend_base_url}/user/signup/`,{
+    const response = await fetch(`${deploy_base_url}/user/signup/`,{
         headers:{
             Accept:"application/json",
             'Content-type':'application/json',
@@ -92,7 +94,7 @@ function logout(){
 // 공지사항 조회
 
 async function getNotices(){
-    const response = await fetch(`${backend_base_url}/webmaster/`,{
+    const response = await fetch(`${deploy_base_url}/webmaster/`,{
         method: 'GET',
     });
     response_json = await response.json();
@@ -101,7 +103,7 @@ async function getNotices(){
 
 // 질문글 목록 조회
 async function getQuestions(){
-    const response = await fetch(`${backend_base_url}/qna/list/`,{
+    const response = await fetch(`${deploy_base_url}/qna/list/`,{
         method: 'GET',
     });
     response_json = await response.json();
@@ -118,7 +120,7 @@ async function createQuestion(){
         content : document.getElementById("article_content").value    
     }
     if (category_value === "질의응답"){
-        const response = await fetch(`${backend_base_url}/qna/`,{
+        const response = await fetch(`${deploy_base_url}/qna/`,{
             headers:{
                 Authorization: "Bearer " + localStorage.getItem("access"),
                 Accept:"application/json",
@@ -147,7 +149,7 @@ async function goDetail(question_id){
 
 //질문글 상세조회
 async function QuestionDetail(question_id){
-    const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
+    const response = await fetch(`${deploy_base_url}/qna/${question_id}`,{
         method: 'GET',
     });
     response_json = await response.json();
@@ -161,7 +163,7 @@ async function postComment(){
         "content":document.getElementById("create_comment").value
         
     }
-    const response = await fetch(`${backend_base_url}/qna/${question_id}/answer/`,{
+    const response = await fetch(`${deploy_base_url}/qna/${question_id}/answer/`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
             Accept:"application/json",
@@ -189,7 +191,7 @@ async function updateComment(answer_id){
         content : document.getElementsByClassName(answer_id)[0].childNodes[0].value
     } 
 
-    const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}`,{
+    const response = await fetch(`${deploy_base_url}/qna/answer/${answer_id}`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
             Accept:"application/json",
@@ -216,7 +218,7 @@ async function deleteComment(answer_id){
         content : document.getElementsByClassName(answer_id)[0].childNodes[0].value
     } 
     console.log('comment_data', comment_data)
-    const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}`,{
+    const response = await fetch(`${deploy_base_url}/qna/answer/${answer_id}`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
             Accept:"application/json",
@@ -239,7 +241,7 @@ async function deleteComment(answer_id){
 // 답변 좋아요
 async function likeAnswer(answer_id){
    
-    const response = await fetch(`${backend_base_url}/qna/like/answer/${answer_id}`,{
+    const response = await fetch(`${deploy_base_url}/qna/like/answer/${answer_id}`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
             Accept:"application/json",
@@ -260,7 +262,7 @@ async function likeAnswer(answer_id){
 
 async function likeQuestion(question_id){
    
-    const response = await fetch(`${backend_base_url}/qna/like/question/${question_id}`,{
+    const response = await fetch(`${deploy_base_url}/qna/like/question/${question_id}`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
             Accept:"application/json",
