@@ -9,7 +9,7 @@
 const backend_base_url = "http://127.0.0.1:8000"
 const deploy_base_url = "http://3.34.167.27"
 // const frontend_base_url = "http://127.0.0.1:5500"
-const frontend_base_url = "http://gomunity.shop.s3-website.ap-northeast-2.amazonaws.com"
+const frontend_base_url = "https://gomunity.shop"
 
 
 //로그인
