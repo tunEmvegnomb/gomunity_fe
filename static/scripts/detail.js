@@ -52,7 +52,7 @@ window.onload = async function loadDetails(){
         
         div_answer_box.setAttribute("class", "answer_box");
         div_answer_profile_image.setAttribute("class", "answer_profile_image");
-        profile_image.setAttribute("src", "../profile.png");
+        profile_image.setAttribute("src", "../static/image/profile.png");
         div_answer_comment.setAttribute("class", "answer_comment");
         div_answer_user.setAttribute("class","answer_user");
         div_answer_text.setAttribute("class","answer_text");
