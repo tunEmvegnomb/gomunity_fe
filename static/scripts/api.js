@@ -6,10 +6,10 @@
 // 함수를 직접 호출하기 전에는 읽지 않는 것을 비동기라고 합니다
 
 
-const backend_base_url = "http://127.0.0.1:8000"
-const deploy_base_url = "https://3.34.167.27"
-// const frontend_base_url = "http://127.0.0.1:5500"
-const frontend_base_url = "https://gomunity.shop"
+const deploy_base_url = "http://127.0.0.1:8000"
+// const deploy_base_url = "https://3.34.167.27"
+const frontend_base_url = "http://127.0.0.1:5500"
+// const frontend_base_url = "https://gomunity.shop"
 
 
 //로그인
