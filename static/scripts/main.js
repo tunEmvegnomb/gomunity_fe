@@ -14,7 +14,7 @@ window.onload = async function loadQuestions(){
     
     div_col.setAttribute("class", "col");
     div_h100.setAttribute("class", "card h-100")
-    imagecard.setAttribute("onclick", "window.location.href=''")
+    imagecard.setAttribute("onclick", `goDetail(${question.id})`)
     imagecard.setAttribute("src", "https://www.balisafarimarinepark.com/wp-content/uploads/2022/06/112991633508_2000x.jpg")
     div_card_body.setAttribute("class", "card-body")
     h5_title.setAttribute("class", "card-title title")

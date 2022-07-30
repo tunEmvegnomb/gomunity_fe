@@ -14,13 +14,15 @@ main {
 .detail {
     display: flex;
     flex-direction: column;
-    width: 70vh;
+    width: 90vh;
     height: 100%;
     margin-left: 33vh;
 }
 
 .question_post {
     height: 40vh;
+    word-break:break-all;
+    word-wrap:break-word;
 }
 
 .user_info {
@@ -65,10 +67,13 @@ main {
 }
 
 .answer_comment {
+    width: 85%;
     display: flex;
     flex-direction: column;
 }
-
+.answer_edit{
+    width: 2vw;
+}
 .answer_profile_image{
     padding-right: 15px;
     padding-bottom: 25px;
@@ -100,12 +105,33 @@ main {
 .input-group button {
     z-index: 0 !important;
 }
-
+.answer_text{
+    word-break:break-all;
+    word-wrap:break-word;
+}
 .answer_box{
     margin-top: 15px;
 }
-
 .answer_edit_input {
     width: 100%;
     resize: none;
+}
+#user_name{
+    font-size: 20px;
+}
+#Question_like {
+    font-size: 20px;
+}
+.answer_like {
+    margin-top: 30px;
+}
+#Answer_like {
+    font-size: 20px;
+}
+.title_box_child {
+    width: 85%;
+}
+.question_title {
+    word-break:break-all;
+    word-wrap:break-word;
 }
