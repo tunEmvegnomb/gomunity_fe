@@ -5,12 +5,10 @@
 // 그렇기 때문에 사용자가 호출하기 전까지 이 함수는 불러와 져서는 안됩니다
 // 함수를 직접 호출하기 전에는 읽지 않는 것을 비동기라고 합니다
 
-
 const backend_base_url = "http://127.0.0.1:8000"
 // const deploy_base_url = "http://3.34.167.27"
 const frontend_base_url = "http://127.0.0.1:5500"
 // const frontend_base_url = "https://gomunity.shop"
-
 
 //로그인
 async function login_api(){
@@ -145,27 +143,40 @@ async function createQuestion(){
     
     const category = document.getElementsByClassName("article_category")[0];
     const category_value = category.options[category.selectedIndex].textContent;
-    const question_data = {
-        title : document.getElementById("article_title").value,
-        content : document.getElementById("article_content").value    
-    }
+    
+    const title = document.getElementById("article_title").value;
+    const content = document.getElementById("article_content").value;
+    const image = document.getElementById("article_image").files[0];
+    
+    console.log(image)
+    
+    const formdata = new FormData();
+    formdata.enctype = "multipart/form-data"
+
+    formdata.append('title', title);
+    formdata.append('content', content);
+    formdata.append('image', image);
+
+    console.log(formdata)
+
     if (category_value === "질의응답"){
         const response = await fetch(`${backend_base_url}/qna/`,{
             headers:{
                 Authorization: "Bearer " + localStorage.getItem("access"),
-                Accept:"application/json",
-                'Content-type':'application/json',
+            //     Accept:"application/json",
+            //     'Content-type':'application/json',
             },
             method:'POST',
-            body:JSON.stringify(question_data)
+            body:formdata
         })
-        const response_json = await response.json()
-        console.log(response_json)
+        // const response_json = await response.json()
+        // console.log(response_json)
+
         if (response.status == 200){
-            alert(response_json.message);
+            alert("질문글 작성 성공");
         }
         else {
-            alert(response_json.message);
+            alert("질문글 작성 실패");
         }
         window.location.replace('main.html');
     }
@@ -310,6 +321,3 @@ async function likeQuestion(question_id){
     }
     window.location.reload();
 }
-
-
-
