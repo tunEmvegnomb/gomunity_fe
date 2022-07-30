@@ -1,5 +1,6 @@
 console.log('here detail.js');
 
+
 window.onload = async function loadDetails() {
     const question_id = localStorage.getItem("question_id");
     const details = await QuestionDetail(question_id);
@@ -56,8 +57,6 @@ window.onload = async function loadDetails() {
         div_answer_comment.setAttribute("class", "answer_comment");
         div_answer_user.setAttribute("class", "answer_user");
         div_answer_text.setAttribute("class", "answer_text");
-        // div_answer_text.setAttribute("rows","4");
-        // div_answer_text.setAttribute("")
         div_answer_like.setAttribute("class", "answer_like");
         div_answer_edit.setAttribute("class", "answer_edit");
         button_answer_edit.setAttribute("class", "btn btn-warning answer-btn");

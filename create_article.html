@@ -9,10 +9,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-
+    <script src="../static/scripts/api.js"></script>
     <link rel="stylesheet" href="../static/style/main.css">
     <link rel="stylesheet" href="../static/style/create_article.css">
-    <script src="../static/scripts/api.js"></script>
+    
 </head>
 
 <body>
@@ -30,8 +30,8 @@
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
-            <button type="button" class="btn btn-info">사용자정보</button>
-            <button type="button" class="btn btn-warning" onclick="logout()">로그아웃</button>
+            <button type="button" id="username" class="btn btn-info"></button>
+            <button type="button" id="logout" class="btn btn-warning"></button>
         </div>
     </nav>
     <main>
