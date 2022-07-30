@@ -14,6 +14,9 @@ window.onload = async function loadDetails() {
     document.getElementById("question_main_title").innerText = details.title;
     document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${details.image}`);
     document.getElementsByClassName("question_post")[0].innerText = details.content;
+    console.log(details)
+    document.getElementById("hashtag").innerText = details.hashtag;
+    console.log(details.hashtag)
     console.log(details.image)
 
     const button_like_question = document.getElementsByClassName("title_like_box")[0];
