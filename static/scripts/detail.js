@@ -4,18 +4,16 @@ window.onload = async function loadDetails(){
     const question_id = localStorage.getItem("question_id");
     const details = await QuestionDetail(question_id);
     console.log(details);
-    console.log("디테일의 질문 이미지", typeof details.image);
     
     document.getElementById("user_name").innerText = details.user;
     document.getElementById("created_at").innerText = details.created_at;
     document.getElementById("question_main_title").innerText = details.title;
-    document.getElementById("question_img").setAttribute("src", details.image);
+    document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${details.image}`);
     document.getElementsByClassName("question_post")[0].innerText = details.content;
     console.log(details.image)
 
     const button_like_question = document.getElementsByClassName("title_like_box")[0];
     button_like_question.setAttribute("onclick", `likeQuestion(${question_id})`);
-    document.getElementById("image").setAttribute("src",`${backend_base_url}${details.image}`)
     if (details.like.length == 0){
         button_like_question.setAttribute("class", "btn btn-primary");
     } else {
