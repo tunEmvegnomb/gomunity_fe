@@ -10,12 +10,38 @@ const backend_base_url = "http://127.0.0.1:8000"
 const frontend_base_url = "http://127.0.0.1:5500"
 // const frontend_base_url = "https://gomunity.shop"
 
+
+window.addEventListener('load', async function checkLogin() {
+    const payload = localStorage.getItem("payload")
+    console.log(payload)
+    const parsed_payload = await JSON.parse(payload)
+    console.log(parsed_payload)
+    const username = document.getElementById("username")
+    const logoutButton = document.getElementById("logout")
+    const logoutButton2 = document.getElementById("logout2")
+    const registerButton = document.getElementById("register")
+    if (parsed_payload) {
+        username.innerText = parsed_payload.username
+        logoutButton.innerText = "로그아웃"
+        logoutButton.setAttribute("onclick", "logout()")
+        logoutButton2.innerText = "sign-out"
+        logoutButton2.setAttribute("onclick", "logout()")
+        registerButton.innerText = "Hello"+" "+"World!"
+        registerButton.setAttribute("onclick", "location.href='/main.html'")
+
+    } else {
+        username.innerText = "Guest"
+        logoutButton.innerText = "로그인"
+        logoutButton.setAttribute("onclick", "location.href='/login.html'")
+    }
+});
+
 //로그인
-async function login_api(){
-    
+async function login_api() {
+
     const loginData = {
-        username : document.getElementById("username").value,
-        password : document.getElementById("password").value
+        username: document.getElementById("username").value,
+        password: document.getElementById("password").value
     }
 
     const response = await fetch(`${backend_base_url}/user/api/custom/token/`,{
@@ -23,15 +49,15 @@ async function login_api(){
             Accept:"application/json",
             'Content-type':'application/json'
         },
-        method : 'POST',
-        body:JSON.stringify(loginData)
+        method: 'POST',
+        body: JSON.stringify(loginData)
     }
     )
 
     response_json = await response.json()
     console.log(response_json)
 
-    if (response.status == 200){
+    if (response.status == 200) {
         localStorage.setItem("access", response_json.access)
         localStorage.setItem("refresh", response_json.refresh)
 
@@ -39,12 +65,12 @@ async function login_api(){
         const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
         const jsonPayload = decodeURIComponent(atob(base64).split("").map(function (c) {
             return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-            }).join("")
+        }).join("")
         );
         localStorage.setItem("payload", jsonPayload);
         alert("로그인 성공했다북")
         window.location.replace('main.html')
-    }else{
+    } else {
         alert("잘못된 정보입니다")
     }
 }
@@ -81,13 +107,13 @@ window.addEventListener('load', () => {
 });
 
 // 회원가입 
-async function signup(){
+async function signup() {
 
     const signupData = {
-        username : document.getElementById("username").value,
-        password : document.getElementById("password").value,
-        nickname : document.getElementById("nickname").value,
-        email : document.getElementById("email").value,
+        username: document.getElementById("username").value,
+        password: document.getElementById("password").value,
+        nickname: document.getElementById("nickname").value,
+        email: document.getElementById("email").value,
     }
 
     const response = await fetch(`${backend_base_url}/user/signup/`,{
@@ -95,23 +121,23 @@ async function signup(){
             Accept:"application/json",
             'Content-type':'application/json',
         },
-        method:'POST',
-        body:JSON.stringify(signupData)
+        method: 'POST',
+        body: JSON.stringify(signupData)
     })
 
     const result = await response.json()
 
-    if (response.status == 200){
+    if (response.status == 200) {
         alert(result['message'])
-            window.location.replace(`${frontend_base_url}/login.html`);
-        }else{
+        window.location.replace(`${frontend_base_url}/login.html`);
+    } else {
         alert(result['message']);
-        }
     }
+}
 
 
 //로그아웃
-function logout(){
+function logout() {
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
@@ -139,8 +165,8 @@ async function getQuestions(){
 }
 
 // 질문글 작성
-async function createQuestion(){
-    
+async function createQuestion() {
+
     const category = document.getElementsByClassName("article_category")[0];
     const category_value = category.options[category.selectedIndex].textContent;
     
@@ -183,7 +209,7 @@ async function createQuestion(){
 }
 
 
-async function goDetail(question_id){
+async function goDetail(question_id) {
     localStorage.setItem("question_id", question_id);
     window.location.replace(`detail.html`);
 }
@@ -198,24 +224,24 @@ async function QuestionDetail(question_id){
 }
 
 //답변 작성
-async function postComment(){
+async function postComment() {
     const question_id = localStorage.getItem("question_id")
     const comment_data = {
-        "content":document.getElementById("create_comment").value
-        
+        "content": document.getElementById("create_comment").value
+
     }
     const response = await fetch(`${backend_base_url}/qna/${question_id}/answer/`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
-            Accept:"application/json",
-            'Content-type':'application/json',
+            Accept: "application/json",
+            'Content-type': 'application/json',
         },
-        method:'POST',
-        body:JSON.stringify(comment_data)
+        method: 'POST',
+        body: JSON.stringify(comment_data)
     })
     const response_json = await response.json()
     console.log(response_json)
-    if (response.status == 200){
+    if (response.status == 200) {
         alert(response_json.message);
     }
     else {
@@ -227,23 +253,22 @@ async function postComment(){
 
 
 //답변 수정
-async function updateComment(answer_id){
+async function updateComment(answer_id) {
     const comment_data = {
-        content : document.getElementsByClassName(answer_id)[0].childNodes[0].value
-    } 
-
+        content: document.getElementsByClassName(answer_id)[0].childNodes[0].value
+    }
     const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
-            Accept:"application/json",
-            'Content-type':'application/json',
+            Accept: "application/json",
+            'Content-type': 'application/json',
         },
-        method:'PUT',
-        body:JSON.stringify(comment_data)
+        method: 'PUT',
+        body: JSON.stringify(comment_data)
     })
     const response_json = await response.json()
     console.log(response_json)
-    if (response.status == 200){
+    if (response.status == 200) {
         alert(response_json.message);
     }
     else {
@@ -254,23 +279,23 @@ async function updateComment(answer_id){
 
 
 // 답변 삭제
-async function deleteComment(answer_id){
+async function deleteComment(answer_id) {
     const comment_data = {
-        content : document.getElementsByClassName(answer_id)[0].childNodes[0].value
-    } 
+        content: document.getElementsByClassName(answer_id)[0].childNodes[0].value
+    }
     console.log('comment_data', comment_data)
     const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
-            Accept:"application/json",
-            'Content-type':'application/json',
+            Accept: "application/json",
+            'Content-type': 'application/json',
         },
-        method:'DELETE',
-        body:JSON.stringify(comment_data)
+        method: 'DELETE',
+        body: JSON.stringify(comment_data)
     })
     const response_json = await response.json()
     console.log(response_json)
-    if (response.status == 200){
+    if (response.status == 200) {
         alert(response_json.message);
     }
     else {
@@ -285,14 +310,14 @@ async function likeAnswer(answer_id){
     const response = await fetch(`${backend_base_url}/qna/like/answer/${answer_id}`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
-            Accept:"application/json",
-            'Content-type':'application/json',
+            Accept: "application/json",
+            'Content-type': 'application/json',
         },
-        method:'POST',
+        method: 'POST',
     })
     const response_json = await response.json()
     console.log(response_json)
-    if (response.status == 200){
+    if (response.status == 200) {
         alert(response_json.message);
     }
     else {
@@ -306,14 +331,14 @@ async function likeQuestion(question_id){
     const response = await fetch(`${backend_base_url}/qna/like/question/${question_id}`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
-            Accept:"application/json",
-            'Content-type':'application/json',
+            Accept: "application/json",
+            'Content-type': 'application/json',
         },
-        method:'POST',
+        method: 'POST',
     })
     const response_json = await response.json()
     console.log(response_json)
-    if (response.status == 200){
+    if (response.status == 200) {
         alert(response_json.message);
     }
     else {
@@ -321,3 +346,5 @@ async function likeQuestion(question_id){
     }
     window.location.reload();
 }
+
+

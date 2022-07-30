@@ -39,8 +39,8 @@
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
-            <button type="button" class="btn btn-info">사용자정보</button>
-            <button type="button" class="btn btn-warning" onclick="logout()">로그아웃</button>
+            <button type="button" id="username" class="btn btn-info"></button>
+            <button type="button" id="logout" class="btn btn-warning"></button>
         </div>
     </nav>
     <div class="wrap">
@@ -59,7 +59,7 @@
                     <a class="nav-link active" aria-current="page" href="#">공지사항 게시판</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">질의응답 게시판</a>
+                    <a class="nav-link" href="main.html">질의응답 게시판</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">자유게시판</a>
@@ -82,18 +82,18 @@
                     </div>
                     <div id="user_info" class="user_info">
                         <div id="user_name">
-                            이름
+
                         </div>
-                        <div id="created_at">
-                            1. 질문 날짜
-                        </div>                        
+                        <div id="created_at" type="date">
+                        
+                        </div>
+                        <button style="height: 40px;" class="title_like_box" id="Question_like">
+                
+                        </button>                        
                     </div>
                 </div>
-                <div class="title_like_box">
-                    <!-- <button type="button" class="btn btn-primary">이 글 좋네요!</button> -->
-                </div>
                 <div>
-                    <button type="button" class="btn btn-danger" onclick="window.location.href='create_article.html'">나도
+                    <button style="height: 80px; margin-top:160px;" type="button" class="btn btn-primary" onclick="window.location.href='create_article.html'">나도
                         질문하기🐢</button>
                 </div>
             </div>
@@ -120,16 +120,15 @@
             </div> -->
             <div class="input-group">
                 <span class="input-group-text">이미지를 넣으세요</span>
-                <textarea class="form-control" id="create_comment" aria-label="With textarea">토끼들 출동하세요</textarea>
+                <textarea cols="50" rows="5" class="form-control" id="create_comment" placeholder="토끼들 출동하세요" aria-label="With textarea"></textarea>
                 <button type="button" class="btn btn-info" onclick="postComment()">작성</button>
             </div>
             <div class="answer_list">
-                <hr>
                 <div class="answer_box">
-                    <div class="answer_profile_image">
+                    <!-- <div class="answer_profile_image">
                         <img src="../static/image/profile.png">
-                    </div>
-                    <div class="answer_comment">
+                    </div> -->
+                    <!-- <div class="answer_comment">
                         <div id="answer_user" class="answer_user">유저명</div>
                         <div id="answer_edit_box">
                             <input class="answer_edit_input">
@@ -138,11 +137,11 @@
                     </div>
                         <div id="answer_text" class="answer_text">아 그거 그렇게 하는거 아닌데 아...진짜 열받네</div>
                         <div id="answer_like" class="answer_like">좋아요 아이콘👍</div>
-                    </div>
-                    <div class="answer_edit">
+                    </div> -->
+                    <!-- <div class="answer_edit">
                         <button type="button" class="btn btn-warning answer-btn" onclick="">수정</button>
                         <button type="button" class="btn btn-danger answer-btn" onclick="">삭제</button>
-                    </div>
+                    </div> -->
 
                 </div>
                 <hr>

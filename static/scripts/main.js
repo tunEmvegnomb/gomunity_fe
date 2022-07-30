@@ -14,8 +14,8 @@ window.onload = async function loadQuestions(){
     
     div_col.setAttribute("class", "col");
     div_h100.setAttribute("class", "card h-100")
-    imagecard.setAttribute("onclick", "window.location.href=''")
     imagecard.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${question.image}`);
+    imagecard.setAttribute("onclick", `goDetail(${question.id})`)
     div_card_body.setAttribute("class", "card-body")
     h5_title.setAttribute("class", "card-title title")
     a_title.setAttribute("class", "font_title")
