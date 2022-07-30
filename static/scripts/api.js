@@ -52,14 +52,13 @@ async function login_api(){
 }
 
 // 리프레쉬 토큰
-window.onload = ()=>{
+window.addEventListener('load', () => {
     console.log("온로드 실행후")
     const payload = JSON.parse(localStorage.getItem("payload"));
 
-    // 아직 access 토큰의 인가 유효시간이 남은 경우
     if (payload.exp > (Date.now() / 1000)){
+        console.log(payload.exp)
     } else {
-        // 인증 시간이 지났기 때문에 다시 refreshToken으로 다시 요청을 해야 한다.
         const requestRefreshToken = async (url) => {
             console.log("지나서 시작되었다")
               const response = await fetch(url, {
@@ -74,16 +73,14 @@ window.onload = ()=>{
               return response.json();
         };
 
-        // 다시 인증 받은 accessToken을 localStorage에 저장하자.
         requestRefreshToken(backend_base_url + "/user/api/token/refresh/").then((data)=>{
-            // 새롭게 발급 받은 accessToken을 localStorage에 저장
             const accessToken = data.access;
+            console.log("콜백함수 호출됨")
 
             localStorage.setItem("access", accessToken);
         });
     }
-};
-
+});
 
 // 회원가입 
 async function signup(){
