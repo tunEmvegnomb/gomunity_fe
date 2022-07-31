@@ -186,7 +186,7 @@ async function createQuestion() {
             method:'POST',
             body:formdata
         })
-        // const response_json = await response.json()
+        const response_json = await response.json()
         // console.log(response_json)
 
         if (response.status == 200){
@@ -235,7 +235,7 @@ async function postComment() {
         method: 'POST',
         body: formdata
     })
-    // const response_json = await response.json()
+    const response_json = await response.json()
     // console.log(response_json)
     if (response.status == 200) {
         alert(response_json.message);
