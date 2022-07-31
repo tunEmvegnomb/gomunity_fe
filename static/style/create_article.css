@@ -23,6 +23,11 @@
     height: 400px;
     resize: none;
 }
+.article_image {
+    width: 150px;
+    height: 40px;
+    margin-bottom: 20px;
+}
 
 .btn_create_article {
     float: right;
@@ -30,5 +35,9 @@
     height: 40px;
     background-color: #0dcaf0;
     color: white;
+}
+.hashtag {
+    width:100%;
+    margin-bottom: 20px;
 }
 
