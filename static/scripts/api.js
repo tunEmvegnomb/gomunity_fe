@@ -14,9 +14,7 @@ const frontend_base_url = "http://127.0.0.1:5500"
 
 window.addEventListener('load', async function checkLogin() {
     const payload = localStorage.getItem("payload")
-    console.log(payload)
     const parsed_payload = await JSON.parse(payload)
-    console.log(parsed_payload)
     const username = document.getElementById("username")
     const logoutButton = document.getElementById("logout")
     const logoutButton2 = document.getElementById("logout2")
@@ -78,14 +76,11 @@ async function login_api() {
 
 // 리프레쉬 토큰
 window.addEventListener('load', () => {
-    console.log("온로드 실행후")
     const payload = JSON.parse(localStorage.getItem("payload"));
 
     if (payload.exp > (Date.now() / 1000)){
-        console.log(payload.exp)
     } else {
         const requestRefreshToken = async (url) => {
-            console.log("지나서 시작되었다")
               const response = await fetch(url, {
                   headers: {
                       'Content-Type': 'application/json',
@@ -100,7 +95,6 @@ window.addEventListener('load', () => {
 
         requestRefreshToken(backend_base_url + "/user/api/token/refresh/").then((data)=>{
             const accessToken = data.access;
-            console.log("콜백함수 호출됨")
 
             localStorage.setItem("access", accessToken);
         });
@@ -314,6 +308,7 @@ async function likeAnswer(answer_id){
     window.location.reload();
 }
 
+//질문 좋아요
 async function likeQuestion(question_id){
    
     const response = await fetch(`${backend_base_url}/qna/like/question/${question_id}`,{
@@ -335,4 +330,54 @@ async function likeQuestion(question_id){
     window.location.reload();
 }
 
+//질문 수정
+async function updateQuestion(question_id) {
+    const question_data = {
+        title: document.getElementById("question_main_title").value,
+        content: document.getElementById("question_post").value,
+    }
+    const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+            Accept: "application/json",
+            'Content-type': 'application/json',
+        },
+        method: 'PUT',
+        body: JSON.stringify(question_data)
+    })
+    const response_json = await response.json()
+    console.log(response_json)
+    if (response.status == 200) {
+        alert(response_json.message);
+    }
+    else {
+        alert(response_json.message);
+    }
+    window.location.reload();
+}
 
+// //질문 삭제
+async function deleteQuestion(question_id) {
+    const question_data = {
+        title: document.getElementById("question_main_title").value,
+        content: document.getElementById("question_post").value,
+    }
+    const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+            Accept: "application/json",
+            'Content-type': 'application/json',
+        },
+        method: 'DELETE',
+        body: JSON.stringify(question_data)
+    })
+    const response_json = await response.json()
+    console.log(response_json)
+    if (response.status == 200) {
+        alert(response_json.message);
+    }
+    else {
+        alert(response_json.message);
+    }
+    window.location.replace('main.html');
+}

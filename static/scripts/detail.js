@@ -8,12 +8,13 @@ window.onload = async function loadDetails() {
     const user_id = JSON.parse(payload_token).user_id;
     const username = JSON.parse(payload_token).username;
     const questionlike = details.like;
-    
+
     document.getElementById("user_name").innerText = "작성자" + " : " + details.user;
     document.getElementById("created_at").innerText = (details.created_at).split("T")[0] +" "+ ((details.created_at).split("T")[1]).split(".")[0];
     document.getElementById("question_main_title").innerText = details.title;
     document.getElementsByClassName("question_post")[0].innerText = details.content;
-
+    document.getElementById("deletequestion").setAttribute("onclick",`deleteQuestion(${question_id})`)
+    document.getElementById("updatequestion").setAttribute("onclick","window.location.href='create_article.html'")
     const button_like_question = document.getElementsByClassName("title_like_box")[0];
     button_like_question.setAttribute("onclick", `likeQuestion(${question_id})`);
     if (questionlike.includes(user_id) != true) {
@@ -24,12 +25,20 @@ window.onload = async function loadDetails() {
         button_like_question.innerText = " ♡  " + details.like.length;
     }
     
+    const edit_btn = document.getElementById("hidden_edit_btn")
+    
+
+
+    if(username !== details.user){
+        edit_btn.style.visibility = 'hidden';
+    }
+
     // 댓글
     const comments = details.answer;
     const div_answer_list = document.getElementsByClassName("answer_list")[0];
 
     
-
+    
 
     comments.forEach((comment) => {
 
@@ -77,7 +86,6 @@ window.onload = async function loadDetails() {
 
         button_answer_like.setAttribute("type", "button");
         if (comment.like.includes(user_id) != true) {
-            console.log("좋아요가 있다", comment.like);
             button_answer_like.setAttribute("class", "btn btn-primary");
             button_answer_like.innerText = " ♥  " + comment.like.length;
         } else {
@@ -132,4 +140,3 @@ function openEditBox(answer_number) {
     hidden_edit_box.childNodes[0].innerText = find_comment_text_value;
     console.log(hidden_edit_box.childNodes[0].value)
 }
-

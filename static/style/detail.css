@@ -135,3 +135,29 @@ main {
     word-break:break-all;
     word-wrap:break-word;
 }
+.btn_list{
+    display: flex;
+    flex-direction: column;
+    width: 7vw;
+    height: 100%;
+}
+.hidden_edit_btn{
+    margin-left: 40px;
+}
+.put_question_btn{
+    width: 50px;
+    height: 25px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 11pt;
+}
+.del_question_btn {
+    align-self: center;
+    width: 50px;
+    height: 25px;
+    margin-bottom: 50px;
+    font-size: 11pt;
+}
+.postquestion_btn{
+    height: 90px;
+}
