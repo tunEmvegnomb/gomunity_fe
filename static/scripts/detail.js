@@ -5,15 +5,16 @@ window.onload = async function loadDetails() {
     // 게시글
     const question_id = localStorage.getItem("question_id");
     const details = await QuestionDetail(question_id);
+    let user_id = "";
+    let username ="";
     try{
         const payload_token = localStorage.getItem("payload");
-        const user_id = JSON.parse(payload_token).user_id;
-        const username = JSON.parse(payload_token).username;
+        user_id = JSON.parse(payload_token).user_id;
+        username = JSON.parse(payload_token).username;
     } catch{
-        const user_id = "00";
-        const username = "익명유저";
+        user_id = "00";
+        username = "익명유저";
     }
-
     
     const questionlike = details.like;
 
@@ -27,11 +28,12 @@ window.onload = async function loadDetails() {
     document.getElementById("updatequestion").setAttribute("onclick","window.location.href='create_article.html'")
 
     document.getElementById("hashtag").innerText = details.hashtag;
-
+    
     const button_like_question = document.getElementsByClassName("title_like_box")[0];
+    button_like_question.setAttribute("class", "btn btn-primary");
+    button_like_question.innerText = " ♥  " + details.like.length;
     button_like_question.setAttribute("onclick", `likeQuestion(${question_id})`);
     if (questionlike.includes(user_id) != true) {
-
         button_like_question.setAttribute("class", "btn btn-primary");
         button_like_question.innerText = " ♥  " + details.like.length;
     } else {
@@ -41,7 +43,6 @@ window.onload = async function loadDetails() {
     
     const edit_btn = document.getElementById("hidden_edit_btn")
     
-
 
     if(username !== details.user){
         edit_btn.style.visibility = 'hidden';
@@ -104,6 +105,7 @@ window.onload = async function loadDetails() {
         hidden_edit_button.innerText = "수정완료";
 
         button_answer_like.setAttribute("type", "button");
+        
         if (comment.like.includes(user_id) != true) {
             button_answer_like.setAttribute("class", "btn btn-primary");
             button_answer_like.innerText = " ♥  " + comment.like.length;
@@ -112,6 +114,8 @@ window.onload = async function loadDetails() {
             button_answer_like.innerText = " ♡  " + comment.like.length;
         }
         button_answer_like.setAttribute("id", "Answer_like");
+        button_answer_like.setAttribute("class", "btn btn-primary");
+        button_answer_like.innerText = " ♥  " + comment.like.length;
         button_answer_like.setAttribute("onclick", `likeAnswer(${comment.id})`);
 
 
