@@ -366,10 +366,6 @@ async function updateQuestion(question_id) {
 
 // //질문 삭제
 async function deleteQuestion(question_id) {
-    const question_data = {
-        title: document.getElementById("question_main_title").value,
-        content: document.getElementById("question_post").value,
-    }
     const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
@@ -377,7 +373,6 @@ async function deleteQuestion(question_id) {
             'Content-type': 'application/json',
         },
         method: 'DELETE',
-        body: JSON.stringify(question_data)
     })
     const response_json = await response.json()
     console.log(response_json)
