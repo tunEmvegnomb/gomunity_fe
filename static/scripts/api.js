@@ -317,6 +317,7 @@ async function likeAnswer(answer_id){
     window.location.reload();
 }
 
+//질문 좋아요
 async function likeQuestion(question_id){
    
     const response = await fetch(`${backend_base_url}/qna/like/question/${question_id}`,{
@@ -337,4 +338,49 @@ async function likeQuestion(question_id){
     window.location.reload();
 }
 
+//질문 수정
+async function updateQuestion(question_id) {
+    const question_data = {
+        title: document.getElementById("question_main_title").value,
+        content: document.getElementById("question_post").value,
+    }
+    const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+            Accept: "application/json",
+            'Content-type': 'application/json',
+        },
+        method: 'PUT',
+        body: JSON.stringify(question_data)
+    })
+    const response_json = await response.json()
+    console.log(response_json)
+    if (response.status == 200) {
+        alert(response_json.message);
+    }
+    else {
+        alert(response_json.message);
+    }
+    window.location.reload();
+}
 
+// //질문 삭제
+async function deleteQuestion(question_id) {
+    const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+            Accept: "application/json",
+            'Content-type': 'application/json',
+        },
+        method: 'DELETE',
+    })
+    const response_json = await response.json()
+    console.log(response_json)
+    if (response.status == 200) {
+        alert(response_json.message);
+    }
+    else {
+        alert(response_json.message);
+    }
+    window.location.replace('main.html');
+}

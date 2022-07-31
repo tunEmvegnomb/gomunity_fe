@@ -36,7 +36,6 @@ window.onload = async function loadQuestions(){
     div_card_body.appendChild(h5_title);
     div_card_body.appendChild(p_text);
     h5_title.appendChild(a_title);
-    p_hashtag.appendChild(a_title);
  
    })
 }

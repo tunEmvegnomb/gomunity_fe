@@ -85,26 +85,35 @@
 
                         </div>
                         <div id="created_at" type="date">
-                        
+
                         </div>
                         <button style="height: 40px;" class="title_like_box" id="Question_like">
-                
-                        </button>                        
+                            
+                        </button>
                     </div>
                 </div>
-                <div>
-                    <button style="height: 80px; margin-top:160px;" type="button" class="btn btn-primary" onclick="window.location.href='create_article.html'">나도
-                        질문하기🐢</button>
+                <div class="btn_list">
+                    <div id="hidden_edit_btn" class="hidden_edit_btn">
+                        <button type="button" id="updatequestion" class="btn btn-warning put_question_btn">수정</button>
+                        <button type="button" id="deletequestion" class="btn btn-danger del_question_btn">삭제</button>
+                    </div>
+                        <button type="button" class="btn btn-primary postquestion_btn"
+                            onclick="window.location.href='create_article.html'">나도
+                            질문하기🐢</button>    
                 </div>
+                
             </div>
 
 
             
             <hr style="margin-top: 30px;">
+
+
+
             <div class="question_img" id="question_img">
                 <img id="image">
             </div>
-            <div class="question_post">
+            <div id="question_post" class="question_post">
                 <!-- 쿵따리 샤바라 빠빠빠
                 제 코드는 여기 있어요 봐주세요
                 태인 보이나요 들리나요
