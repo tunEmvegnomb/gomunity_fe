@@ -159,7 +159,6 @@ async function getQuestions(){
 
 // 질문글 작성
 async function createQuestion() {
-
     const category = document.getElementsByClassName("article_category")[0];
     const category_value = category.options[category.selectedIndex].textContent;
     
@@ -168,13 +167,16 @@ async function createQuestion() {
     const content = document.getElementById("article_content").value;
     const image = document.getElementById("article_image").files[0];
 
+
     const formdata = new FormData();
     formdata.enctype = "multipart/form-data"
 
     formdata.append('title', title);
     formdata.append('hashtag', hashtag);
     formdata.append('content', content);
-    formdata.append('image', image);
+    if (image != undefined){
+        formdata.append('image', image);
+    }
 
     if (category_value === "질의응답"){
         const response = await fetch(`${backend_base_url}/qna/`,{
@@ -218,13 +220,17 @@ async function QuestionDetail(question_id){
 async function postComment() {
     const question_id = localStorage.getItem("question_id");
     const comment = document.getElementById("create_comment").value;
-    const comment_img = document.getElementById("comment_img").files[0];
+    let comment_img = document.getElementById("comment_img").files[0];
 
     const formdata = new FormData();
     formdata.enctype = "multipart/form-data"
-
+    
+    
     formdata.append('content', comment);
-    formdata.append('image', comment_img);
+
+    if (comment_img != undefined){
+        formdata.append('image', comment_img);
+    }
 
     const response = await fetch(`${backend_base_url}/qna/${question_id}/answer/`,{
         headers:{
@@ -235,8 +241,8 @@ async function postComment() {
         method: 'POST',
         body: formdata
     })
+
     const response_json = await response.json()
-    // console.log(response_json)
     if (response.status == 200) {
         alert(response_json.message);
     }

@@ -6,14 +6,14 @@ window.onload = async function loadDetails() {
     const question_id = localStorage.getItem("question_id");
     const details = await QuestionDetail(question_id);
     let user_id = "";
-    let username ="";
+    let username = "";
     try{
         const payload_token = localStorage.getItem("payload");
-        user_id = JSON.parse(payload_token).user_id;
-        username = JSON.parse(payload_token).username;
-    } catch{
-        user_id = "00";
-        username = "익명유저";
+         user_id = JSON.parse(payload_token).user_id;
+         username = JSON.parse(payload_token).username;
+    } catch {
+         user_id = "00";
+         username = "익명유저";
     }
     
     const questionlike = details.like;
@@ -21,7 +21,13 @@ window.onload = async function loadDetails() {
     document.getElementById("user_name").innerText = "작성자" + " : " + details.user;
     document.getElementById("created_at").innerText = (details.created_at).split("T")[0] +" "+ ((details.created_at).split("T")[1]).split(".")[0];
     document.getElementById("question_main_title").innerText = details.title;
-    document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${details.image}`);
+    
+    if (details.image != null){
+        document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${details.image}`);
+    } else {
+        document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/%EA%B0%90%EC%9E%90%EC%A0%84.jpg`)
+    }
+    
     document.getElementsByClassName("question_post")[0].innerText = details.content;
 
     document.getElementById("deletequestion").setAttribute("onclick",`deleteQuestion(${question_id})`)
@@ -42,7 +48,6 @@ window.onload = async function loadDetails() {
     }
     
     const edit_btn = document.getElementById("hidden_edit_btn")
-    
 
     if(username !== details.user){
         edit_btn.style.visibility = 'hidden';
@@ -83,8 +88,7 @@ window.onload = async function loadDetails() {
         div_answer_comment.setAttribute("class", "answer_comment");
         div_answer_user.setAttribute("class", "answer_user");
         div_answer_image.setAttribute("class", "answer_image")
-        answer_image.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${comment.image}`)
-        console.log(comment.image)
+
         div_answer_text.setAttribute("class", "answer_text");
         div_answer_like.setAttribute("class", "answer_like");
         div_answer_edit.setAttribute("class", "answer_edit");
@@ -127,11 +131,11 @@ window.onload = async function loadDetails() {
 
         div_answer_box.appendChild(div_answer_profile_image);
         div_answer_profile_image.appendChild(profile_image);
-
+        
+        
         div_answer_box.appendChild(div_answer_comment);
         div_answer_comment.appendChild(div_answer_user);
         div_answer_comment.appendChild(div_answer_image);
-        div_answer_image.appendChild(answer_image);
         div_answer_comment.appendChild(div_answer_text);
         div_answer_comment.appendChild(div_answer_like);
 
@@ -149,6 +153,11 @@ window.onload = async function loadDetails() {
 
         hidden_edit_box.style.visibility = 'hidden';
 
+        if (comment.image == null){
+        } else {
+            answer_image.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${comment.image}`)
+            div_answer_image.appendChild(answer_image);
+        }
         if (username !== comment.user) {
             div_answer_edit.style.visibility = 'hidden';
         }
