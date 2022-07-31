@@ -135,3 +135,13 @@ main {
     word-break:break-all;
     word-wrap:break-word;
 }
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment_box {
+    display: flex;
+    flex-direction: row;
+}

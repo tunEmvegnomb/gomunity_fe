@@ -121,8 +121,11 @@
             <div class="input-group">
                 <!-- <span class="input-group-text">답변에 첨부할 이미지를 넣으세요</span> -->
                 <input type="file" id="comment_img">
-                <textarea cols="50" rows="5" class="form-control" id="create_comment" placeholder="토끼들 출동하세요" aria-label="With textarea"></textarea>
-                <button type="button" class="btn btn-info" onclick="postComment()">작성</button>
+                <div class="comment_box">
+                    <textarea cols="50" rows="5" class="form-control" id="create_comment" placeholder="토끼들 출동하세요" aria-label="With textarea"></textarea>
+                    <button type="button" class="btn btn-info" onclick="postComment()">작성</button>
+                </div>
+                
             </div>
             <div class="answer_list">
                 <div class="answer_box">

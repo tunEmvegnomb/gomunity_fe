@@ -62,7 +62,7 @@ window.onload = async function loadDetails() {
         div_answer_user.setAttribute("class", "answer_user");
         div_answer_image.setAttribute("class", "answer_image")
         answer_image.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${comment.image}`)
-        console.log(answer_image)
+        console.log(comment.image)
         div_answer_text.setAttribute("class", "answer_text");
         div_answer_like.setAttribute("class", "answer_like");
         div_answer_edit.setAttribute("class", "answer_edit");
