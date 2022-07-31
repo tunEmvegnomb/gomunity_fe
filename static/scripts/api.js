@@ -13,9 +13,7 @@ const frontend_base_url = "http://127.0.0.1:5500"
 
 window.addEventListener('load', async function checkLogin() {
     const payload = localStorage.getItem("payload")
-    console.log(payload)
     const parsed_payload = await JSON.parse(payload)
-    console.log(parsed_payload)
     const username = document.getElementById("username")
     const logoutButton = document.getElementById("logout")
     const logoutButton2 = document.getElementById("logout2")
@@ -55,7 +53,6 @@ async function login_api() {
     )
 
     response_json = await response.json()
-    console.log(response_json)
 
     if (response.status == 200) {
         localStorage.setItem("access", response_json.access)
@@ -77,14 +74,11 @@ async function login_api() {
 
 // 리프레쉬 토큰
 window.addEventListener('load', () => {
-    console.log("온로드 실행후")
     const payload = JSON.parse(localStorage.getItem("payload"));
 
     if (payload.exp > (Date.now() / 1000)){
-        console.log(payload.exp)
     } else {
         const requestRefreshToken = async (url) => {
-            console.log("지나서 시작되었다")
               const response = await fetch(url, {
                   headers: {
                       'Content-Type': 'application/json',
@@ -99,7 +93,6 @@ window.addEventListener('load', () => {
 
         requestRefreshToken(backend_base_url + "/user/api/token/refresh/").then((data)=>{
             const accessToken = data.access;
-            console.log("콜백함수 호출됨")
 
             localStorage.setItem("access", accessToken);
         });
@@ -171,19 +164,17 @@ async function createQuestion() {
     const category_value = category.options[category.selectedIndex].textContent;
     
     const title = document.getElementById("article_title").value;
+    const hashtag = document.getElementById("hashtag").value;
     const content = document.getElementById("article_content").value;
     const image = document.getElementById("article_image").files[0];
-    
-    console.log(image)
-    
+
     const formdata = new FormData();
     formdata.enctype = "multipart/form-data"
 
     formdata.append('title', title);
+    formdata.append('hashtag', hashtag);
     formdata.append('content', content);
     formdata.append('image', image);
-
-    console.log(formdata)
 
     if (category_value === "질의응답"){
         const response = await fetch(`${backend_base_url}/qna/`,{
@@ -208,7 +199,6 @@ async function createQuestion() {
     }
 }
 
-
 async function goDetail(question_id) {
     localStorage.setItem("question_id", question_id);
     window.location.replace(`detail.html`);
@@ -223,24 +213,30 @@ async function QuestionDetail(question_id){
     return response_json
 }
 
+
 //답변 작성
 async function postComment() {
-    const question_id = localStorage.getItem("question_id")
-    const comment_data = {
-        "content": document.getElementById("create_comment").value
+    const question_id = localStorage.getItem("question_id");
+    const comment = document.getElementById("create_comment").value;
+    const comment_img = document.getElementById("comment_img").files[0];
 
-    }
+    const formdata = new FormData();
+    formdata.enctype = "multipart/form-data"
+
+    formdata.append('content', comment);
+    formdata.append('image', comment_img);
+
     const response = await fetch(`${backend_base_url}/qna/${question_id}/answer/`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
-            Accept: "application/json",
-            'Content-type': 'application/json',
+            // Accept: "application/json",
+            // 'Content-type': 'application/json',
         },
         method: 'POST',
-        body: JSON.stringify(comment_data)
+        body: formdata
     })
-    const response_json = await response.json()
-    console.log(response_json)
+    // const response_json = await response.json()
+    // console.log(response_json)
     if (response.status == 200) {
         alert(response_json.message);
     }
@@ -249,7 +245,6 @@ async function postComment() {
     }
     window.location.replace(`detail.html`);
 }
-//
 
 
 //답변 수정
@@ -267,7 +262,6 @@ async function updateComment(answer_id) {
         body: JSON.stringify(comment_data)
     })
     const response_json = await response.json()
-    console.log(response_json)
     if (response.status == 200) {
         alert(response_json.message);
     }
@@ -283,7 +277,6 @@ async function deleteComment(answer_id) {
     const comment_data = {
         content: document.getElementsByClassName(answer_id)[0].childNodes[0].value
     }
-    console.log('comment_data', comment_data)
     const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
@@ -294,7 +287,6 @@ async function deleteComment(answer_id) {
         body: JSON.stringify(comment_data)
     })
     const response_json = await response.json()
-    console.log(response_json)
     if (response.status == 200) {
         alert(response_json.message);
     }
@@ -316,7 +308,6 @@ async function likeAnswer(answer_id){
         method: 'POST',
     })
     const response_json = await response.json()
-    console.log(response_json)
     if (response.status == 200) {
         alert(response_json.message);
     }
@@ -337,7 +328,6 @@ async function likeQuestion(question_id){
         method: 'POST',
     })
     const response_json = await response.json()
-    console.log(response_json)
     if (response.status == 200) {
         alert(response_json.message);
     }
