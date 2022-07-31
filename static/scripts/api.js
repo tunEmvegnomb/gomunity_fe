@@ -218,8 +218,12 @@ async function QuestionDetail(question_id){
 async function postComment() {
     const question_id = localStorage.getItem("question_id");
     const comment = document.getElementById("create_comment").value;
-    const comment_img = document.getElementById("comment_img").files[0];
-
+    let comment_img = document.getElementById("comment_img").files[0];
+    console.log("나와 이놈아");
+    console.log(comment_img);
+    if (comment_img == undefined){
+        comment_img = null
+    }
     const formdata = new FormData();
     formdata.enctype = "multipart/form-data"
 

@@ -20,7 +20,14 @@ window.onload = async function loadDetails() {
     document.getElementById("user_name").innerText = "작성자" + " : " + details.user;
     document.getElementById("created_at").innerText = (details.created_at).split("T")[0] +" "+ ((details.created_at).split("T")[1]).split(".")[0];
     document.getElementById("question_main_title").innerText = details.title;
+    
+    try{
     document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${details.image}`);
+    }
+    catch {
+    document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/turtleman.png`)
+    }
+    
     document.getElementsByClassName("question_post")[0].innerText = details.content;
 
     document.getElementById("deletequestion").setAttribute("onclick",`deleteQuestion(${question_id})`)
