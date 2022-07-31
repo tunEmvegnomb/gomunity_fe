@@ -15,24 +15,22 @@ window.onload = async function loadDetails() {
          user_id = "00";
          username = "익명유저";
     }
-    
-    const questionlike = details.like;
 
+    const questionlike = details.like;
+    
     document.getElementById("user_name").innerText = "작성자" + " : " + details.user;
     document.getElementById("created_at").innerText = (details.created_at).split("T")[0] +" "+ ((details.created_at).split("T")[1]).split(".")[0];
     document.getElementById("question_main_title").innerText = details.title;
-    
+        
     if (details.image != null){
         document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${details.image}`);
     } else {
         document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/%EA%B0%90%EC%9E%90%EC%A0%84.jpg`)
     }
-    
-    document.getElementsByClassName("question_post")[0].innerText = details.content;
+    document.getElementById("question_post").innerText = details.content;
 
     document.getElementById("deletequestion").setAttribute("onclick",`deleteQuestion(${question_id})`)
-    document.getElementById("updatequestion").setAttribute("onclick","window.location.href='create_article.html'")
-
+    document.getElementById("updatequestion").setAttribute("onclick",`goarticle(${question_id})`)
     document.getElementById("hashtag").innerText = details.hashtag;
     
     const button_like_question = document.getElementsByClassName("title_like_box")[0];

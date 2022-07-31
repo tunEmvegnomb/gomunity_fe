@@ -180,3 +180,6 @@ main {
 #hashtag {
     color: blue;
 }
+#comment_img {
+    max-width: 200px;
+}
