@@ -34,11 +34,12 @@ window.onload = async function loadDetails() {
     document.getElementById("updatequestion").setAttribute("onclick","window.location.href='create_article.html'")
 
     document.getElementById("hashtag").innerText = details.hashtag;
-
+    
     const button_like_question = document.getElementsByClassName("title_like_box")[0];
+    button_like_question.setAttribute("class", "btn btn-primary");
+    button_like_question.innerText = " ♥  " + details.like.length;
     button_like_question.setAttribute("onclick", `likeQuestion(${question_id})`);
     if (questionlike.includes(user_id) != true) {
-
         button_like_question.setAttribute("class", "btn btn-primary");
         button_like_question.innerText = " ♥  " + details.like.length;
     } else {
@@ -108,6 +109,7 @@ window.onload = async function loadDetails() {
         hidden_edit_button.innerText = "수정완료";
 
         button_answer_like.setAttribute("type", "button");
+        
         if (comment.like.includes(user_id) != true) {
             button_answer_like.setAttribute("class", "btn btn-primary");
             button_answer_like.innerText = " ♥  " + comment.like.length;
@@ -116,6 +118,8 @@ window.onload = async function loadDetails() {
             button_answer_like.innerText = " ♡  " + comment.like.length;
         }
         button_answer_like.setAttribute("id", "Answer_like");
+        button_answer_like.setAttribute("class", "btn btn-primary");
+        button_answer_like.innerText = " ♥  " + comment.like.length;
         button_answer_like.setAttribute("onclick", `likeAnswer(${comment.id})`);
 
 

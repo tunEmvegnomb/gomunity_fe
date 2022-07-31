@@ -188,7 +188,7 @@ async function createQuestion() {
             method:'POST',
             body:formdata
         })
-        // const response_json = await response.json()
+        const response_json = await response.json()
         // console.log(response_json)
 
         if (response.status == 200){
@@ -318,7 +318,7 @@ async function likeAnswer(answer_id){
         alert(response_json.message);
     }
     else {
-        alert(response_json.message);
+        alert("로그인이 안됐다북!");
     }
     window.location.reload();
 }
@@ -339,7 +339,7 @@ async function likeQuestion(question_id){
         alert(response_json.message);
     }
     else {
-        alert(response_json.message);
+        alert("로그인이 안됐다북!");
     }
     window.location.reload();
 }
