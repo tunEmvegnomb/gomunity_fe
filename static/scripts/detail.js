@@ -5,9 +5,16 @@ window.onload = async function loadDetails() {
     // 게시글
     const question_id = localStorage.getItem("question_id");
     const details = await QuestionDetail(question_id);
-    const payload_token = localStorage.getItem("payload");
-    const user_id = JSON.parse(payload_token).user_id;
-    const username = JSON.parse(payload_token).username;
+    try{
+        const payload_token = localStorage.getItem("payload");
+        const user_id = JSON.parse(payload_token).user_id;
+        const username = JSON.parse(payload_token).username;
+    } catch{
+        const user_id = "00";
+        const username = "익명유저";
+    }
+
+    
     const questionlike = details.like;
 
     document.getElementById("user_name").innerText = "작성자" + " : " + details.user;
