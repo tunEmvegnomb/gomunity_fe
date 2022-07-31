@@ -10,7 +10,6 @@ window.onload = async function loadQuestions(){
     const div_card_body = document.createElement("div");
     const h5_title = document.createElement("h5");
     const a_title = document.createElement("a");
-    const p_hashtag = document.createElement("p");
     const p_text = document.createElement("p");
     
     div_col.setAttribute("class", "col");
@@ -21,13 +20,11 @@ window.onload = async function loadQuestions(){
     h5_title.setAttribute("class", "card-title title")
     a_title.setAttribute("class", "font_title")
     a_title.setAttribute("onclick", `goDetail(${question.id})`)
-    p_hashtag.setAttribute("class","hashtag")
     p_text.setAttribute("class", "card-text")
     
 
     a_title.innerText = question.title;
     p_text.innerText = question.content;
-    p_hashtag.innerText = question.hashtag;
 
     div_cards.appendChild(div_col);
     div_col.appendChild(div_h100);
