@@ -312,7 +312,7 @@ async function likeAnswer(answer_id){
         alert(response_json.message);
     }
     else {
-        alert(response_json.message);
+        alert("로그인이 안됐다북!");
     }
     window.location.reload();
 }
@@ -333,7 +333,7 @@ async function likeQuestion(question_id){
         alert(response_json.message);
     }
     else {
-        alert(response_json.message);
+        alert("로그인이 안됐다북!");
     }
     window.location.reload();
 }
