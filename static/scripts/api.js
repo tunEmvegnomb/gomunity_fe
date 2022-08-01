@@ -206,6 +206,16 @@ async function goDetail(question_id) {
     window.location.replace(`detail.html`);
 }
 
+async function goarticle(question_id){
+    localStorage.setItem("question_id", question_id);
+    window.location.replace(`create_article.html`);
+}
+async function createarticle(){
+    localStorage.removeItem("question_id");
+    window.location.replace(`create_article.html`);
+}
+
+
 //질문글 상세조회
 async function QuestionDetail(question_id){
     const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
@@ -348,8 +358,9 @@ async function likeQuestion(question_id){
 //질문 수정
 async function updateQuestion(question_id) {
     const question_data = {
-        title: document.getElementById("question_main_title").value,
-        content: document.getElementById("question_post").value,
+        title: document.getElementById("article_title").value,
+        hashtag: document.getElementById("hashtag").value,
+        content: document.getElementById("article_content").value,
     }
     const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
         headers:{
@@ -367,7 +378,7 @@ async function updateQuestion(question_id) {
     else {
         alert(response_json.message);
     }
-    window.location.reload();
+    window.location.replace(`detail.html`);
 }
 
 // //질문 삭제
