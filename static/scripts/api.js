@@ -283,24 +283,25 @@ async function deleteComment(answer_id) {
     const comment_data = {
         content: document.getElementsByClassName(answer_id)[0].childNodes[0].value
     }
-    const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}`,{
-        headers:{
-            Authorization: "Bearer " + localStorage.getItem("access"),
-            Accept: "application/json",
-            'Content-type': 'application/json',
-        },
-        method: 'DELETE',
-        body: JSON.stringify(comment_data)
-    })
-    const response_json = await response.json()
-    if (response.status == 200) {
-        alert(response_json.message);
+    if (confirm("정말 삭제하시겠습니까??") == true){
+        const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}`,{
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("access"),
+                Accept: "application/json",
+                'Content-type': 'application/json',
+            },
+            method: 'DELETE',
+            body: JSON.stringify(comment_data)
+        })
+        const response_json = await response.json()
+        if (response.status == 200) {
+            alert(response_json.message);
+        }
+        else {
+            alert(response_json.message);
+        }
+        window.location.reload();
     }
-    else {
-        alert(response_json.message);
-    }
-    window.location.reload();
-}
 
 // 답변 좋아요
 async function likeAnswer(answer_id){
@@ -360,7 +361,6 @@ async function updateQuestion(question_id) {
         body: JSON.stringify(question_data)
     })
     const response_json = await response.json()
-    console.log(response_json)
     if (response.status == 200) {
         alert(response_json.message);
     }
@@ -372,21 +372,25 @@ async function updateQuestion(question_id) {
 
 // //질문 삭제
 async function deleteQuestion(question_id) {
-    const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
-        headers:{
-            Authorization: "Bearer " + localStorage.getItem("access"),
-            Accept: "application/json",
-            'Content-type': 'application/json',
-        },
-        method: 'DELETE',
-    })
-    const response_json = await response.json()
-    console.log(response_json)
-    if (response.status == 200) {
-        alert(response_json.message);
+    
+    if (confirm("정말 삭제하시겠습니까??") == true){
+        const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("access"),
+                Accept: "application/json",
+                'Content-type': 'application/json',
+            },
+            method: 'DELETE',
+        })
+        const response_json = await response.json()
+        
+        if (response.status == 200) {
+            alert(response_json.message);
+        }
+        else {
+            alert(response_json.message);
+        }
+        window.location.replace('main.html');
     }
-    else {
-        alert(response_json.message);
-    }
-    window.location.replace('main.html');
+}
 }
