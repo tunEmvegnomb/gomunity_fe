@@ -16,7 +16,7 @@ window.onload = async function loadQuestions(){
     div_h100.setAttribute("class", "card h-100")
 
     if(question.image == null){
-        imagecard.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/%EA%B0%90%EC%9E%90%EC%A0%84.jpg`);
+        imagecard.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png`);
     } else {
         imagecard.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${question.image}`);
     }

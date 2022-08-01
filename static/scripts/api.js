@@ -215,6 +215,72 @@ async function createarticle(){
     window.location.replace(`create_article.html`);
 }
 
+//질문 수정
+async function updateQuestion(question_id) {
+    const category = document.getElementsByClassName("article_category")[0];
+    const category_value = category.options[category.selectedIndex].textContent;
+
+    const title = document.getElementById("article_title").value;
+    const hashtag = document.getElementById("hashtag").value;
+    const content = document.getElementById("article_content").value;
+    const image = document.getElementById("article_image").files[0];
+    
+    const formdata = new FormData();
+    formdata.enctype = "multipart/form-data"
+    
+    formdata.append('title', title);
+    formdata.append('hashtag', hashtag);
+    formdata.append('content', content);
+
+    if(image != undefined){
+        formdata.append('image', image);
+    }
+
+
+    if (category_value === "질의응답"){
+        const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("access"),
+            //     Accept:"application/json",
+            //     'Content-type':'application/json',
+            },
+            method:'PUT',
+            body:formdata
+        })
+    const response_json = await response.json()
+    if (response.status == 200) {
+        alert(response_json.message);
+    }
+    else {
+        alert(response_json.message);
+    }
+    window.location.replace(`detail.html`);
+}
+}
+// //질문 삭제
+async function deleteQuestion(question_id) {
+    
+    if (confirm("정말 삭제하시겠습니까??") == true){
+        const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("access"),
+                Accept: "application/json",
+                'Content-type': 'application/json',
+            },
+            method: 'DELETE',
+        })
+        const response_json = await response.json()
+        
+        if (response.status == 200) {
+            alert(response_json.message);
+        }
+        else {
+            alert(response_json.message);
+        }
+        window.location.replace('main.html');
+    }}
+
+
 
 //질문글 상세조회
 async function QuestionDetail(question_id){
@@ -262,20 +328,32 @@ async function postComment() {
     window.location.replace(`detail.html`);
 }
 
-
-//답변 수정
+// 답변 수정
 async function updateComment(answer_id) {
-    const comment_data = {
-        content: document.getElementsByClassName(answer_id)[0].childNodes[0].value
+
+    const comment = document.getElementsByClassName(answer_id)[0].childNodes[0].value;
+    let comment_img = document.getElementsByClassName(answer_id)[0].childNodes[1].childNodes[0].files[0];
+    
+    const formdata = new FormData();
+    formdata.enctype = "multipart/form-data"
+    
+    formdata.append('content', comment);
+
+    if(image != undefined){
+        formdata.append('image', comment_img);
     }
+    console.log(comment)
+    console.log(comment_img)
+    
+    console.log(formdata)
     const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}`,{
-        headers:{
+        headers:{            
             Authorization: "Bearer " + localStorage.getItem("access"),
-            Accept: "application/json",
-            'Content-type': 'application/json',
+            // Accept: "application/json",
+            // 'Content-type': 'application/json',
         },
         method: 'PUT',
-        body: JSON.stringify(comment_data)
+        body: formdata
     })
     const response_json = await response.json()
     if (response.status == 200) {
@@ -293,24 +371,25 @@ async function deleteComment(answer_id) {
     const comment_data = {
         content: document.getElementsByClassName(answer_id)[0].childNodes[0].value
     }
-    const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}`,{
-        headers:{
-            Authorization: "Bearer " + localStorage.getItem("access"),
-            Accept: "application/json",
-            'Content-type': 'application/json',
-        },
-        method: 'DELETE',
-        body: JSON.stringify(comment_data)
-    })
-    const response_json = await response.json()
-    if (response.status == 200) {
-        alert(response_json.message);
-    }
-    else {
-        alert(response_json.message);
-    }
-    window.location.reload();
-}
+    if (confirm("정말 삭제하시겠습니까??") == true){
+        const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}`,{
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("access"),
+                Accept: "application/json",
+                'Content-type': 'application/json',
+            },
+            method: 'DELETE',
+            body: JSON.stringify(comment_data)
+        })
+        const response_json = await response.json()
+        if (response.status == 200) {
+            alert(response_json.message);
+        }
+        else {
+            alert(response_json.message);
+        }
+        window.location.reload();
+    }}
 
 // 답변 좋아요
 async function likeAnswer(answer_id){
@@ -352,53 +431,5 @@ async function likeQuestion(question_id){
         alert("로그인이 안됐다북!");
     }
     window.location.reload();
-}
-
-//질문 수정
-async function updateQuestion(question_id) {
-    const question_data = {
-        title: document.getElementById("article_title").value,
-        hashtag: document.getElementById("hashtag").value,
-        content: document.getElementById("article_content").value,
-    }
-    const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
-        headers:{
-            Authorization: "Bearer " + localStorage.getItem("access"),
-            Accept: "application/json",
-            'Content-type': 'application/json',
-        },
-        method: 'PUT',
-        body: JSON.stringify(question_data)
-    })
-    const response_json = await response.json()
-    console.log(response_json)
-    if (response.status == 200) {
-        alert(response_json.message);
-    }
-    else {
-        alert(response_json.message);
-    }
-    window.location.replace(`detail.html`);
-}
-
-// //질문 삭제
-async function deleteQuestion(question_id) {
-    const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
-        headers:{
-            Authorization: "Bearer " + localStorage.getItem("access"),
-            Accept: "application/json",
-            'Content-type': 'application/json',
-        },
-        method: 'DELETE',
-    })
-    const response_json = await response.json()
-    console.log(response_json)
-    if (response.status == 200) {
-        alert(response_json.message);
-    }
-    else {
-        alert(response_json.message);
-    }
-    window.location.replace('main.html');
 }
 
