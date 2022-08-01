@@ -192,10 +192,10 @@ async function createQuestion() {
         // console.log(response_json)
 
         if (response.status == 200){
-            alert("질문글 작성 성공");
+            alert(response_json.message);
         }
         else {
-            alert("질문글 작성 실패");
+            alert(response_json.message);
         }
         window.location.replace('main.html');
     }
@@ -301,7 +301,7 @@ async function deleteComment(answer_id) {
             alert(response_json.message);
         }
         window.location.reload();
-    }
+    }}
 
 // 답변 좋아요
 async function likeAnswer(answer_id){
@@ -391,6 +391,4 @@ async function deleteQuestion(question_id) {
             alert(response_json.message);
         }
         window.location.replace('main.html');
-    }
-}
-}
+    }}
