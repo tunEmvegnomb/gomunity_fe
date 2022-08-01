@@ -210,6 +210,11 @@ async function goarticle(question_id){
     localStorage.setItem("question_id", question_id);
     window.location.replace(`create_article.html`);
 }
+async function createarticle(){
+    localStorage.removeItem("question_id");
+    window.location.replace(`create_article.html`);
+}
+
 
 //질문글 상세조회
 async function QuestionDetail(question_id){
