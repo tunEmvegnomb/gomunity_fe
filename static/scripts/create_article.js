@@ -14,7 +14,10 @@ window.addEventListener('load', async function updatearticle() {
          alert("로그인을 해주라북!")
          window.location.href="/login.html"
     }
-    if(question_id != null){
+    if(!question_id){
+        document.getElementById("btn_create_article").setAttribute("onclick",`createQuestion()`)    
+    }
+    else{
         console.log("if문시작")
         document.getElementById("btn_create_article").setAttribute("onclick",`updateQuestion(${question_id})`)
         const question_data = await QuestionDetail(question_id)
@@ -28,8 +31,5 @@ window.addEventListener('load', async function updatearticle() {
         document.getElementById("article_content").value = content
         console.log(title)
         console.log(content)
-    }
-    else{
-        document.getElementById("btn_create_article").setAttribute("onclick",`createQuestion()`)    
-    }
+        }
 })
