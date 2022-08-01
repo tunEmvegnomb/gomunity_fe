@@ -25,7 +25,7 @@ window.onload = async function loadDetails() {
     if (details.image != null){
         document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${details.image}`);
     } else {
-        document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/%EA%B0%90%EC%9E%90%EC%A0%84.jpg`)
+        document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png`)
     }
     document.getElementById("question_post").innerText = details.content;
 
@@ -140,7 +140,7 @@ window.onload = async function loadDetails() {
         div_answer_like.appendChild(button_answer_like);
 
         
-
+        //답변 이미지
         if (comment.image == null){
         } else {
             answer_image.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${comment.image}`)
@@ -174,7 +174,7 @@ window.onload = async function loadDetails() {
         hidden_edit_box.style.visibility = 'hidden';
     })
 }
-
+// 답변 수정할 때 나오는 박스
 function openEditBox(answer_number) {
     const hidden_edit_box = document.getElementsByClassName(answer_number)[0];
     hidden_edit_box.style.visibility = 'visible';
