@@ -183,3 +183,7 @@ main {
 #comment_img {
     max-width: 200px;
 }
+.answer_image {
+    width: 240px;
+    height: 180px;
+}
