@@ -75,10 +75,7 @@ window.onload = async function loadDetails() {
         const hr_underbar = document.createElement("hr");
         const div_answer_image = document.createElement("div");
         const answer_image = document.createElement("img");
-        const hidden_edit_box = document.createElement("div");
-        const hidden_input = document.createElement("textarea");
-        const hidden_edit_button = document.createElement("button");
-
+        
 
         div_answer_box.setAttribute("class", "answer_box");
         div_answer_profile_image.setAttribute("class", "answer_profile_image");
@@ -98,13 +95,8 @@ window.onload = async function loadDetails() {
         button_answer_delete.setAttribute("type", "button");
         button_answer_delete.setAttribute("onclick", `deleteComment(${comment.id})`);
         button_answer_delete.innerText = "삭제";
-
-        hidden_edit_box.setAttribute("id", "answer_edit_box");
-        hidden_edit_box.setAttribute("class", comment.id);
-        hidden_input.setAttribute("class", "answer_edit_input");
-        hidden_edit_button.setAttribute("class", "btn btn-success answer-btn");
-        hidden_edit_button.setAttribute("onclick", `updateComment(${comment.id})`);
-        hidden_edit_button.innerText = "수정완료";
+        
+        
 
         button_answer_like.setAttribute("type", "button");
         
@@ -137,9 +129,7 @@ window.onload = async function loadDetails() {
         div_answer_comment.appendChild(div_answer_text);
         div_answer_comment.appendChild(div_answer_like);
 
-        div_answer_comment.appendChild(hidden_edit_box);
-        hidden_edit_box.appendChild(hidden_input);
-        hidden_edit_box.appendChild(hidden_edit_button);
+        
 
         div_answer_box.appendChild(div_answer_edit);
         div_answer_edit.appendChild(button_answer_edit);
@@ -149,7 +139,7 @@ window.onload = async function loadDetails() {
 
         div_answer_like.appendChild(button_answer_like);
 
-        hidden_edit_box.style.visibility = 'hidden';
+        
 
         if (comment.image == null){
         } else {
@@ -159,6 +149,29 @@ window.onload = async function loadDetails() {
         if (username !== comment.user) {
             div_answer_edit.style.visibility = 'hidden';
         }
+
+        //히든 인풋 박스 요소
+        const hidden_edit_box = document.createElement("div");
+        const hidden_input = document.createElement("textarea");
+        const hidden_btn_list = document.createElement("div");
+        const hidden_input_img = document.createElement("input")
+        const hidden_edit_button = document.createElement("button");
+
+        hidden_edit_box.setAttribute("id", "answer_edit_box");
+        hidden_edit_box.setAttribute("class", comment.id);
+        hidden_input.setAttribute("class", "answer_edit_input");
+        hidden_edit_button.setAttribute("class", "btn btn-success answer-btn");
+        hidden_edit_button.setAttribute("onclick", `updateComment(${comment.id})`);
+        hidden_edit_button.innerText = "수정완료";
+        hidden_btn_list.setAttribute("class", "comment_edit_photo");
+        hidden_input_img.setAttribute("type", "file");
+
+        div_answer_comment.appendChild(hidden_edit_box);
+        hidden_edit_box.appendChild(hidden_input);
+        hidden_edit_box.appendChild(hidden_btn_list);
+        hidden_btn_list.appendChild(hidden_input_img);
+        hidden_btn_list.appendChild(hidden_edit_button);
+        hidden_edit_box.style.visibility = 'hidden';
     })
 }
 

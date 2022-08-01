@@ -215,6 +215,56 @@ async function createarticle(){
     window.location.replace(`create_article.html`);
 }
 
+//질문 수정
+async function updateQuestion(question_id) {
+    const question_data = {
+        title: document.getElementById("article_title").value,
+        hashtag: document.getElementById("hashtag").value,
+        content: document.getElementById("article_content").value,
+    }
+    const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+            Accept: "application/json",
+            'Content-type': 'application/json',
+        },
+        method: 'PUT',
+        body: JSON.stringify(question_data)
+    })
+    const response_json = await response.json()
+    if (response.status == 200) {
+        alert(response_json.message);
+    }
+    else {
+        alert(response_json.message);
+    }
+    window.location.replace(`detail.html`);
+}
+
+// //질문 삭제
+async function deleteQuestion(question_id) {
+    
+    if (confirm("정말 삭제하시겠습니까??") == true){
+        const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("access"),
+                Accept: "application/json",
+                'Content-type': 'application/json',
+            },
+            method: 'DELETE',
+        })
+        const response_json = await response.json()
+        
+        if (response.status == 200) {
+            alert(response_json.message);
+        }
+        else {
+            alert(response_json.message);
+        }
+        window.location.replace('main.html');
+    }}
+
+
 
 //질문글 상세조회
 async function QuestionDetail(question_id){
@@ -355,51 +405,3 @@ async function likeQuestion(question_id){
     window.location.reload();
 }
 
-//질문 수정
-async function updateQuestion(question_id) {
-    const question_data = {
-        title: document.getElementById("article_title").value,
-        hashtag: document.getElementById("hashtag").value,
-        content: document.getElementById("article_content").value,
-    }
-    const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
-        headers:{
-            Authorization: "Bearer " + localStorage.getItem("access"),
-            Accept: "application/json",
-            'Content-type': 'application/json',
-        },
-        method: 'PUT',
-        body: JSON.stringify(question_data)
-    })
-    const response_json = await response.json()
-    if (response.status == 200) {
-        alert(response_json.message);
-    }
-    else {
-        alert(response_json.message);
-    }
-    window.location.replace(`detail.html`);
-}
-
-// //질문 삭제
-async function deleteQuestion(question_id) {
-    
-    if (confirm("정말 삭제하시겠습니까??") == true){
-        const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
-            headers:{
-                Authorization: "Bearer " + localStorage.getItem("access"),
-                Accept: "application/json",
-                'Content-type': 'application/json',
-            },
-            method: 'DELETE',
-        })
-        const response_json = await response.json()
-        
-        if (response.status == 200) {
-            alert(response_json.message);
-        }
-        else {
-            alert(response_json.message);
-        }
-        window.location.replace('main.html');
-    }}
