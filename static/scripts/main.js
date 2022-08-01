@@ -41,5 +41,6 @@ window.onload = async function loadQuestions(){
     h5_title.appendChild(a_title);
  
    })
+   localStorage.removeItem("question_id")
 }
 
