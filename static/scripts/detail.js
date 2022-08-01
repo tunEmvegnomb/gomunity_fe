@@ -51,12 +51,10 @@ window.onload = async function loadDetails() {
         edit_btn.style.visibility = 'hidden';
     }
 
-
     // 댓글
     const comments = details.answer;
     console.log(comments)
     const div_answer_list = document.getElementsByClassName("answer_list")[0];
-
     
 
     comments.forEach((comment) => {
@@ -75,7 +73,6 @@ window.onload = async function loadDetails() {
         const hr_underbar = document.createElement("hr");
         const div_answer_image = document.createElement("div");
         const answer_image = document.createElement("img");
-        
 
         div_answer_box.setAttribute("class", "answer_box");
         div_answer_profile_image.setAttribute("class", "answer_profile_image");
@@ -96,8 +93,6 @@ window.onload = async function loadDetails() {
         button_answer_delete.setAttribute("onclick", `deleteComment(${comment.id})`);
         button_answer_delete.innerText = "삭제";
         
-        
-
         button_answer_like.setAttribute("type", "button");
         button_answer_like.setAttribute("class", "btn btn-primary");
         button_answer_like.innerText = " ♥  " + comment.like.length;
@@ -111,12 +106,10 @@ window.onload = async function loadDetails() {
         button_answer_like.setAttribute("id", "Answer_like");
         button_answer_like.setAttribute("onclick", `likeAnswer(${comment.id})`);
 
-
         div_answer_user.innerText = comment.user;
         div_answer_text.innerText = comment.content;
 
         div_answer_list.appendChild(div_answer_box);
-
         div_answer_box.appendChild(div_answer_profile_image);
         div_answer_profile_image.appendChild(profile_image);
         
