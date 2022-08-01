@@ -99,7 +99,8 @@ window.onload = async function loadDetails() {
         
 
         button_answer_like.setAttribute("type", "button");
-        
+        button_answer_like.setAttribute("class", "btn btn-primary");
+        button_answer_like.innerText = " ♥  " + comment.like.length;
         if (comment.like.includes(user_id) != true) {
             button_answer_like.setAttribute("class", "btn btn-primary");
             button_answer_like.innerText = " ♥  " + comment.like.length;
@@ -108,14 +109,11 @@ window.onload = async function loadDetails() {
             button_answer_like.innerText = " ♡  " + comment.like.length;
         }
         button_answer_like.setAttribute("id", "Answer_like");
-        button_answer_like.setAttribute("class", "btn btn-primary");
-        button_answer_like.innerText = " ♥  " + comment.like.length;
         button_answer_like.setAttribute("onclick", `likeAnswer(${comment.id})`);
 
 
         div_answer_user.innerText = comment.user;
         div_answer_text.innerText = comment.content;
-        // div_answer_like.innerText = comment.like;
 
         div_answer_list.appendChild(div_answer_box);
 

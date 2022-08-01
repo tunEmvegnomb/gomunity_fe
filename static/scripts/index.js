@@ -15,10 +15,29 @@ window.onload = async function loadNotices(){
         noticeContent.innerText = notice.content;
         notice_list.appendChild(noticeTitle);
         notice_list.appendChild(noticeContent);
-
     })
 }
-
+window.addEventListener('load', async function checkLogin() {
+    const payload = localStorage.getItem("payload")
+    const parsed_payload = await JSON.parse(payload)
+    const username = document.getElementById("username")
+    const logoutButton = document.getElementById("logout")
+    const logoutButton2 = document.getElementById("logout2")
+    const registerButton = document.getElementById("register")
+    if (parsed_payload) {
+        username.innerText = parsed_payload.username
+        logoutButton.innerText = "로그아웃"
+        logoutButton.setAttribute("onclick", "logout()")
+        logoutButton2.innerText = "sign-out"
+        logoutButton2.setAttribute("onclick", "logout()")
+        registerButton.innerText = "Hello"+" "+"World!"
+        registerButton.setAttribute("onclick", "location.href='/main.html'")
+    } else {
+        username.innerText = "Guest"
+        logoutButton.innerText = "로그인"
+        logoutButton.setAttribute("onclick", "location.href='/login.html'")
+    }
+});
 // window.onload = async function loadArticles(){
 //     articles = await getArticles()
 //     console.log(articles)

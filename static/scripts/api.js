@@ -12,26 +12,24 @@ const frontend_base_url = "http://127.0.0.1:5500"
 
 
 window.addEventListener('load', async function checkLogin() {
-    const payload = localStorage.getItem("payload")
-    const parsed_payload = await JSON.parse(payload)
-    const username = document.getElementById("username")
-    const logoutButton = document.getElementById("logout")
-    const logoutButton2 = document.getElementById("logout2")
-    const registerButton = document.getElementById("register")
-    if (parsed_payload) {
-        username.innerText = parsed_payload.username
-        logoutButton.innerText = "로그아웃"
-        logoutButton.setAttribute("onclick", "logout()")
-        logoutButton2.innerText = "sign-out"
-        logoutButton2.setAttribute("onclick", "logout()")
-        registerButton.innerText = "Hello"+" "+"World!"
-        registerButton.setAttribute("onclick", "location.href='/main.html'")
+        const payload = localStorage.getItem("payload")
+        const parsed_payload = await JSON.parse(payload)
+        const username = document.getElementById("username")
+        const logoutButton = document.getElementById("logout")
+        if (parsed_payload) {
+            username.innerText = parsed_payload.username
+            logoutButton.innerText = "로그아웃"
+            logoutButton.setAttribute("onclick", "logout()")
+        } else {
+            if(!logoutButton){
 
-    } else {
-        username.innerText = "Guest"
-        logoutButton.innerText = "로그인"
-        logoutButton.setAttribute("onclick", "location.href='/login.html'")
-    }
+            }
+            else{        
+                username.innerText = "Guest"
+                logoutButton.innerText = "로그인"
+                logoutButton.setAttribute("onclick", "location.href='/login.html'")
+            }
+        }
 });
 
 //로그인
@@ -74,30 +72,35 @@ async function login_api() {
 
 // 리프레쉬 토큰
 window.addEventListener('load', () => {
-    const payload = JSON.parse(localStorage.getItem("payload"));
+    try{   
+        const payload = JSON.parse(localStorage.getItem("payload"));
+        if (payload.exp > (Date.now() / 1000)){
+        } 
+        else {
+            const requestRefreshToken = async (url) => {
+                  const response = await fetch(url, {
+                      headers: {
+                          'Content-Type': 'application/json',
+                      },
+                      method: "POST",
+                      body: JSON.stringify({
+                          "refresh": localStorage.getItem("refresh")
+                      })}
+                  );
+                  return response.json();
+            };
+            requestRefreshToken(backend_base_url + "/user/api/token/refresh/").then((data)=>{
+                const accessToken = data.access;
+    
+                localStorage.setItem("access", accessToken);
+            });
+        }    
+    }
+    catch{
 
-    if (payload.exp > (Date.now() / 1000)){
-    } else {
-        const requestRefreshToken = async (url) => {
-              const response = await fetch(url, {
-                  headers: {
-                      'Content-Type': 'application/json',
-                  },
-                  method: "POST",
-                  body: JSON.stringify({
-                      "refresh": localStorage.getItem("refresh")
-                  })}
-              );
-              return response.json();
-        };
-
-        requestRefreshToken(backend_base_url + "/user/api/token/refresh/").then((data)=>{
-            const accessToken = data.access;
-
-            localStorage.setItem("access", accessToken);
-        });
     }
 });
+    
 
 // 회원가입 
 async function signup() {
@@ -282,6 +285,7 @@ async function deleteQuestion(question_id) {
 
 
 
+
 //질문글 상세조회
 async function QuestionDetail(question_id){
     const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
@@ -393,7 +397,7 @@ async function deleteComment(answer_id) {
 
 // 답변 좋아요
 async function likeAnswer(answer_id){
-   
+
     const response = await fetch(`${backend_base_url}/qna/like/answer/${answer_id}`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
@@ -414,7 +418,7 @@ async function likeAnswer(answer_id){
 
 //질문 좋아요
 async function likeQuestion(question_id){
-   
+
     const response = await fetch(`${backend_base_url}/qna/like/question/${question_id}`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
