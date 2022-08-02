@@ -338,19 +338,14 @@ async function updateComment(answer_id) {
 
     const comment = document.getElementsByClassName(answer_id)[0].childNodes[0].value;
     let comment_img = document.getElementsByClassName(answer_id)[0].childNodes[1].childNodes[0].files[0];
-    
     const formdata = new FormData();
     formdata.enctype = "multipart/form-data"
     
     formdata.append('content', comment);
 
-    if(image != undefined){
+    if(comment_img != undefined){
         formdata.append('image', comment_img);
     }
-    console.log(comment)
-    console.log(comment_img)
-    
-    console.log(formdata)
     const response = await fetch(`${deploy_base_url}/qna/answer/${answer_id}`,{
         headers:{            
             Authorization: "Bearer " + localStorage.getItem("access"),

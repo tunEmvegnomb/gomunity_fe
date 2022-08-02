@@ -18,18 +18,14 @@ window.addEventListener('load', async function updatearticle() {
         document.getElementById("btn_create_article").setAttribute("onclick",`createQuestion()`)    
     }
     else{
-        console.log("if문시작")
         document.getElementById("btn_create_article").setAttribute("onclick",`updateQuestion(${question_id})`)
         const question_data = await QuestionDetail(question_id)
-        console.log(question_data)
         let title = question_data.title
         let hashtag = question_data.hashtag
         let content = question_data.content
-        console.log(title)
+
         document.getElementById("article_title").value = title
         document.getElementById("hashtag").value = hashtag
         document.getElementById("article_content").value = content
-        console.log(title)
-        console.log(content)
         }
 })
