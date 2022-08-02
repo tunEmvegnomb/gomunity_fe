@@ -53,7 +53,6 @@ window.onload = async function loadDetails() {
 
     // 댓글
     const comments = details.answer;
-    console.log(comments)
     const div_answer_list = document.getElementsByClassName("answer_list")[0];
     
 
