@@ -90,7 +90,7 @@ window.addEventListener('load', () => {
                   );
                   return response.json();
             };
-            requestRefreshToken(backend_base_url + "/user/api/token/refresh/").then((data)=>{
+            requestRefreshToken(deploy_base_url + "/user/api/token/refresh/").then((data)=>{
                 const accessToken = data.access;
     
                 localStorage.setItem("access", accessToken);
