@@ -21,7 +21,7 @@ window.onload = async function loadDetails() {
 
     recommend_button.setAttribute("onclick", `loadRecommends(${question_id})`);
 
-    // const questionlike = details.like;
+    const questionlike = details.like;
     
     document.getElementById("user_name").innerText = "작성자" + " : " + details.user;
     document.getElementById("created_at").innerText = (details.created_at).split("T")[0] +" "+ ((details.created_at).split("T")[1]).split(".")[0];
@@ -173,7 +173,7 @@ window.onload = async function loadDetails() {
         hidden_btn_list.appendChild(hidden_edit_button);
         hidden_edit_box.style.display = 'none';
     })
-
+}
 // 답변 수정할 때 나오는 박스
 function openEditBox(answer_number) {
     const hidden_edit_box = document.getElementsByClassName(answer_number)[0];
@@ -230,5 +230,4 @@ async function loadRecommends(question_id){
         recommend_card.appendChild(recommend_title);
         recommend_card.appendChild(recommend_hr);
     })
-}
 }

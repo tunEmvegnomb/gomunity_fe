@@ -28,7 +28,6 @@ window.addEventListener('load', async function checkLogin() {
             else{        
                 username.innerText = "회원가입"
                 logoutButton.innerText = "로그인"
-                username.setAttribute("onclick", "location.href='/signup.html'")
                 logoutButton.setAttribute("onclick", "location.href='/login.html'")
             }
         }
