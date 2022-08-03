@@ -9,18 +9,20 @@ window.onload = async function loadDetails() {
     let username = "";
     try{
         const payload_token = localStorage.getItem("payload");
-         user_id = JSON.parse(payload_token).user_id;
-         username = JSON.parse(payload_token).username;
+        user_id = JSON.parse(payload_token).user_id;
+        username = JSON.parse(payload_token).username;
     } catch {
-         user_id = "00";
-         username = "익명유저";
+        user_id = "00";
+        username = "익명유저";
+
     }
 
     // 질문글 추천 버튼
     const recommend_button = document.getElementById("recommend_button");
+
     recommend_button.setAttribute("onclick", `loadRecommends(${question_id})`);
 
-    const questionlike = details.like;
+    // const questionlike = details.like;
     
     document.getElementById("user_name").innerText = "작성자" + " : " + details.user;
     document.getElementById("created_at").innerText = (details.created_at).split("T")[0] +" "+ ((details.created_at).split("T")[1]).split(".")[0];
@@ -172,7 +174,7 @@ window.onload = async function loadDetails() {
         hidden_btn_list.appendChild(hidden_edit_button);
         hidden_edit_box.style.display = 'none';
     })
-}
+
 // 답변 수정할 때 나오는 박스
 function openEditBox(answer_number) {
     const hidden_edit_box = document.getElementsByClassName(answer_number)[0];
@@ -202,60 +204,6 @@ function openEditBox(answer_number) {
 async function loadRecommends(question_id){
     const recommends = await ShowRecommend(question_id);
     console.log("추천 데이터", recommends);
-    const details = await QuestionDetail(question_id);
-
-    console.log(details)
-    
-    // 여긴 선언된 디테일스를 가져올 수 없습니다
-
-    recommends.forEach((recommend) => {
-        const recommend_div = document.getElementsByClassName("recommend")[0];
-        const recommend_card = document.createElement("div");
-        const recommend_photo = document.createElement("div");
-        const recommend_title = document.createElement("div");
-
-        recommend_card.setAttribute("class", "recommend_card");
-        recommend_photo.setAttribute("class", "recommend_image");
-        recommend_title.setAttribute("class", "recommend_title");
-        recommend_title.setAttribute.innerText = recommend.title;
-        recommend_photo.style.backgroundImage = `url(https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/${details.user}${recommend.image})`;
-        
-        recommend_div.appendChild(recommend_card);
-        recommend_card.appendChild(recommend_photo);
-        recommend_card.appendChild(recommend_title); 
-    })
-}
-// 추천 데이터를 넣어줄 HTML 엘리먼트 생성
-async function loadRecommends(question_id){
-    const recommends = await ShowRecommend(question_id);
-    console.log("추천 데이터", recommends);
-    const details = await QuestionDetail(question_id);
-
-    console.log(details)
-    
-    // 여긴 선언된 디테일스를 가져올 수 없습니다
-
-    recommends.forEach((recommend) => {
-        const recommend_div = document.getElementsByClassName("recommend")[0];
-        const recommend_card = document.createElement("div");
-        const recommend_photo = document.createElement("div");
-        const recommend_title = document.createElement("div");
-
-        recommend_card.setAttribute("class", "recommend_card");
-        recommend_photo.setAttribute("class", "recommend_image");
-        recommend_title.setAttribute("class", "recommend_title");
-        recommend_title.setAttribute.innerText = recommend.title;
-        recommend_photo.style.backgroundImage = `url(https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${details.user}${recommend.image})`;
-        
-        recommend_div.appendChild(recommend_card);
-        recommend_card.appendChild(recommend_photo);
-        recommend_card.appendChild(recommend_title); 
-    })
-}
-// 추천 데이터를 넣어줄 HTML 엘리먼트 생성
-async function loadRecommends(question_id){
-    const recommends = await ShowRecommend(question_id);
-    console.log("추천 데이터", recommends);
     
     // 여긴 선언된 디테일스를 가져올 수 없습니다
 
@@ -264,11 +212,13 @@ async function loadRecommends(question_id){
         const recommend_card = document.createElement("div");
         const recommend_image = document.createElement("div");
         const recommend_title = document.createElement("div");
+        const recommend_hr = document.createElement("hr");
 
         recommend_card.setAttribute("class", "recommend_card");
         recommend_image.setAttribute("class", "recommend_image");
         recommend_title.setAttribute("class", "recommend_title");
         recommend_title.innerHTML = `<a onclick=goDetail(${recommend.id})>${recommend.title}</a>`;
+        recommend_hr.style.width = "100%";
 
         if (recommend.image == null){
             recommend_image.style.backgroundImage = `url(https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png)`;    
@@ -278,6 +228,8 @@ async function loadRecommends(question_id){
         
         recommend_div.appendChild(recommend_card);
         recommend_card.appendChild(recommend_image);
-        recommend_card.appendChild(recommend_title); 
+        recommend_card.appendChild(recommend_title);
+        recommend_card.appendChild(recommend_hr);
     })
+}
 }

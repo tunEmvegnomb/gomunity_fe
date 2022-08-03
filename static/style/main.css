@@ -110,6 +110,9 @@ main {
 .navbar-brand {
     margin-left: 260px;
 }
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
 
 .btn-warning {
     margin-right: 300px;

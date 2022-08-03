@@ -199,8 +199,9 @@ main {
 
 .recommend_card {
     width: 12vw;
-    height: 30vh;
-    border: 1px solid black;
+    height: 18vh;
+    /* border: 1px solid black; */
+    margin-top: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -209,7 +210,7 @@ main {
 
 .recommend_image {
     width: 100%;
-    height: 50%;
+    height: 70%;
     background-image: url('https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png');
     background-position: center;
     background-size: cover;

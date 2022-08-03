@@ -26,8 +26,9 @@ window.addEventListener('load', async function checkLogin() {
 
             }
             else{        
-                username.innerText = "Guest"
+                username.innerText = "회원가입"
                 logoutButton.innerText = "로그인"
+                username.setAttribute("onclick", "location.href='/signup.html'")
                 logoutButton.setAttribute("onclick", "location.href='/login.html'")
             }
         }
@@ -324,13 +325,17 @@ async function postComment() {
     })
 
     const response_json = await response.json()
-    if (response.status == 200) {
-        alert(response_json.message);
-    }
-    else {
-        alert(response_json.message);
-    }
-    window.location.replace(`detail.html`);
+    
+        if (response.status == 200) {
+            alert(response_json.message);
+        }
+        else if(user_id="00"){
+            alert("로그인이 필요하다북!");
+        }
+        else {
+            alert(response_json.message);
+        }
+        window.location.replace(`detail.html`);
 }
 
 // 답변 수정
