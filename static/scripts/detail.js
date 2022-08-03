@@ -176,11 +176,26 @@ window.onload = async function loadDetails() {
 // 답변 수정할 때 나오는 박스
 function openEditBox(answer_number) {
     const hidden_edit_box = document.getElementsByClassName(answer_number)[0];
-    hidden_edit_box.style.display = 'block';
-    let find_comment_text = hidden_edit_box.parentElement;
-    find_comment_text = find_comment_text.childNodes[2];
-    find_comment_text.style.display = 'none';
-    hidden_edit_box.childNodes[0].innerText = find_comment_text.innerText;
+    if (hidden_edit_box.style.display != 'block'){
+        hidden_edit_box.style.display = 'block';
+        let find_comment_text = hidden_edit_box.parentElement;
+        find_comment_text = find_comment_text.childNodes[2];
+        find_comment_text.style.display = 'none';
+        hidden_edit_box.childNodes[0].innerText = find_comment_text.innerText;
+        const edit_button = hidden_edit_box.parentElement.parentElement.childNodes[2].childNodes[0];
+        edit_button.setAttribute("class", "btn btn-dark answer-btn");
+        edit_button.textContent = "취소";
+    }
+    else {
+        hidden_edit_box.style.display = 'none';
+        let find_comment_text = hidden_edit_box.parentElement;
+        find_comment_text = find_comment_text.childNodes[2];
+        find_comment_text.style.display = 'block';
+        const edit_button = hidden_edit_box.parentElement.parentElement.childNodes[2].childNodes[0];
+        edit_button.setAttribute("class", "btn btn-warning answer-btn");
+        edit_button.textContent = "수정";
+        
+    }
 }
 
 // 추천 데이터를 넣어줄 HTML 엘리먼트 생성
