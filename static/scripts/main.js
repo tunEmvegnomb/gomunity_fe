@@ -20,7 +20,7 @@ window.onload = async function loadQuestions(){
     } else {
         imagecard.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${question.image}`);
     }
-
+    imagecard.setAttribute("class", "card-image")
     imagecard.setAttribute("onclick", `goDetail(${question.id})`)
     div_card_body.setAttribute("class", "card-body")
     h5_title.setAttribute("class", "card-title title")

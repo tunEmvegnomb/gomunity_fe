@@ -36,15 +36,14 @@ main {
     /* background-color: rgb(255, 255, 255); */
     width : 65vw;
     margin-left: 35vw;
-    height: 100vh;
-    border: 1px solid black
+    height: 100%;
 }
 
 .main_post {
-    padding-top: 80px;
-
+    padding: 80px 20px 20px 20px;
     font-family: 'GangwonEdu_OTFBoldA';
 }
+
 
 header {
     background-color: transparent;
@@ -127,6 +126,22 @@ input {
     justify-content: center;
     align-items: center;
     padding-top: 60px;
+}
+
+.signin_logintext{
+    font-family: 'HS-Regular';
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+    /* text-shadow: 1px 1px 1px gray; */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.signin_logintext h3 {
+    font-size: 40px;
 }
 
 .top {

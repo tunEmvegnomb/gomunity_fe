@@ -9,14 +9,19 @@ window.onload = async function loadDetails() {
     let username = "";
     try{
         const payload_token = localStorage.getItem("payload");
-         user_id = JSON.parse(payload_token).user_id;
-         username = JSON.parse(payload_token).username;
+        user_id = JSON.parse(payload_token).user_id;
+        username = JSON.parse(payload_token).username;
     } catch {
-         user_id = "00";
-         username = "익명유저";
+        user_id = "00";
+        username = "익명유저";
     }
 
-    const questionlike = details.like;
+    // 질문글 추천 버튼
+    const recommend_button = document.getElementById("recommend_button");
+
+    recommend_button.setAttribute("onclick", `loadRecommends(${question_id})`);
+
+    // const questionlike = details.like;
     
     document.getElementById("user_name").innerText = "작성자" + " : " + details.user;
     document.getElementById("created_at").innerText = (details.created_at).split("T")[0] +" "+ ((details.created_at).split("T")[1]).split(".")[0];
@@ -130,15 +135,20 @@ window.onload = async function loadDetails() {
         div_answer_like.appendChild(button_answer_like);
 
         
+
         //답변 이미지
         if (comment.image == null){
+            div_answer_image.style.display = 'none';
         } else {
             answer_image.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${comment.image}`)
             div_answer_image.appendChild(answer_image);
         }
+        //수정, 삭제 버튼 보여주기 숨기기
         if (username !== comment.user) {
             div_answer_edit.style.visibility = 'hidden';
+            div_answer_edit.style.display = 'none';
         }
+        
 
         //히든 인풋 박스 요소
         const hidden_edit_box = document.createElement("div");
@@ -161,16 +171,64 @@ window.onload = async function loadDetails() {
         hidden_edit_box.appendChild(hidden_btn_list);
         hidden_btn_list.appendChild(hidden_input_img);
         hidden_btn_list.appendChild(hidden_edit_button);
-        hidden_edit_box.style.visibility = 'hidden';
+        hidden_edit_box.style.display = 'none';
     })
-}
+
 // 답변 수정할 때 나오는 박스
 function openEditBox(answer_number) {
     const hidden_edit_box = document.getElementsByClassName(answer_number)[0];
-    hidden_edit_box.style.visibility = 'visible';
-    let find_comment_text = hidden_edit_box.parentElement;
-    find_comment_text = find_comment_text.childNodes[1];
-    const find_comment_text_value = find_comment_text.innerText;
-    find_comment_text.style.visibility = 'hidden';
-    hidden_edit_box.childNodes[0].innerText = find_comment_text_value;
+    if (hidden_edit_box.style.display != 'block'){
+        hidden_edit_box.style.display = 'block';
+        let find_comment_text = hidden_edit_box.parentElement;
+        find_comment_text = find_comment_text.childNodes[2];
+        find_comment_text.style.display = 'none';
+        hidden_edit_box.childNodes[0].innerText = find_comment_text.innerText;
+        const edit_button = hidden_edit_box.parentElement.parentElement.childNodes[2].childNodes[0];
+        edit_button.setAttribute("class", "btn btn-dark answer-btn");
+        edit_button.textContent = "취소";
+    }
+    else {
+        hidden_edit_box.style.display = 'none';
+        let find_comment_text = hidden_edit_box.parentElement;
+        find_comment_text = find_comment_text.childNodes[2];
+        find_comment_text.style.display = 'block';
+        const edit_button = hidden_edit_box.parentElement.parentElement.childNodes[2].childNodes[0];
+        edit_button.setAttribute("class", "btn btn-warning answer-btn");
+        edit_button.textContent = "수정";
+        
+    }
+}
+
+// 추천 데이터를 넣어줄 HTML 엘리먼트 생성
+async function loadRecommends(question_id){
+    const recommends = await ShowRecommend(question_id);
+    console.log("추천 데이터", recommends);
+    
+    // 여긴 선언된 디테일스를 가져올 수 없습니다
+
+    recommends.forEach((recommend) => {
+        const recommend_div = document.getElementsByClassName("recommend")[0];
+        const recommend_card = document.createElement("div");
+        const recommend_image = document.createElement("div");
+        const recommend_title = document.createElement("div");
+        const recommend_hr = document.createElement("hr");
+
+        recommend_card.setAttribute("class", "recommend_card");
+        recommend_image.setAttribute("class", "recommend_image");
+        recommend_title.setAttribute("class", "recommend_title");
+        recommend_title.innerHTML = `<a onclick=goDetail(${recommend.id})>${recommend.title}</a>`;
+        recommend_hr.style.width = "100%";
+
+        if (recommend.image == null){
+            recommend_image.style.backgroundImage = `url(https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png)`;    
+        } else {
+            recommend_image.style.backgroundImage = `url(https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${recommend.image})`;
+        }
+        
+        recommend_div.appendChild(recommend_card);
+        recommend_card.appendChild(recommend_image);
+        recommend_card.appendChild(recommend_title);
+        recommend_card.appendChild(recommend_hr);
+    })
+}
 }
