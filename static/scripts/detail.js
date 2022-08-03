@@ -14,7 +14,6 @@ window.onload = async function loadDetails() {
     } catch {
         user_id = "00";
         username = "익명유저";
-
     }
 
     // 질문글 추천 버튼

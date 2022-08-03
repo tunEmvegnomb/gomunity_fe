@@ -124,12 +124,13 @@ async function signup() {
     })
 
     const result = await response.json()
+    console.log(result.error);
 
     if (response.status == 200) {
         alert(result['message'])
         window.location.replace(`${frontend_base_url}/login.html`);
     } else {
-        alert(result['message']);
+        alert(result.error[0]);
     }
 }
 
