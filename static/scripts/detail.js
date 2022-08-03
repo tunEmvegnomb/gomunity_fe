@@ -129,9 +129,11 @@ window.onload = async function loadDetails() {
 
         div_answer_like.appendChild(button_answer_like);
 
-        
+
         //답변 이미지
-        if (comment.image == null){
+        if (comment.image == null) {
+            answer_image.setAttribute("class", "no-image");
+            console.log(comment.image)
         } else {
             answer_image.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${comment.image}`)
             div_answer_image.appendChild(answer_image);

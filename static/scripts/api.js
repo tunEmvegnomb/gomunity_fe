@@ -109,6 +109,7 @@ async function signup() {
     const signupData = {
         username: document.getElementById("username").value,
         password: document.getElementById("password").value,
+        password2: document.getElementById("password2").value,
         nickname: document.getElementById("nickname").value,
         email: document.getElementById("email").value,
     }
