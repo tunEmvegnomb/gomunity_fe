@@ -20,7 +20,6 @@ main {
 }
 
 .question_post {
-    height: 40vh;
     word-break:break-all;
     word-wrap:break-word;
 }

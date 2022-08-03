@@ -170,21 +170,17 @@ window.onload = async function loadDetails() {
         hidden_edit_box.appendChild(hidden_btn_list);
         hidden_btn_list.appendChild(hidden_input_img);
         hidden_btn_list.appendChild(hidden_edit_button);
-        hidden_edit_box.style.visibility = 'hidden';
+        hidden_edit_box.style.display = 'none';
     })
 }
 // 답변 수정할 때 나오는 박스
 function openEditBox(answer_number) {
     const hidden_edit_box = document.getElementsByClassName(answer_number)[0];
-    hidden_edit_box.style.visibility = 'visible';
+    hidden_edit_box.style.display = 'block';
     let find_comment_text = hidden_edit_box.parentElement;
-    find_comment_text = find_comment_text.childNodes[1];
-    const find_comment_text_value = find_comment_text.innerText;
-    find_comment_text.style.visibility = 'hidden';
-    hidden_edit_box.childNodes[0].innerText = find_comment_text_value;
-}
-if (!openEditBox(answer_number)){
-    hidden_edit_box.style.display = 'none';
+    find_comment_text = find_comment_text.childNodes[2];
+    find_comment_text.style.display = 'none';
+    hidden_edit_box.childNodes[0].innerText = find_comment_text.innerText;
 }
 
 // 추천 데이터를 넣어줄 HTML 엘리먼트 생성
