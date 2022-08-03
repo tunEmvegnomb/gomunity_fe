@@ -16,6 +16,10 @@ window.onload = async function loadDetails() {
          username = "익명유저";
     }
 
+    // 질문글 추천 버튼
+    const recommend_button = document.getElementById("recommend_button");
+    recommend_button.setAttribute("onclick", `loadRecommends(${question_id})`);
+
     const questionlike = details.like;
     
     document.getElementById("user_name").innerText = "작성자" + " : " + details.user;
@@ -130,15 +134,20 @@ window.onload = async function loadDetails() {
         div_answer_like.appendChild(button_answer_like);
 
         
+
         //답변 이미지
         if (comment.image == null){
+            div_answer_image.style.display = 'none';
         } else {
             answer_image.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${comment.image}`)
             div_answer_image.appendChild(answer_image);
         }
+        //수정, 삭제 버튼 보여주기 숨기기
         if (username !== comment.user) {
             div_answer_edit.style.visibility = 'hidden';
+            div_answer_edit.style.display = 'none';
         }
+        
 
         //히든 인풋 박스 요소
         const hidden_edit_box = document.createElement("div");
@@ -173,4 +182,91 @@ function openEditBox(answer_number) {
     const find_comment_text_value = find_comment_text.innerText;
     find_comment_text.style.visibility = 'hidden';
     hidden_edit_box.childNodes[0].innerText = find_comment_text_value;
+}
+if (!openEditBox(answer_number)){
+    hidden_edit_box.style.display = 'none';
+}
+
+// 추천 데이터를 넣어줄 HTML 엘리먼트 생성
+async function loadRecommends(question_id){
+    const recommends = await ShowRecommend(question_id);
+    console.log("추천 데이터", recommends);
+    const details = await QuestionDetail(question_id);
+
+    console.log(details)
+    
+    // 여긴 선언된 디테일스를 가져올 수 없습니다
+
+    recommends.forEach((recommend) => {
+        const recommend_div = document.getElementsByClassName("recommend")[0];
+        const recommend_card = document.createElement("div");
+        const recommend_photo = document.createElement("div");
+        const recommend_title = document.createElement("div");
+
+        recommend_card.setAttribute("class", "recommend_card");
+        recommend_photo.setAttribute("class", "recommend_image");
+        recommend_title.setAttribute("class", "recommend_title");
+        recommend_title.setAttribute.innerText = recommend.title;
+        recommend_photo.style.backgroundImage = `url(https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/${details.user}${recommend.image})`;
+        
+        recommend_div.appendChild(recommend_card);
+        recommend_card.appendChild(recommend_photo);
+        recommend_card.appendChild(recommend_title); 
+    })
+}
+// 추천 데이터를 넣어줄 HTML 엘리먼트 생성
+async function loadRecommends(question_id){
+    const recommends = await ShowRecommend(question_id);
+    console.log("추천 데이터", recommends);
+    const details = await QuestionDetail(question_id);
+
+    console.log(details)
+    
+    // 여긴 선언된 디테일스를 가져올 수 없습니다
+
+    recommends.forEach((recommend) => {
+        const recommend_div = document.getElementsByClassName("recommend")[0];
+        const recommend_card = document.createElement("div");
+        const recommend_photo = document.createElement("div");
+        const recommend_title = document.createElement("div");
+
+        recommend_card.setAttribute("class", "recommend_card");
+        recommend_photo.setAttribute("class", "recommend_image");
+        recommend_title.setAttribute("class", "recommend_title");
+        recommend_title.setAttribute.innerText = recommend.title;
+        recommend_photo.style.backgroundImage = `url(https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${details.user}${recommend.image})`;
+        
+        recommend_div.appendChild(recommend_card);
+        recommend_card.appendChild(recommend_photo);
+        recommend_card.appendChild(recommend_title); 
+    })
+}
+// 추천 데이터를 넣어줄 HTML 엘리먼트 생성
+async function loadRecommends(question_id){
+    const recommends = await ShowRecommend(question_id);
+    console.log("추천 데이터", recommends);
+    
+    // 여긴 선언된 디테일스를 가져올 수 없습니다
+
+    recommends.forEach((recommend) => {
+        const recommend_div = document.getElementsByClassName("recommend")[0];
+        const recommend_card = document.createElement("div");
+        const recommend_image = document.createElement("div");
+        const recommend_title = document.createElement("div");
+
+        recommend_card.setAttribute("class", "recommend_card");
+        recommend_image.setAttribute("class", "recommend_image");
+        recommend_title.setAttribute("class", "recommend_title");
+        recommend_title.innerHTML = `<a onclick=goDetail(${recommend.id})>${recommend.title}</a>`;
+
+        if (recommend.image == null){
+            recommend_image.style.backgroundImage = `url(https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png)`;    
+        } else {
+            recommend_image.style.backgroundImage = `url(https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${recommend.image})`;
+        }
+        
+        recommend_div.appendChild(recommend_card);
+        recommend_card.appendChild(recommend_image);
+        recommend_card.appendChild(recommend_title); 
+    })
 }

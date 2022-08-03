@@ -112,9 +112,35 @@ main {
 .btn-warning {
     margin-right: 300px;
 }
+.card-body {
+    height: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.card-text {
+    height: 70px;
+    text-overflow: clip !important;
+}
+.card-title title {
+    height: 40px;
+}
+.card h-100{
+    height: 50%;
+}
+.card-image {
+    max-height: 100%;
+    max-width: 100%;
+    width: 100%;
+    height: 257px;
+    object-fit: fill;
+}
+a {
+    text-decoration: none;
+}
 
 /* body {
     border: black solid 1px;
     height: 100%;
 } */
+
 

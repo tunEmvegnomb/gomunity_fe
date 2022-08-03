@@ -52,6 +52,7 @@ main {
 
 .recommend_question {
     display: flex;
+    flex-direction: column;
     margin-top: 90px;
     margin-left: 20px;
     width: 15vw;
@@ -81,7 +82,7 @@ main {
 
 
 .answer_user {
-    font-weight: bold !important;
+    text-decoration-line: underline;
 }
 
 .answer_box {
@@ -186,4 +187,35 @@ main {
 .answer_image {
     width: 240px;
     height: 180px;
+}
+
+.recommend_question button {
+    margin-top: 8px;
+}
+
+.recommend_question_list {
+    width: 12vw;
+    height: 30vh;
+}
+
+.recommend_card {
+    width: 12vw;
+    height: 30vh;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.recommend_image {
+    width: 100%;
+    height: 50%;
+    background-image: url('https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.recommend_title {
+    font-size: 20px;
 }
