@@ -129,6 +129,22 @@ input {
     padding-top: 60px;
 }
 
+.signin_logintext{
+    font-family: 'HS-Regular';
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+    /* text-shadow: 1px 1px 1px gray; */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.signin_logintext h3 {
+    font-size: 40px;
+}
+
 .top {
     display : flex;
     justify-content: space-between;

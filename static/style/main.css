@@ -60,7 +60,9 @@ main {
     margin-left: 250px;
     position: fixed;
 }
-
+.nav-item:hover {
+    transform: scale(1.05);
+}
 main {
     display: flex;
     flex-direction: row;
@@ -119,7 +121,6 @@ main {
 }
 .card-text {
     height: 70px;
-    text-overflow: clip !important;
 }
 .card-title title {
     height: 40px;
@@ -134,10 +135,17 @@ main {
     height: 257px;
     object-fit: fill;
 }
-a {
-    text-decoration: none;
+.card-image:hover {
+    transform: scale(1.05);
+    cursor:pointer
 }
-
+* a {
+    text-decoration: none;
+    text-decoration-color: blue;
+}
+.font_title:hover {
+    cursor:pointer;
+}
 /* body {
     border: black solid 1px;
     height: 100%;
