@@ -1,10 +1,8 @@
 
 // const notice_list = getNotices();
-// console.log(notice_list)
 
-window.onload = async function loadNotices(){
+window.onload = async function loadNotices() {
     const notices = await getNotices();
-    console.log(notices);
     const notice_list = document.getElementById("notices")
 
     notices.forEach(notice => {
@@ -30,7 +28,7 @@ window.addEventListener('load', async function checkLogin() {
         logoutButton.setAttribute("onclick", "logout()")
         logoutButton2.innerText = "sign-out"
         logoutButton2.setAttribute("onclick", "logout()")
-        registerButton.innerText = "Hello"+" "+"World!"
+        registerButton.innerText = "Hello" + " " + "World!"
         registerButton.setAttribute("onclick", "location.href='/main.html'")
 
         const signin_box = document.getElementsByClassName("signin_box")[0];
@@ -38,7 +36,7 @@ window.addEventListener('load', async function checkLogin() {
         const new_signin_box = document.createElement("div");
         const username_box = document.createElement("h3");
         const welcome_text = document.createElement("h3")
-        
+
         new_signin_box.setAttribute("class", "signin_box signin_logintext");
         username_box.innerText = parsed_payload.username + "님";
         welcome_text.innerText = "즐거운 거뮤니티!";
@@ -53,19 +51,3 @@ window.addEventListener('load', async function checkLogin() {
         logoutButton.setAttribute("onclick", "location.href='/login.html'")
     }
 });
-// window.onload = async function loadArticles(){
-//     articles = await getArticles()
-//     console.log(articles)
-//     const article_list = document.getElementById("articles")
-
-//     articles.forEach(article => {
-//         const newArticle = document.createElement("div");
-//         const articleImage = document.createElement("img")
-//         articleImage.setAttribute("src", `${backend_base_url}${article.image}`)
-//         newArticle.setAttribute("id", article.id) //모달
-//         newArticle.innerText = article.title
-//         newArticle.setAttribute("onclick", "articleDetail(this.id)") //모달
-//         newArticle.appendChild(articleImage)
-//         article_list.appendChild(newArticle)
-//     });
-// }

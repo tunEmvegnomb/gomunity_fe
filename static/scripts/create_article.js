@@ -1,4 +1,3 @@
-console.log('here create_article.js');
 
 window.addEventListener('load', async function updatearticle() {
     const question_id = localStorage.getItem("question_id");

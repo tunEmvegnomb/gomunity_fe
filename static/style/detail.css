@@ -8,7 +8,7 @@
 
 main {
     margin-right: 180px;
-    
+
 }
 
 .detail {
@@ -20,8 +20,8 @@ main {
 }
 
 .question_post {
-    word-break:break-all;
-    word-wrap:break-word;
+    word-break: break-all;
+    word-wrap: break-word;
 }
 
 .user_info {
@@ -41,7 +41,8 @@ main {
     flex-direction: column;
 }
 
-.btn-danger, .btn-primary {
+.btn-danger,
+.btn-primary {
     height: 100%
 }
 
@@ -61,7 +62,7 @@ main {
     resize: none;
 }
 
-.answer_list{
+.answer_list {
     display: flex;
     flex-direction: column;
 }
@@ -71,10 +72,12 @@ main {
     display: flex;
     flex-direction: column;
 }
-.answer_edit{
+
+.answer_edit {
     width: 2vw;
 }
-.answer_profile_image{
+
+.answer_profile_image {
     padding-right: 15px;
     padding-bottom: 25px;
 }
@@ -88,7 +91,7 @@ main {
     display: flex;
 }
 
-.answer_edit{
+.answer_edit {
     height: 100px;
     display: flex;
     flex-direction: column;
@@ -105,36 +108,46 @@ main {
 .input-group button {
     z-index: 0 !important;
 }
-.answer_text{
-    word-break:break-all;
-    word-wrap:break-word;
+
+.answer_text {
+    word-break: break-all;
+    word-wrap: break-word;
 }
-.answer_box{
+
+.answer_box {
     margin-top: 15px;
 }
+
 .answer_edit_input {
     width: 100%;
     resize: none;
 }
-#user_name{
+
+#user_name {
     font-size: 20px;
 }
+
 #Question_like {
     font-size: 20px;
 }
+
 .answer_like {
     margin-top: 30px;
 }
+
 #Answer_like {
     font-size: 20px;
 }
+
 .title_box_child {
     width: 85%;
 }
+
 .question_title {
-    word-break:break-all;
-    word-wrap:break-word;
+    word-break: break-all;
+    word-wrap: break-word;
 }
+
 .input-group {
     display: flex;
     flex-direction: column;
@@ -144,22 +157,26 @@ main {
     display: flex;
     flex-direction: row;
 }
-.btn_list{
+
+.btn_list {
     display: flex;
     flex-direction: column;
     width: 7vw;
     height: 100%;
 }
-.hidden_edit_btn{
+
+.hidden_edit_btn {
     margin-left: 40px;
 }
-.put_question_btn{
+
+.put_question_btn {
     width: 50px;
     height: 25px;
     margin-top: 15px;
     margin-bottom: 5px;
     font-size: 11pt;
 }
+
 .del_question_btn {
     align-self: center;
     width: 50px;
@@ -167,7 +184,8 @@ main {
     margin-bottom: 50px;
     font-size: 11pt;
 }
-.postquestion_btn{
+
+.postquestion_btn {
     height: 90px;
 }
 
@@ -180,9 +198,11 @@ main {
 #hashtag {
     color: blue;
 }
+
 #comment_img {
     max-width: 200px;
 }
+
 .answer_image {
     width: 240px;
     height: 180px;
@@ -215,19 +235,33 @@ main {
     background-position: center;
     background-size: cover;
 }
+
 .recommend_image:hover {
     transform: scale(1.05);
+    cursor: pointer;
 }
+
 .recommend_title {
     font-size: 20px;
 }
+
 .recommend_title:hover {
     transform: scale(1.05);
-    box-shadow: 200px 0 0 0 rgba(10, 223, 243, 0.25) inset, 
-                -200px 0 0 0 rgba(10,223,243,0.25) inset;
+    box-shadow: 200px 0 0 0 rgba(10, 223, 243, 0.25) inset,
+        -200px 0 0 0 rgba(10, 223, 243, 0.25) inset;
+    cursor: pointer;
 }
 
-.answer_image img{
+.answer_image img {
     width: 150px;
     height: 150px;
+
+}
+
+.answer_image img:hover {
+    cursor: pointer;
+}
+
+#image:hover {
+    cursor: pointer;
 }

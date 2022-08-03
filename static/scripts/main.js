@@ -1,6 +1,6 @@
 window.onload = async function loadQuestions(){
     const questions = await getQuestions();
-    console.log(questions);
+
     const div_cards = document.getElementsByClassName("cards")[0];
    
    questions.forEach((question) => {

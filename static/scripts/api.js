@@ -13,24 +13,24 @@ const frontend_base_url = "https://gomunity.shop";
 
 
 window.addEventListener('load', async function checkLogin() {
-        const payload = localStorage.getItem("payload")
-        const parsed_payload = await JSON.parse(payload)
-        const username = document.getElementById("username")
-        const logoutButton = document.getElementById("logout")
-        if (parsed_payload) {
-            username.innerText = parsed_payload.username
-            logoutButton.innerText = "로그아웃"
-            logoutButton.setAttribute("onclick", "logout()")
-        } else {
-            if(!logoutButton){
+    const payload = localStorage.getItem("payload")
+    const parsed_payload = await JSON.parse(payload)
+    const username = document.getElementById("username")
+    const logoutButton = document.getElementById("logout")
+    if (parsed_payload) {
+        username.innerText = parsed_payload.username
+        logoutButton.innerText = "로그아웃"
+        logoutButton.setAttribute("onclick", "logout()")
+    } else {
+        if (!logoutButton) {
 
-            }
-            else{        
-                username.innerText = "회원가입"
-                logoutButton.innerText = "로그인"
-                logoutButton.setAttribute("onclick", "location.href='/login.html'")
-            }
         }
+        else {
+            username.innerText = "회원가입"
+            logoutButton.innerText = "로그인"
+            logoutButton.setAttribute("onclick", "location.href='/login.html'")
+        }
+    }
 });
 
 //로그인
@@ -73,35 +73,36 @@ async function login_api() {
 
 // 리프레쉬 토큰
 window.addEventListener('load', () => {
-    try{   
+    try {
         const payload = JSON.parse(localStorage.getItem("payload"));
-        if (payload.exp > (Date.now() / 1000)){
-        } 
+        if (payload.exp > (Date.now() / 1000)) {
+        }
         else {
             const requestRefreshToken = async (url) => {
-                  const response = await fetch(url, {
-                      headers: {
-                          'Content-Type': 'application/json',
-                      },
-                      method: "POST",
-                      body: JSON.stringify({
-                          "refresh": localStorage.getItem("refresh")
-                      })}
-                  );
-                  return response.json();
+                const response = await fetch(url, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    method: "POST",
+                    body: JSON.stringify({
+                        "refresh": localStorage.getItem("refresh")
+                    })
+                }
+                );
+                return response.json();
             };
-            requestRefreshToken(deploy_base_url + "/user/api/token/refresh/").then((data)=>{
+            requestRefreshToken(deploy_base_url + "/user/api/token/refresh/").then((data) => {
                 const accessToken = data.access;
-    
+
                 localStorage.setItem("access", accessToken);
             });
-        }    
+        }
     }
-    catch{
+    catch {
 
     }
 });
-    
+
 
 // 회원가입 
 async function signup() {
@@ -109,26 +110,31 @@ async function signup() {
     const signupData = {
         username: document.getElementById("username").value,
         password: document.getElementById("password").value,
+        password2: document.getElementById("password2").value,
         nickname: document.getElementById("nickname").value,
         email: document.getElementById("email").value,
     }
 
-    const response = await fetch(`${deploy_base_url}/user/signup/`,{
-        headers:{
-            Accept:"application/json",
-            'Content-type':'application/json',
+    const response = await fetch(`${deploy_base_url}/user/signup/`, {
+        headers: {
+            Accept: "application/json",
+            'Content-type': 'application/json',
         },
         method: 'POST',
         body: JSON.stringify(signupData)
     })
 
     const result = await response.json()
-    console.log(result)
+
 
     if (response.status == 200) {
         alert(result['message'])
         window.location.replace(`${frontend_base_url}/login.html`);
-    } else {
+    } else if (response.status == 401) {
+        alert(result['message'])
+        window.location.replace(`${frontend_base_url}/signup.html`);
+    }
+    else {
         alert(result.error[0]);
     }
 }
@@ -145,8 +151,8 @@ function logout() {
 
 // 공지사항 조회
 
-async function getNotices(){
-    const response = await fetch(`${deploy_base_url}/webmaster/`,{
+async function getNotices() {
+    const response = await fetch(`${deploy_base_url}/webmaster/`, {
         method: 'GET',
     });
     response_json = await response.json();
@@ -154,8 +160,8 @@ async function getNotices(){
 }
 
 // 질문글 목록 조회
-async function getQuestions(){
-    const response = await fetch(`${deploy_base_url}/qna/list/`,{
+async function getQuestions() {
+    const response = await fetch(`${deploy_base_url}/qna/list/`, {
         method: 'GET',
     });
     response_json = await response.json();
@@ -166,7 +172,7 @@ async function getQuestions(){
 async function createQuestion() {
     const category = document.getElementsByClassName("article_category")[0];
     const category_value = category.options[category.selectedIndex].textContent;
-    
+
     const title = document.getElementById("article_title").value;
     const hashtag = document.getElementById("hashtag").value;
     const content = document.getElementById("article_content").value;
@@ -179,24 +185,24 @@ async function createQuestion() {
     formdata.append('title', title);
     formdata.append('hashtag', hashtag);
     formdata.append('content', content);
-    if (image != undefined){
+    if (image != undefined) {
         formdata.append('image', image);
     }
 
-    if (category_value === "질의응답"){
-        const response = await fetch(`${deploy_base_url}/qna/`,{
-            headers:{
+    if (category_value === "질의응답") {
+        const response = await fetch(`${deploy_base_url}/qna/`, {
+            headers: {
                 Authorization: "Bearer " + localStorage.getItem("access"),
-            //     Accept:"application/json",
-            //     'Content-type':'application/json',
+                //     Accept:"application/json",
+                //     'Content-type':'application/json',
             },
-            method:'POST',
-            body:formdata
+            method: 'POST',
+            body: formdata
         })
         const response_json = await response.json()
-        // console.log(response_json)
 
-        if (response.status == 200){
+
+        if (response.status == 200) {
             alert(response_json.message);
         }
         else {
@@ -208,16 +214,16 @@ async function createQuestion() {
 
 async function goDetail(question_id) {
     localStorage.setItem("question_id", question_id);
-    window.location.replace(`detail.html`);
+    location.href = '/detail.html';
 }
 
-async function goarticle(question_id){
+async function goarticle(question_id) {
     localStorage.setItem("question_id", question_id);
-    window.location.replace(`create_article.html`);
+    location.href = '/create_article.html';
 }
-async function createarticle(){
+async function createarticle() {
     localStorage.removeItem("question_id");
-    window.location.replace(`create_article.html`);
+    location.href = '/create_article.html';
 }
 
 //질문 수정
@@ -229,45 +235,45 @@ async function updateQuestion(question_id) {
     const hashtag = document.getElementById("hashtag").value;
     const content = document.getElementById("article_content").value;
     const image = document.getElementById("article_image").files[0];
-    
+
     const formdata = new FormData();
     formdata.enctype = "multipart/form-data"
-    
+
     formdata.append('title', title);
     formdata.append('hashtag', hashtag);
     formdata.append('content', content);
 
-    if(image != undefined){
+    if (image != undefined) {
         formdata.append('image', image);
     }
 
 
-    if (category_value === "질의응답"){
-        const response = await fetch(`${deploy_base_url}/qna/${question_id}`,{
-            headers:{
+    if (category_value === "질의응답") {
+        const response = await fetch(`${deploy_base_url}/qna/${question_id}`, {
+            headers: {
                 Authorization: "Bearer " + localStorage.getItem("access"),
-            //     Accept:"application/json",
-            //     'Content-type':'application/json',
+                //     Accept:"application/json",
+                //     'Content-type':'application/json',
             },
-            method:'PUT',
-            body:formdata
+            method: 'PUT',
+            body: formdata
         })
-    const response_json = await response.json()
-    if (response.status == 200) {
-        alert(response_json.message);
+        const response_json = await response.json()
+        if (response.status == 200) {
+            alert(response_json.message);
+        }
+        else {
+            alert(response_json.message);
+        }
+        location.href = '/detail.html';
     }
-    else {
-        alert(response_json.message);
-    }
-    window.location.replace(`detail.html`);
-}
 }
 // //질문 삭제
 async function deleteQuestion(question_id) {
-    
-    if (confirm("정말 삭제하시겠습니까??") == true){
-        const response = await fetch(`${deploy_base_url}/qna/${question_id}`,{
-            headers:{
+
+    if (confirm("정말 삭제하시겠습니까??") == true) {
+        const response = await fetch(`${deploy_base_url}/qna/${question_id}`, {
+            headers: {
                 Authorization: "Bearer " + localStorage.getItem("access"),
                 Accept: "application/json",
                 'Content-type': 'application/json',
@@ -275,7 +281,7 @@ async function deleteQuestion(question_id) {
             method: 'DELETE',
         })
         const response_json = await response.json()
-        
+
         if (response.status == 200) {
             alert(response_json.message);
         }
@@ -283,14 +289,15 @@ async function deleteQuestion(question_id) {
             alert(response_json.message);
         }
         window.location.replace('main.html');
-    }}
+    }
+}
 
 
 
 
 //질문글 상세조회
-async function QuestionDetail(question_id){
-    const response = await fetch(`${deploy_base_url}/qna/${question_id}`,{
+async function QuestionDetail(question_id) {
+    const response = await fetch(`${deploy_base_url}/qna/${question_id}`, {
         method: 'GET',
     });
     response_json = await response.json();
@@ -306,16 +313,16 @@ async function postComment() {
 
     const formdata = new FormData();
     formdata.enctype = "multipart/form-data"
-    
-    
+
+
     formdata.append('content', comment);
 
-    if (comment_img != undefined){
+    if (comment_img != undefined) {
         formdata.append('image', comment_img);
     }
 
-    const response = await fetch(`${deploy_base_url}/qna/${question_id}/answer/`,{
-        headers:{
+    const response = await fetch(`${deploy_base_url}/qna/${question_id}/answer/`, {
+        headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
             // Accept: "application/json",
             // 'Content-type': 'application/json',
@@ -325,17 +332,17 @@ async function postComment() {
     })
 
     const response_json = await response.json()
-    
-        if (response.status == 200) {
-            alert(response_json.message);
-        }
-        else if(user_id="00"){
-            alert("로그인이 필요하다북!");
-        }
-        else {
-            alert(response_json.message);
-        }
-        window.location.replace(`detail.html`);
+
+    if (response.status == 200) {
+        alert(response_json.message);
+    }
+    else if (user_id = "00") {
+        alert("로그인이 필요하다북!");
+    }
+    else {
+        alert(response_json.message);
+    }
+    window.location.replace(`detail.html`);
 }
 
 // 답변 수정
@@ -345,14 +352,14 @@ async function updateComment(answer_id) {
     let comment_img = document.getElementsByClassName(answer_id)[0].childNodes[1].childNodes[0].files[0];
     const formdata = new FormData();
     formdata.enctype = "multipart/form-data"
-    
+
     formdata.append('content', comment);
 
-    if(comment_img != undefined){
+    if (comment_img != undefined) {
         formdata.append('image', comment_img);
     }
-    const response = await fetch(`${deploy_base_url}/qna/answer/${answer_id}`,{
-        headers:{            
+    const response = await fetch(`${deploy_base_url}/qna/answer/${answer_id}`, {
+        headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
             // Accept: "application/json",
             // 'Content-type': 'application/json',
@@ -376,9 +383,9 @@ async function deleteComment(answer_id) {
     const comment_data = {
         content: document.getElementsByClassName(answer_id)[0].childNodes[0].value
     }
-    if (confirm("정말 삭제하시겠습니까??") == true){
-        const response = await fetch(`${deploy_base_url}/qna/answer/${answer_id}`,{
-            headers:{
+    if (confirm("정말 삭제하시겠습니까??") == true) {
+        const response = await fetch(`${deploy_base_url}/qna/answer/${answer_id}`, {
+            headers: {
                 Authorization: "Bearer " + localStorage.getItem("access"),
                 Accept: "application/json",
                 'Content-type': 'application/json',
@@ -394,14 +401,15 @@ async function deleteComment(answer_id) {
             alert(response_json.message);
         }
         window.location.reload();
-    }}
+    }
+}
 
 // 답변 좋아요
-async function likeAnswer(answer_id){
+async function likeAnswer(answer_id) {
 
-    const response = await fetch(`${deploy_base_url}/qna/like/answer/${answer_id}`,{
+    const response = await fetch(`${deploy_base_url}/qna/like/answer/${answer_id}`, {
 
-        headers:{
+        headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
             Accept: "application/json",
             'Content-type': 'application/json',
@@ -419,10 +427,10 @@ async function likeAnswer(answer_id){
 }
 
 //질문 좋아요
-async function likeQuestion(question_id){
-    const response = await fetch(`${deploy_base_url}/qna/like/question/${question_id}`,{
+async function likeQuestion(question_id) {
+    const response = await fetch(`${deploy_base_url}/qna/like/question/${question_id}`, {
 
-        headers:{
+        headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
             Accept: "application/json",
             'Content-type': 'application/json',
@@ -440,7 +448,7 @@ async function likeQuestion(question_id){
 }
 
 async function ShowRecommend(question_id) {
-    console.log('여기')
+
     const response = await fetch(`${deploy_base_url}/qna/recommend/${question_id}`, {
         method: 'POST',
     })
