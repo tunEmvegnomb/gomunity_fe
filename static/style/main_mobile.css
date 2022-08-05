@@ -1,0 +1,42 @@
+.nav {
+    width: 500px;
+    max-width: 100%;
+    top: 86px;
+    left: 22px;
+    position: absolute;
+    margin: 0;
+}
+
+.cards {
+    margin: 160px 493px 0 38px;
+    padding: 0px;
+    width: 308px;
+}
+
+.flex-column {
+    flex-direction: row !important;
+}
+
+.navbar-brand {
+    margin-left: 0;
+}
+
+.navbar-toggler {
+    display: none;
+}
+
+.container-fluid {
+    justify-content: flex-start !important;
+}
+
+#logout {
+    margin: 0;
+}
+
+#username {
+    margin: 0;
+}
+
+.nav-link.disabled {
+    display: none;
+}
