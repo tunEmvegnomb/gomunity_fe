@@ -13,6 +13,12 @@ window.onload = async function loadDetails() {
         username = "익명유저";
     }
 
+    // 이미지 클릭시 새로운탭에서 원본이미지 확인
+    let img = document.getElementsByTagName("img");
+    for (let x = 0; x < img.length; x++) {
+        img.item(x).onclick = function () { window.open(this.src) };
+    }
+
     // 질문글 추천 버튼
     const recommend_button = document.getElementById("recommend_button");
     recommend_button.setAttribute("onclick", `loadRecommends(${question_id})`);
@@ -36,14 +42,14 @@ window.onload = async function loadDetails() {
     
     const button_like_question = document.getElementsByClassName("title_like_box")[0];
     button_like_question.setAttribute("class", "btn btn-primary");
-    button_like_question.innerText = " ♥  " + details.like.length;
+    button_like_question.innerText = " ♡  " + details.like.length;
     button_like_question.setAttribute("onclick", `likeQuestion(${question_id})`);
     if (questionlike.includes(user_id) != true) {
         button_like_question.setAttribute("class", "btn btn-primary");
-        button_like_question.innerText = " ♥  " + details.like.length;
+        button_like_question.innerText = " ♡  " + details.like.length;
     } else {
         button_like_question.setAttribute("class", "btn btn-danger");
-        button_like_question.innerText = " ♡  " + details.like.length;
+        button_like_question.innerText = " ♥  " + details.like.length;
     }
     
     const edit_btn = document.getElementById("hidden_edit_btn")
@@ -93,13 +99,13 @@ window.onload = async function loadDetails() {
         button_answer_delete.innerText = "삭제";
         button_answer_like.setAttribute("type", "button");
         button_answer_like.setAttribute("class", "btn btn-primary");
-        button_answer_like.innerText = " ♥  " + comment.like.length;
+        button_answer_like.innerText = " ♡  " + comment.like.length;
         if (comment.like.includes(user_id) != true) {
             button_answer_like.setAttribute("class", "btn btn-primary");
-            button_answer_like.innerText = " ♥  " + comment.like.length;
+            button_answer_like.innerText = " ♡  " + comment.like.length;
         } else {
             button_answer_like.setAttribute("class", "btn btn-danger");
-            button_answer_like.innerText = " ♡  " + comment.like.length;
+            button_answer_like.innerText = " ♥  " + comment.like.length;
         }
         button_answer_like.setAttribute("id", "Answer_like");
         button_answer_like.setAttribute("onclick", `likeAnswer(${comment.id})`);
@@ -216,4 +222,5 @@ async function loadRecommends(question_id){
         recommend_card.appendChild(recommend_title);
         recommend_card.appendChild(recommend_hr);
     })
+    recommend_button.style.display = 'none';
 }

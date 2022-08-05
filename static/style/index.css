@@ -205,3 +205,28 @@ input {
     height: 100%;
     display: block;
 }
+.mean_list {
+    display: flex;
+    flex-direction: row;
+    
+}
+.gomunity_mean {
+    font-size: 22px;
+    margin-left: 30px;
+}
+.gomunity_manual {
+    font-size: 22px;
+}
+.name_list {
+    text-decoration: underline;
+    font-size: 3rem;
+    margin-top: 20px;
+}
+.gomunity_image {
+    width: 360px;
+    height: 360px;
+
+}
+p {
+    font-size: 19px;
+}

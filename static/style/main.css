@@ -49,20 +49,23 @@ main {
     position: fixed;
     z-index: 1;
     width: 100vw;
+    height: 60px;
 }
 
 .nav {
     /* background-color:darksalmon; */
-    width: 140px;
+    width: 150px;
     max-width: 30%;
     margin-right: 50px;
     top: 70px;
-    margin-left: 250px;
+    margin-left: 200px;
     position: fixed;
 }
+
 .nav-item:hover {
     transform: scale(1.05);
 }
+
 main {
     display: flex;
     flex-direction: row;
@@ -96,26 +99,30 @@ main {
 }
 
 .d-flex {
-    width: 700px;
+    width: 60%;
 }
 
 .btn-info {
     margin-right: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px
+    , rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
 }
 
 .row {
-    width: 850px
+    width: 1100px;
 }
 
 .navbar-brand {
-    margin-left: 260px;
+    margin-left: 200px;
+    font-size: 30px;
 }
 .navbar-brand:hover {
     transform: scale(1.05);
 }
 
 .btn-warning {
-    margin-right: 300px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px
+    , rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
 }
 .card-body {
     height: 40%;
@@ -125,11 +132,13 @@ main {
 .card-text {
     height: 70px;
 }
-.card-title title {
-    height: 40px;
+.h-100 {
+    position: relative;
+    width: 260px !important;
+    height: 470px !important;
 }
-.card h-100{
-    height: 50%;
+.card-title {
+    height: 40%;
 }
 .card-image {
     max-height: 100%;
@@ -153,5 +162,19 @@ main {
     border: black solid 1px;
     height: 100%;
 } */
-
-
+.card-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.button_box {
+    display: flex;
+    flex-direction: row;
+    flex-basis: auto;
+    float: right;
+    margin-right: 200px;
+}
+.count-list {
+    position: absolute;
+    bottom: 2px;
+}

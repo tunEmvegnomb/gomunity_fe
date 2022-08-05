@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="../static/style/main.css">
   <script src="../static/scripts/api.js"></script>
   <script src="../static/scripts/main.js"></script>
+  <link href="../static/style/main_mobile.css" media="(max-width:500px)" rel="stylesheet">
 </head>
 
 <body>
@@ -35,8 +36,10 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
-      <button type="button" id="username" class="btn btn-info"></button>
-      <button type="button" id="logout" class="btn btn-warning"></button>
+      <div class="button_box">
+        <button type="button" id="username" class="btn btn-info"></button>
+        <button type="button" id="logout" class="btn btn-warning"></button>
+      </div>
     </div>
   </nav>
   <main>
@@ -54,63 +57,24 @@
         <a class="nav-link active" aria-current="page" href="index.html">공지사항 게시판</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">질의응답 게시판</a>
+        <a class="nav-link" href="main.html">질의응답 게시판</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">자유게시판</a>
+        <a class="nav-link" href="">자유게시판</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">자료게시판</a>
+        <a class="nav-link" href="">자료게시판</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled">거북이반 커뮤니티, 거뮤니티</a>
       </li>
       <li class="nav-item">
-        <button type="button" class="btn btn-danger" onclick="window.location.href='create_article.html'">울지마 바보야 질문해!🐢</button>
+        <button type="button" class="btn btn-danger" onclick="window.location.href='create_article.html'">울지마 바보야<br>질문해!🐢</button>
       </li>
     </ul>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4 cards">
-      <!-- <div class="col">
-        <div class="card h-100">
-          <img src="https://velog.velcdn.com/images/migdracios/post/9388cf6f-17e2-4e24-8dd6-fe558804c07b/image.png"
-            class="card-img-top" alt="..." onclick="location.href='detail.html'">
-          <div class="card-body">
-            <h5 class="card-title title"><a class="font_title" href="">질문글 제목입니다. 알려줘잉 ㅠㅠ</a></h5>
-            <p class="card-text">제가 파이썬을 공부하고 있는데, 왜이렇게 어렵고 강의에는 없는지 도무지 모르겠는데 한 번 봐주세요 ㅠㅠ</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img src="https://velog.velcdn.com/images/migdracios/post/9388cf6f-17e2-4e24-8dd6-fe558804c07b/image.png"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title title">질문글 제목입니다. 알려줘잉 ㅠㅠ</h5>
-            <p class="card-text">제가 파이썬을 공부하고 있는데, 왜이렇게 어렵고 강의에는 없는지 도무지 모르겠는데 한 번 봐주세요 ㅠㅠ</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img src="https://velog.velcdn.com/images/migdracios/post/9388cf6f-17e2-4e24-8dd6-fe558804c07b/image.png"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title title">질문글 제목입니다. 알려줘잉 ㅠㅠ</h5>
-            <p class="card-text">제가 파이썬을 공부하고 있는데, 왜이렇게 어렵고 강의에는 없는지 도무지 모르겠는데 한 번 봐주세요 ㅠㅠ</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img src="https://velog.velcdn.com/images/migdracios/post/9388cf6f-17e2-4e24-8dd6-fe558804c07b/image.png"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title title">질문글 제목입니다. 알려줘잉 ㅠㅠ</h5>
-            <p class="card-text">제가 파이썬을 공부하고 있는데, 왜이렇게 어렵고 강의에는 없는지 도무지 모르겠는데 한 번 봐주세요 ㅠㅠ</p>
-          </div>
-        </div>
-      </div> -->
+    <div class="row row-cols-1 row-cols-md-4 g-4 cards">
+      
     </div>
 
   </main>
