@@ -1,6 +1,3 @@
-console.log('here detail.js');
-
-
 window.onload = async function loadDetails() {
     // 게시글
     const question_id = localStorage.getItem("question_id");
