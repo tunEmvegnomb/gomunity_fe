@@ -15,7 +15,6 @@ window.onload = async function loadDetails() {
 
     // 질문글 추천 버튼
     const recommend_button = document.getElementById("recommend_button");
-
     recommend_button.setAttribute("onclick", `loadRecommends(${question_id})`);
 
     const questionlike = details.like;
@@ -81,7 +80,6 @@ window.onload = async function loadDetails() {
         div_answer_comment.setAttribute("class", "answer_comment");
         div_answer_user.setAttribute("class", "answer_user");
         div_answer_image.setAttribute("class", "answer_image")
-
         div_answer_text.setAttribute("class", "answer_text");
         div_answer_like.setAttribute("class", "answer_like");
         div_answer_edit.setAttribute("class", "answer_edit");
@@ -93,7 +91,6 @@ window.onload = async function loadDetails() {
         button_answer_delete.setAttribute("type", "button");
         button_answer_delete.setAttribute("onclick", `deleteComment(${comment.id})`);
         button_answer_delete.innerText = "삭제";
-        
         button_answer_like.setAttribute("type", "button");
         button_answer_like.setAttribute("class", "btn btn-primary");
         button_answer_like.innerText = " ♥  " + comment.like.length;
@@ -113,22 +110,15 @@ window.onload = async function loadDetails() {
         div_answer_list.appendChild(div_answer_box);
         div_answer_box.appendChild(div_answer_profile_image);
         div_answer_profile_image.appendChild(profile_image);
-        
-        
         div_answer_box.appendChild(div_answer_comment);
         div_answer_comment.appendChild(div_answer_user);
         div_answer_comment.appendChild(div_answer_image);
         div_answer_comment.appendChild(div_answer_text);
         div_answer_comment.appendChild(div_answer_like);
-
-        
-
         div_answer_box.appendChild(div_answer_edit);
         div_answer_edit.appendChild(button_answer_edit);
         div_answer_edit.appendChild(button_answer_delete);
-
         div_answer_list.appendChild(hr_underbar);
-
         div_answer_like.appendChild(button_answer_like);
 
         
@@ -199,7 +189,6 @@ function openEditBox(answer_number) {
 // 추천 데이터를 넣어줄 HTML 엘리먼트 생성
 async function loadRecommends(question_id){
     const recommends = await ShowRecommend(question_id);
-    console.log("추천 데이터", recommends);
     
     // 여긴 선언된 디테일스를 가져올 수 없습니다
 
