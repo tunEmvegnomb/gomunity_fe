@@ -1,0 +1,12 @@
+#logout {
+    display: none;
+}
+
+.small_main {
+    position: relative;
+    width: 100vw;
+}
+
+.big_main {
+    display: inline;
+}
