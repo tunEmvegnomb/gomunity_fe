@@ -10,3 +10,35 @@
 .big_main {
     display: inline;
 }
+
+header {
+    width: 100vw;
+    position: initial;
+    height: 60px;
+    border: solid 1px black;
+    background-color: #84bf8b;
+}
+
+.mean_list img {
+    width: 400px;
+    height: 200px;
+}
+
+.mean_list {
+    flex-direction: column;
+}
+
+.main_post {
+    padding: 0;
+}
+
+.gomunity_mean {
+    margin: 0;
+}
+
+.index_image {
+    margin: 0 0 0 -42px;
+    max-width: 100%;
+    height: 100%;
+    display: block;
+}
