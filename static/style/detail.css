@@ -111,6 +111,15 @@ main {
     align-items: center;
     padding: 0 !important;
 }
+.answer-btn2 {
+    height: 20%;
+    margin: 5px !important;
+    font-size: 13px;
+    align-items: center;
+    padding: 0 !important;
+    color: white !important;
+    background-color: red !important;
+}
 
 .input-group button {
     z-index: 0 !important;
@@ -251,3 +260,11 @@ main {
 #image:hover {
     cursor: pointer;
 }
+.button_box {
+    display: flex;
+    flex-direction: row;
+    flex-basis: auto;
+    float: right;
+    margin-right: 200px;
+}
+
