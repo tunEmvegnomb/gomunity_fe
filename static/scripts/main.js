@@ -1,9 +1,6 @@
 window.onload = async function loadQuestions(){
     const questions = await getQuestions();
     const div_cards = document.getElementsByClassName("cards")[0];
-    const searchInput = document.getElementById('search_input');
-    const searchBtn = document.getElementById('search_btn');
-    searchBtn.setAttribute("onclick",'search()');
     questions.forEach((question) => {
         const div_col = document.createElement("div");
         div_col.setAttribute("class", "col");
@@ -47,16 +44,6 @@ window.onload = async function loadQuestions(){
         } else {
             imagecard.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${question.image}`);
         }
-        let val = searchInput.value;
-        let str = question.title;
-        // console.log(str);
-        // if (str.includes(val)){
-        //     console.log("성공");
-        // }
-        // console.log("실패")
     })
     localStorage.removeItem("question_id")
 }
-// window.addEventListener('click', async function search() {
-    
-// })
