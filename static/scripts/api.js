@@ -194,16 +194,16 @@ async function createQuestion() {
 
 async function goDetail(question_id) {
     localStorage.setItem("question_id", question_id);
-    window.location.replace(`detail.html`);
+    location.href = '/detail.html';
 }
 
 async function goarticle(question_id){
     localStorage.setItem("question_id", question_id);
-    window.location.replace(`create_article.html`);
+    location.href = '/create_article.html';;
 }
 async function createarticle(){
     localStorage.removeItem("question_id");
-    window.location.replace(`create_article.html`);
+    location.href = '/create_article.html';
 }
 
 
@@ -243,7 +243,7 @@ async function updateQuestion(question_id) {
         else {
             alert(response_json.message);
         }
-        window.location.replace(`detail.html`);
+        location.href = '/detail.html';
     }
 }
 

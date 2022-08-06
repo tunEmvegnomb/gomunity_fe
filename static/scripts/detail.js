@@ -15,9 +15,9 @@ window.onload = async function loadDetails() {
 
     // 이미지 클릭시 새로운탭에서 원본이미지 확인
     let img = document.getElementsByTagName("img");
-    for (let x = 0; x < img.length; x++) {
-        img.item(x).onclick = function () { window.open(this.src) };
-    }
+    for (let target_image of img){
+        img.item(target_image).onclick = () => {window.open(target_image.src)};
+     }
 
     // 질문글 추천 버튼
     const recommend_button = document.getElementById("recommend_button");
@@ -93,7 +93,7 @@ window.onload = async function loadDetails() {
         button_answer_edit.setAttribute("onclick", `openEditBox(${comment.id})`);
         button_answer_edit.setAttribute("type", "button");
         button_answer_edit.innerText = "수정"
-        button_answer_delete.setAttribute("class", "btn btn-danger answer-btn");
+        button_answer_delete.setAttribute("class", "btn btn-danger answer-btn2");
         button_answer_delete.setAttribute("type", "button");
         button_answer_delete.setAttribute("onclick", `deleteComment(${comment.id})`);
         button_answer_delete.innerText = "삭제";
