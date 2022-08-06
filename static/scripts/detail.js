@@ -1,6 +1,3 @@
-console.log('here detail.js');
-
-
 window.onload = async function loadDetails() {
     // 게시글
     const question_id = localStorage.getItem("question_id");
@@ -16,9 +13,14 @@ window.onload = async function loadDetails() {
         username = "익명유저";
     }
 
+    // 이미지 클릭시 새로운탭에서 원본이미지 확인
+    let img = document.getElementsByTagName("img");
+    for (let x = 0; x < img.length; x++) {
+        img.item(x).onclick = function () { window.open(this.src) };
+    }
+
     // 질문글 추천 버튼
     const recommend_button = document.getElementById("recommend_button");
-
     recommend_button.setAttribute("onclick", `loadRecommends(${question_id})`);
 
     const questionlike = details.like;
@@ -40,14 +42,14 @@ window.onload = async function loadDetails() {
     
     const button_like_question = document.getElementsByClassName("title_like_box")[0];
     button_like_question.setAttribute("class", "btn btn-primary");
-    button_like_question.innerText = " ♥  " + details.like.length;
+    button_like_question.innerText = " ♡  " + details.like.length;
     button_like_question.setAttribute("onclick", `likeQuestion(${question_id})`);
     if (questionlike.includes(user_id) != true) {
         button_like_question.setAttribute("class", "btn btn-primary");
-        button_like_question.innerText = " ♥  " + details.like.length;
+        button_like_question.innerText = " ♡  " + details.like.length;
     } else {
         button_like_question.setAttribute("class", "btn btn-danger");
-        button_like_question.innerText = " ♡  " + details.like.length;
+        button_like_question.innerText = " ♥  " + details.like.length;
     }
     
     const edit_btn = document.getElementById("hidden_edit_btn")
@@ -84,7 +86,6 @@ window.onload = async function loadDetails() {
         div_answer_comment.setAttribute("class", "answer_comment");
         div_answer_user.setAttribute("class", "answer_user");
         div_answer_image.setAttribute("class", "answer_image")
-
         div_answer_text.setAttribute("class", "answer_text");
         div_answer_like.setAttribute("class", "answer_like");
         div_answer_edit.setAttribute("class", "answer_edit");
@@ -96,16 +97,15 @@ window.onload = async function loadDetails() {
         button_answer_delete.setAttribute("type", "button");
         button_answer_delete.setAttribute("onclick", `deleteComment(${comment.id})`);
         button_answer_delete.innerText = "삭제";
-        
         button_answer_like.setAttribute("type", "button");
         button_answer_like.setAttribute("class", "btn btn-primary");
-        button_answer_like.innerText = " ♥  " + comment.like.length;
+        button_answer_like.innerText = " ♡  " + comment.like.length;
         if (comment.like.includes(user_id) != true) {
             button_answer_like.setAttribute("class", "btn btn-primary");
-            button_answer_like.innerText = " ♥  " + comment.like.length;
+            button_answer_like.innerText = " ♡  " + comment.like.length;
         } else {
             button_answer_like.setAttribute("class", "btn btn-danger");
-            button_answer_like.innerText = " ♡  " + comment.like.length;
+            button_answer_like.innerText = " ♥  " + comment.like.length;
         }
         button_answer_like.setAttribute("id", "Answer_like");
         button_answer_like.setAttribute("onclick", `likeAnswer(${comment.id})`);
@@ -116,22 +116,15 @@ window.onload = async function loadDetails() {
         div_answer_list.appendChild(div_answer_box);
         div_answer_box.appendChild(div_answer_profile_image);
         div_answer_profile_image.appendChild(profile_image);
-        
-        
         div_answer_box.appendChild(div_answer_comment);
         div_answer_comment.appendChild(div_answer_user);
         div_answer_comment.appendChild(div_answer_image);
         div_answer_comment.appendChild(div_answer_text);
         div_answer_comment.appendChild(div_answer_like);
-
-        
-
         div_answer_box.appendChild(div_answer_edit);
         div_answer_edit.appendChild(button_answer_edit);
         div_answer_edit.appendChild(button_answer_delete);
-
         div_answer_list.appendChild(hr_underbar);
-
         div_answer_like.appendChild(button_answer_like);
 
         
@@ -202,7 +195,6 @@ function openEditBox(answer_number) {
 // 추천 데이터를 넣어줄 HTML 엘리먼트 생성
 async function loadRecommends(question_id){
     const recommends = await ShowRecommend(question_id);
-    console.log("추천 데이터", recommends);
     
     // 여긴 선언된 디테일스를 가져올 수 없습니다
 
@@ -230,4 +222,5 @@ async function loadRecommends(question_id){
         recommend_card.appendChild(recommend_title);
         recommend_card.appendChild(recommend_hr);
     })
+    recommend_button.style.display = 'none';
 }

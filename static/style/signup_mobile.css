@@ -1,0 +1,34 @@
+.container {
+    flex-direction: column;
+}
+
+.side {
+    height: 54vh;
+    width: 100vw;
+    background: rgb(231, 196, 42);
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    font-size: 15px;
+    width: 185px;
+    height: 35px;
+    border: 0;
+    border-bottom: 1.5px solid black;
+    margin: 5px 5px;
+}
+
+.signup {
+    height: 33vh;
+    width: 95vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 0px solid black;
+}
+
+body {
+    margin: 0
+}

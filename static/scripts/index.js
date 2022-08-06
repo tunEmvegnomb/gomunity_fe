@@ -1,20 +1,17 @@
-
-// const notice_list = getNotices();
-// console.log(notice_list)
-
 window.onload = async function loadNotices(){
     const notices = await getNotices();
-    console.log(notices);
     const notice_list = document.getElementById("notices")
 
     notices.forEach(notice => {
         // const newNotice = document.createElement("div");
         const noticeTitle = document.createElement("h1");
         const noticeContent = document.createElement("p");
+        const hr_underbar = document.createElement("hr");
         noticeTitle.innerText = notice.title;
         noticeContent.innerText = notice.content;
         notice_list.appendChild(noticeTitle);
         notice_list.appendChild(noticeContent);
+        noticeContent.appendChild(hr_underbar);
     })
 }
 window.addEventListener('load', async function checkLogin() {
@@ -53,19 +50,11 @@ window.addEventListener('load', async function checkLogin() {
         logoutButton.setAttribute("onclick", "location.href='/login.html'")
     }
 });
-// window.onload = async function loadArticles(){
-//     articles = await getArticles()
-//     console.log(articles)
-//     const article_list = document.getElementById("articles")
 
-//     articles.forEach(article => {
-//         const newArticle = document.createElement("div");
-//         const articleImage = document.createElement("img")
-//         articleImage.setAttribute("src", `${backend_base_url}${article.image}`)
-//         newArticle.setAttribute("id", article.id) //모달
-//         newArticle.innerText = article.title
-//         newArticle.setAttribute("onclick", "articleDetail(this.id)") //모달
-//         newArticle.appendChild(articleImage)
-//         article_list.appendChild(newArticle)
-//     });
-// }
+// 반응형을 위한 big_main 복사본 만들기
+window.addEventListener("load", ()=>{
+    const div_small_main = document.getElementsByClassName("small_main")[0];
+    const div_big_main = document.getElementsByClassName("big_main")[0];
+    // div_small_main.appendChild(div_big_main);
+    // div_big_main.style.display="none";
+})
