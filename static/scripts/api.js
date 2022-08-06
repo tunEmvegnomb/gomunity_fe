@@ -7,22 +7,23 @@ const frontend_base_url = "https://gomunity.shop";
 
 // 로그인체크
 window.addEventListener('load', async function checkLogin() {
-    const payload = localStorage.getItem("payload")
-    const parsed_payload = await JSON.parse(payload)
-    const username = document.getElementById("username")
-    const logoutButton = document.getElementById("logout")
+    const payload = localStorage.getItem("payload");
+    const parsed_payload = await JSON.parse(payload);
+    const username = document.getElementById("username");
+    const logoutButton = document.getElementById("logout");
 
     if (parsed_payload) {
-        username.innerText = parsed_payload.username
-        logoutButton.innerText = "로그아웃"
-        logoutButton.setAttribute("onclick", "logout()")
+        username.innerText = parsed_payload.username;
+        logoutButton.innerText = "로그아웃";
+        logoutButton.setAttribute("onclick", "logout()");
     } else {
 
         if(!logoutButton){} 
         else{        
-            username.innerText = "회원가입"
-            logoutButton.innerText = "로그인"
-            logoutButton.setAttribute("onclick", "location.href='/login.html'")
+            username.innerText = "회원가입";
+            username.setAttribute("onclick", "location.href='/signup.html'");
+            logoutButton.innerText = "로그인";
+            logoutButton.setAttribute("onclick", "location.href='/login.html'");
         }
     }
 });
