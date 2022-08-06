@@ -268,3 +268,34 @@ main {
     margin-right: 200px;
 }
 
+.btn-primary {
+    color: rgb(253, 99, 191);
+}
+
+.btn-primary:hover {
+    background-color: rgb(253, 99, 191);
+}
+
+.btn-success {
+    background-color: #198754;
+}
+
+.btn-info {
+    background-color: rgb(253, 230, 20);
+    border:rgb(253, 230, 20);
+}
+
+.btn-info:hover {
+    background-color: rgb(255, 239, 100);
+    border:rgb(255, 239, 100);
+}
+
+#recommend_button {
+    background-color: #9185A7; 
+    border:#9185A7; 
+}
+
+#recommend_button:hover {
+    background-color: #775aae; 
+    border:#775aae; 
+}

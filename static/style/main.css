@@ -130,16 +130,12 @@ main {
 }
 .card-image:hover {
     transform: scale(1.05);
-    cursor:pointer
+    cursor: pointer;
 }
 * a {
     text-decoration: none;
     text-decoration-color: blue;
 }
-.font_title:hover {
-    cursor:pointer;
-}
-
 .card-text {
     overflow: hidden;
     white-space: nowrap;
@@ -160,4 +156,33 @@ main {
     width: 200px;
     text-align: center;
 }
+.font_title {
+    color: #198754;
+    height: 20px !important;
+}
+.nav-link {
+    color: #198754;
+}
+.nav-link:hover {
+    color: #198754;
+}
 
+#username {
+    background-color: rgb(253, 99, 191);
+    border: rgb(253, 99, 191);
+}
+
+.btn-danger {
+    background-color: #775aae;
+    border: #775aae;
+}
+
+.btn-danger:hover {
+    background-color: #775aae;
+    border: #775aae;
+}
+.font_title:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    color: #198754;
+}
