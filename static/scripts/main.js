@@ -2,6 +2,7 @@ window.onload = async function loadQuestions(){
     const questions = await getQuestions();
     const div_cards = document.getElementsByClassName("cards")[0];
     questions.forEach((question) => {
+        console.log(question)
         const div_col = document.createElement("div");
         div_col.setAttribute("class", "col");
         div_cards.appendChild(div_col);
@@ -31,8 +32,16 @@ window.onload = async function loadQuestions(){
 
         const p_text = document.createElement("p");
         p_text.setAttribute("class", "card-text");
+        p_text.setAttribute("id","viewer");
         p_text.innerText = question.content;
         div_card_body.appendChild(p_text);
+
+        const viewer = toastui.Editor.factory({
+            el: document.querySelector('#viewer'),
+            viewer: true,
+            height: '50px',
+            initialValue: question.content
+            });
 
         const div_count = document.createElement("div");
         div_count.setAttribute("class","count-list");

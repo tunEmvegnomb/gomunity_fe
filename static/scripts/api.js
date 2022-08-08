@@ -9,7 +9,7 @@ const frontend_base_url = "https://gomunity.shop";
 window.addEventListener('load', async function checkLogin() {
     const payload = localStorage.getItem("payload");
     const parsed_payload = await JSON.parse(payload);
-    const username = document.getElementById("username");
+    const username = document.getElementById("username2");
     const logoutButton = document.getElementById("logout");
 
     if (parsed_payload) {
@@ -20,8 +20,8 @@ window.addEventListener('load', async function checkLogin() {
 
         if(!logoutButton){} 
         else{        
-            username.innerText = "회원가입";
-            username.setAttribute("onclick", "location.href='/signup.html'");
+            username2.innerText = "회원가입";
+            username2.setAttribute("onclick", "location.href='/signup.html'");
             logoutButton.innerText = "로그인";
             logoutButton.setAttribute("onclick", "location.href='/login.html'");
         }
