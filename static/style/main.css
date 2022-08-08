@@ -1,31 +1,27 @@
 @font-face {
-    font-family: 'HS-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/HS-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'IBMPlex-Bold';
+    src: url('../font/IBMPlexMono-Bold.otf');
 }
 
 @font-face {
-    font-family: 'HSYuji-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'IBMPlex-Regular';
+    src: url('../font/IBMPlexMono-Regular.otf');
 }
 
 @font-face {
-    font-family: 'GangwonEdu_OTFBoldA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'IBMPlex-Thin';
+    src: url('../font/IBMPlexMono-Thin.otf');
 }
 
 
 ul li {
-    font-family: '산토끼', 'HS-Regular';
+    font-family: 'IBMPlex-Bold';
+    font-weight: bold;
+    font-size: 18px;
 }
 
 nav {
-    font-family: '산토끼', 'HS-Regular';
+    font-family: 'IBMPlex-Bold';
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -33,7 +29,7 @@ nav {
 }
 
 main {
-    font-family: '강원에듀', 'GangwonEdu_OTFBoldA'
+    font-family: 'IBMPlex-Thin';
 }
 
 .navbar {
@@ -64,7 +60,7 @@ main {
 
 .cards {
     margin-left: 440px;
-    margin-top: 40px;
+    margin-top: 54px;
 }
 .main_icon {
     width: 200px;
@@ -84,9 +80,23 @@ main {
 }
 
 .btn-info {
+    background-color: #775aae;
+    border: #775aae;
     margin-right: 20px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px
     , rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
+    --bs-btn-focus-shadow-rgb: 119,90,174;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-info:hover {
+    background-color: #775aae;
+    border: #775aae;
+}
+.btn-info:focus {
+    background-color: #775aae;
+    border: #775aae;
 }
 
 .row {
@@ -95,16 +105,24 @@ main {
 
 .navbar-brand {
     margin-left: 200px;
-    font-size: 30px;
+    font-size: 40px;
+    font-family: 'IBMPlex-Bold';
+    color: white;
+    -webkit-text-stroke-width: 0.7px;
+    -webkit-text-stroke-color: black;
 }
 .navbar-brand:hover {
     transform: scale(1.05);
 }
 
 .btn-warning {
+    color: white;
+    font-weight: bold;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px
     , rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
+    --bs-btn-focus-shadow-rgb: 119,90,174;
 }
+
 .card-body {
     height: 40%;
     overflow: hidden;
@@ -119,14 +137,18 @@ main {
     height: 470px !important;
 }
 .card-title {
-    height: 40%;
+    min-height: 50%;
 }
 .card-image {
     max-height: 100%;
     max-width: 100%;
     width: 100%;
     height: 257px;
-    object-fit: fill;
+    /* object-fit: fill; */
+
+    /* background-image: url; */
+    background-position: center;
+    background-size: cover;
 }
 .card-image:hover {
     transform: scale(1.05);
@@ -156,8 +178,14 @@ main {
     width: 200px;
     text-align: center;
 }
+
+.nav-item button {
+    width: 200px;
+}
+
 .font_title {
     color: #198754;
+    font-size: 17px;
 }
 .nav-link {
     color: #198754;
@@ -167,21 +195,42 @@ main {
 }
 
 #username {
-    background-color: rgb(253, 99, 191);
-    border: rgb(253, 99, 191);
+    background-color: #775aae;
+    border: #775aae;
 }
 
 .btn-danger {
     background-color: #775aae;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px
+    , rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
+    --bs-btn-focus-shadow-rgb: 119,90,174;
     border: #775aae;
+    font-weight: bold;
 }
 
 .btn-danger:hover {
     background-color: #775aae;
     border: #775aae;
+    color: black;
+}
+
+.btn-danger:focus {
+    background-color: #775aae;
+    border: #775aae;
 }
 .font_title:hover {
-    transform: scale(1.1);
     cursor: pointer;
     color: #198754;
+}
+
+h5:hover {
+    transform: scale(1.05);
+}
+a:hover {
+    color: #198754;
+}
+
+.btn-warning {
+    color: white;
+    font-weight: bold;
 }

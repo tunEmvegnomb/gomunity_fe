@@ -2,6 +2,7 @@ window.onload = async function loadQuestions(){
     const questions = await getQuestions();
     const div_cards = document.getElementsByClassName("cards")[0];
     questions.forEach((question) => {
+        console.log(question)
         const div_col = document.createElement("div");
         div_col.setAttribute("class", "col");
         div_cards.appendChild(div_col);
@@ -10,7 +11,12 @@ window.onload = async function loadQuestions(){
         div_h100.setAttribute("class", "card h-100")
         div_col.appendChild(div_h100);
 
-        const imagecard = document.createElement("img");
+        // const imagecard = document.createElement("img");
+        // imagecard.setAttribute("class", "card-image");
+        // imagecard.setAttribute("onclick", `goDetail(${question.id})`);
+        // div_h100.appendChild(imagecard);
+
+        const imagecard = document.createElement("div");
         imagecard.setAttribute("class", "card-image");
         imagecard.setAttribute("onclick", `goDetail(${question.id})`);
         div_h100.appendChild(imagecard);
@@ -26,23 +32,25 @@ window.onload = async function loadQuestions(){
         const a_title = document.createElement("a");
         a_title.setAttribute("class", "font_title");
         a_title.setAttribute("onclick", `goDetail(${question.id})`);
-        a_title.innerText = question.title;
+        a_title.innerText = question.title.substr(0,26)+"...";
         h5_title.appendChild(a_title);
 
         const p_text = document.createElement("p");
         p_text.setAttribute("class", "card-text");
-        p_text.innerText = question.content;
+        p_text.innerHTML = question.content;
         div_card_body.appendChild(p_text);
 
         const div_count = document.createElement("div");
         div_count.setAttribute("class","count-list");
-        div_count.innerText = "댓글💬 "+ question.answer.length+"　　 좋아요💕"+ question.like.length;
+        div_count.innerText = "　좋아요💕"+ question.like.length+"　　 댓글💬 "+ question.answer.length;
         div_card_body.appendChild(div_count);
         
         if(question.image == null){
-            imagecard.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png`);
+            // imagecard.setAttribute("background-image", `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png')`);
+            imagecard.style.backgroundImage = `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png')`;
         } else {
-            imagecard.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${question.image}`);
+            imagecard.setAttribute("background-image", `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${question.image}')`);
+            imagecard.style.backgroundImage = `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${question.image}')`;
         }
     })
     localStorage.removeItem("question_id")

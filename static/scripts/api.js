@@ -9,7 +9,7 @@ const frontend_base_url = "https://gomunity.shop";
 window.addEventListener('load', async function checkLogin() {
     const payload = localStorage.getItem("payload");
     const parsed_payload = await JSON.parse(payload);
-    const username = document.getElementById("username");
+    const username = document.getElementById("username2");
     const logoutButton = document.getElementById("logout");
 
     if (parsed_payload) {
@@ -161,7 +161,7 @@ async function createQuestion() {
     
     const title = document.getElementById("article_title").value;
     const hashtag = document.getElementById("hashtag").value;
-    const content = document.getElementById("article_content").value;
+    const content = editor.getHTML();
     const image = document.getElementById("article_image").files[0];
 
     const formdata = new FormData();
@@ -434,4 +434,26 @@ async function ShowRecommend(question_id) {
     })
     const response_json = await response.json();
     return response_json;
+}
+
+//로그인시 엔터키 여기서 13은 키보드의 엔터키의 코드가 13이라고 함
+function enterLogin() {
+    if (window.event.keyCode == 13) {
+        //엔터키를 눌렀을 때, 실행될 함수를 집어 넣어준다.
+        login_api();
+    }
+}
+
+//회원가입시 엔터키
+function enterSignup() {
+    if (window.event.keyCode == 13) {
+        signup();
+    }
+}
+
+//검색기능시 엔터키
+function enterSearch() {
+    if (window.event.keyCode == 13) {
+        
+    }
 }

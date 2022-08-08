@@ -34,7 +34,14 @@ window.onload = async function loadDetails() {
     } else {
         document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png`)
     }
-    document.getElementById("question_post").innerText = details.content;
+
+    // 마크다운 조회
+    const viewer = toastui.Editor.factory({
+        el: document.querySelector('#viewer'),
+        viewer: true,
+        height: '500px',
+        initialValue: details.content
+    });
 
     document.getElementById("deletequestion").setAttribute("onclick",`deleteQuestion(${question_id})`)
     document.getElementById("updatequestion").setAttribute("onclick",`goarticle(${question_id})`)

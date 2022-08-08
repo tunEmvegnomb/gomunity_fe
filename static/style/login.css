@@ -1,21 +1,20 @@
 @font-face {
-    font-family: 'HS-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/HS-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'IBMPlex-Bold';
+    src: url('../font/IBMPlexMono-Bold.otf');
 }
 
 @font-face {
-    font-family: 'HSYuji-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'IBMPlex-Regular';
+    src: url('../font/IBMPlexMono-Regular.otf');
 }
 
-*{
-    font-family: '산토끼체', 'HS-Regular';
+@font-face {
+    font-family: 'IBMPlex-Thin';
+    src: url('../font/IBMPlexMono-Thin.otf');
 }
-body{
+
+body {
+    font-family: 'IBMPlex-Bold';
     height: 100vh;
     border: 1px solid black;
 }
@@ -26,7 +25,7 @@ body{
 .side {
     height: 100vh;
     width: 35vw;
-    background: rgb(253, 99, 191);
+    background: #775aae;
     display: flex;
     flex-direction: column;
     
@@ -34,7 +33,7 @@ body{
 .title {
     width: 35vw;
     height: 20vh;
-    background: rgb(253, 99, 191);
+    background: #775aae;
     cursor: pointer;
     font-size: 50px;
     color: white;
@@ -44,7 +43,7 @@ body{
 .title_img {
     width: 35vw;
     height: 80vh;
-    background: rgb(253, 99, 191);
+    background: #775aae;
     font-size: 50px;
     color: white;
     font-weight: bold;
@@ -78,11 +77,18 @@ button {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px
     , rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
     font-size: 20px;
-    color: white;
+    color: black;
     font-weight: bold;
-    -webkit-text-stroke: 0.5px black;
+    /* -webkit-text-stroke: 0.5px black; */
 }
 a {
     text-decoration: none;
+}
+
+input::placeholder {
+    color: black;
+}
+input:focus-visible {
+    outline: 0px;
 }
 
