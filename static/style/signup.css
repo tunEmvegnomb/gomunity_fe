@@ -1,21 +1,20 @@
 @font-face {
-    font-family: 'HS-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/HS-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'IBMPlex-Bold';
+    src: url('../font/IBMPlexMono-Bold.otf');
 }
 
 @font-face {
-    font-family: 'HSYuji-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'IBMPlex-Regular';
+    src: url('../font/IBMPlexMono-Regular.otf');
 }
 
-*{
-    font-family: '산토끼체', 'HS-Regular';
+@font-face {
+    font-family: 'IBMPlex-Thin';
+    src: url('../font/IBMPlexMono-Thin.otf');
 }
-body{
+
+body {
+    font-family: 'IBMPlex-Bold';
     height: 100vh;
     border: 1px solid black;
 }
@@ -38,7 +37,7 @@ body{
     font-size: 50px;
     color: white;
     font-weight: bold;
-    -webkit-text-stroke: 1px black;
+    -webkit-text-stroke: 0.6px black;
 }
 .title_img {
     width: 35vw;
@@ -47,7 +46,7 @@ body{
     font-size: 50px;
     color: white;
     font-weight: bold;
-    -webkit-text-stroke: 1px black;
+    -webkit-text-stroke: 0.6px black;
     margin: 150px 0px 0px 0px;
 }
 .signup {
@@ -68,7 +67,7 @@ input {
     margin: 5px 5px;
 }
 button {
-    background: rgb(253, 98, 190);
+    background: #775aae;
     border-radius: 8px;
     width: 200px;
     height: 50px;
@@ -79,9 +78,16 @@ button {
     font-size: 20px;
     color: white;
     font-weight: bold;
-    -webkit-text-stroke: 0.5px black;
+    /* -webkit-text-stroke: 0.5px black; */
 }
 a {
     text-decoration: none;
+}
+
+input::placeholder {
+    color: black;
+}
+input:focus-visible {
+    outline: 0px;
 }
 

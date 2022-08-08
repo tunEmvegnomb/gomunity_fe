@@ -20,8 +20,8 @@ window.addEventListener('load', async function checkLogin() {
 
         if(!logoutButton){} 
         else{        
-            username2.innerText = "회원가입";
-            username2.setAttribute("onclick", "location.href='/signup.html'");
+            username.innerText = "회원가입";
+            username.setAttribute("onclick", "location.href='/signup.html'");
             logoutButton.innerText = "로그인";
             logoutButton.setAttribute("onclick", "location.href='/login.html'");
         }
@@ -434,4 +434,26 @@ async function ShowRecommend(question_id) {
     })
     const response_json = await response.json();
     return response_json;
+}
+
+//로그인시 엔터키 여기서 13은 키보드의 엔터키의 코드가 13이라고 함
+function enterLogin() {
+    if (window.event.keyCode == 13) {
+        //엔터키를 눌렀을 때, 실행될 함수를 집어 넣어준다.
+        login_api();
+    }
+}
+
+//회원가입시 엔터키
+function enterSignup() {
+    if (window.event.keyCode == 13) {
+        signup();
+    }
+}
+
+//검색기능시 엔터키
+function enterSearch() {
+    if (window.event.keyCode == 13) {
+        
+    }
 }

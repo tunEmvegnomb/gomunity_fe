@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../static/style/login.css">
     <script src="../static/scripts/api.js"></script>
     <link href="../static/style/login_mobile.css" media="(max-width:500px)" rel="stylesheet">
@@ -36,8 +38,8 @@
             <div class="title_img">Login to your<br>existing account</div>
         </div>
         <form class="login">
-            <input id="username" name="username" type="text" placeholder="username">
-            <input id="password" name="password" type="password" placeholder="password">
+            <input id="username" onkeyup="enterLogin()" name="username" type="text" placeholder="username">
+            <input id="password" onkeyup="enterLogin()" name="password" type="password" placeholder="password">
             <button type="button" onclick="login_api()">Login</button>
             <a href="signup.html">아이디가 없으신가요?</a>
         </form>
