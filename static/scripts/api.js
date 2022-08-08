@@ -161,7 +161,7 @@ async function createQuestion() {
     
     const title = document.getElementById("article_title").value;
     const hashtag = document.getElementById("hashtag").value;
-    const content = document.getElementById("article_content").value;
+    const content = editor.getHTML();
     const image = document.getElementById("article_image").files[0];
 
     const formdata = new FormData();

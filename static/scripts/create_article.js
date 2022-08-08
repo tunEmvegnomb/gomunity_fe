@@ -16,6 +16,7 @@ window.addEventListener('load', async function updatearticle() {
 
     if(!question_id){
         document.getElementById("btn_create_article").setAttribute("onclick",`createQuestion()`)    
+
     } else{
         document.getElementById("btn_create_article").setAttribute("onclick",`updateQuestion(${question_id})`)
         const question_data = await QuestionDetail(question_id)
