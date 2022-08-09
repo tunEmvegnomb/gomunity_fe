@@ -1,301 +1,326 @@
 .wrap {
-    display: flex;
-    flex-direction: row;
-    /* margin-top: 60px; */
-    font-family: 'IBMPlex-Bold';
+  display: flex;
+  flex-direction: row;
+  /* margin-top: 60px; */
+  font-family: "IBMPlex-Bold";
 }
 
-
 main {
-    margin-right: 180px;
-    
+  margin-right: 180px;
 }
 
 .detail {
-    display: flex;
-    flex-direction: column;
-    width: 90vh;
-    height: 100%;
-    margin-left: 33vh;
+  display: flex;
+  flex-direction: column;
+  width: 90vh;
+  height: 100%;
+  margin-left: 33vh;
 }
 
 .question_post {
-    word-break:break-all;
-    word-wrap:break-word; 
+  word-break: break-all;
+  word-wrap: break-word;
 }
 
 .user_info {
-    color: gray;
-    font-size: 14px;
+  color: gray;
+  font-size: 14px;
 }
 
 .title_box {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 80px;
 }
 
 .title_box_child {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.btn-danger, .btn-primary {
-    height: 100%;
-    background-image: none;
-    background-color: transparent;
-    border-color: transparent;
-    border: none;
-}
-.btn-danger {
-    color: #775aae;
+.btn-danger,
+.btn-primary {
+  height: 100%;
+  background-image: none;
+  background-color: transparent;
+  border-color: transparent;
+  border: none;
 }
 .btn-primary {
-    color: #775aae;
+  color: #775aae;
 }
 
 .btn {
-    border-radius: 4px !important;
+  border-radius: 4px !important;
 }
 
 .recommend_question {
-    display: flex;
-    flex-direction: column;
-    margin-top: 90px;
-    margin-left: 20px;
-    width: 15vw;
+  display: flex;
+  flex-direction: column;
+  margin-top: 90px;
+  margin-left: 20px;
+  width: 15vw;
 }
 
 .form-control {
-    resize: none;
+  resize: none;
 }
 
-.answer_list{
-    display: flex;
-    flex-direction: column;
+.answer_list {
+  display: flex;
+  flex-direction: column;
 }
 
 .answer_comment {
-    width: 85%;
-    display: flex;
-    flex-direction: column;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
 }
-.answer_edit{
-    width: 2vw;
+.answer_edit {
+  width: 2vw;
 }
-.answer_profile_image{
-    padding-right: 15px;
-    padding-bottom: 25px;
+.answer_profile_image {
+  padding-right: 15px;
+  padding-bottom: 25px;
 }
-
 
 .answer_user {
-    text-decoration-line: underline;
+  text-decoration-line: underline;
 }
 
 .answer_box {
-    display: flex;
+  display: flex;
 }
 
-.answer_edit{
-    height: 100px;
-    display: flex;
-    flex-direction: column;
+.answer_edit {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
 }
 
 .answer-btn {
-    height: 20%;
-    margin: 5px !important;
-    font-size: 13px;
-    align-items: center;
-    padding: 0 !important;
+  height: 20%;
+  margin: 5px !important;
+  font-size: 13px;
+  align-items: center;
+  padding: 0 !important;
 }
 .answer-btn2 {
-    height: 20%;
-    margin: 5px !important;
-    font-size: 13px;
-    align-items: center;
-    padding: 0 !important;
-    color: white !important;
-    background-color: red !important;
+  height: 20%;
+  margin: 5px !important;
+  font-size: 13px;
+  align-items: center;
+  padding: 0 !important;
+  background-color: #775aae !important;
 }
 
 .input-group button {
-    z-index: 0 !important;
+  z-index: 0 !important;
 }
-.answer_text{
-    word-break:break-all;
-    word-wrap:break-word;
+.answer_text {
+  word-break: break-all;
+  word-wrap: break-word;
 }
-.answer_box{
-    margin-top: 15px;
+.answer_box {
+  margin-top: 15px;
 }
 .answer_edit_input {
-    width: 100%;
-    resize: none;
+  width: 100%;
+  resize: none;
 }
-#user_name{
-    font-size: 20px;
+#user_name {
+  font-size: 20px;
 }
 #Question_like {
-    font-size: 20px;
+  font-size: 30px;
+  color: #775aae;
+  background-color: white;
+  box-shadow: 0 0 0 0;
+  border: 0;
+  margin-left: 10px;
+}
+#Question_like:hover {
+  color: #775aae;
+  background-color: white;
+  box-shadow: 0 0 0 0;
+  border: 0;
 }
 .answer_like {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 #Answer_like {
-    font-size: 20px;
+  font-size: 20px;
+  color: #775aae;
+  background-color: white;
+  box-shadow: 0 0 0 0;
+  border: 0;
+}
+#answer_like:hover {
+  color: #775aae;
+  background-color: white;
+  box-shadow: 0 0 0 0;
+  border: 0;
 }
 .title_box_child {
-    width: 85%;
+  width: 85%;
 }
 .question_title {
-    word-break:break-all;
-    word-wrap:break-word;
+  word-break: break-all;
+  word-wrap: break-word;
 }
 .input-group {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .comment_box {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
-.btn_list{
-    display: flex;
-    flex-direction: column;
-    width: 7vw;
-    height: 100%;
+.btn_list {
+  display: flex;
+  flex-direction: column;
+  width: 7vw;
+  height: 100%;
 }
-.hidden_edit_btn{
-    margin-left: 40px;
+.hidden_edit_btn {
+  margin-left: 40px;
 }
-.put_question_btn{
-    width: 50px;
-    height: 25px;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-size: 11pt;
+.put_question_btn {
+  width: 50px;
+  height: 25px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 10px;
 }
 .del_question_btn {
-    align-self: center;
-    width: 50px;
-    height: 25px;
-    margin-bottom: 50px;
-    font-size: 11pt;
+  align-self: center;
+  width: 50px;
+  height: 25px;
+  margin-bottom: 50px;
+  font-size: 10px;
+  background-color: #775aae;
 }
-.postquestion_btn{
-    height: 90px;
+.postquestion_btn {
+  height: 90px;
 }
-
 
 #image {
-    width: 320px;
-    height: 320px;
+  width: 320px;
+  height: 320px;
 }
 
 #hashtag {
-    color: blue;
+  color: blue;
 }
 #comment_img {
-    max-width: 200px;
+  max-width: 200px;
 }
 .answer_image {
-    width: 240px;
-    height: 180px;
+  width: 240px;
+  height: 180px;
 }
 
 .recommend_question button {
-    margin-top: 8px;
+  margin-top: 8px;
 }
 
 .recommend_question_list {
-    width: 12vw;
-    height: 30vh;
+  width: 12vw;
+  height: 30vh;
 }
 
 .recommend_card {
-    width: 12vw;
-    height: 18vh;
-    /* border: 1px solid black; */
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 12vw;
+  height: 18vh;
+  /* border: 1px solid black; */
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .recommend_image {
-    width: 100%;
-    height: 70%;
-    background-image: url('https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png');
-    background-position: center;
-    background-size: cover;
+  width: 100%;
+  height: 70%;
+  background-image: url("https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png");
+  background-position: center;
+  background-size: cover;
 }
 .recommend_image:hover {
-    transform: scale(1.05);
-    cursor: pointer;
+  transform: scale(1.05);
+  cursor: pointer;
 }
 .recommend_title {
-    font-size: 20px;
+  font-size: 20px;
 }
 .recommend_title:hover {
-    transform: scale(1.05);
-    box-shadow: 200px 0 0 0 rgba(10, 223, 243, 0.25) inset, 
-                -200px 0 0 0 rgba(10,223,243,0.25) inset;
-    cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 200px 0 0 0 rgba(10, 223, 243, 0.25) inset,
+    -200px 0 0 0 rgba(10, 223, 243, 0.25) inset;
+  cursor: pointer;
 }
 
-.answer_image img{
-    width: 150px;
-    height: 150px;
+.answer_image img {
+  width: 150px;
+  height: 150px;
 }
 
 .answer_image img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #image:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 .button_box {
-    display: flex;
-    flex-direction: row;
-    flex-basis: auto;
-    float: right;
-    margin-right: 200px;
+  display: flex;
+  flex-direction: row;
+  flex-basis: auto;
+  float: right;
+  margin-right: 200px;
 }
 
 .btn-primary {
-    color: red;
+  color: red;
 }
 
 .btn-primary:hover {
-    background-color: #775aae;
+  background-color: #775aae;
 }
 
 .btn-success {
-    background-color: #198754;
+  background-color: #198754;
 }
 
 .btn-info {
-    background-color: #775aae;
-    border:rgb(253, 230, 20);
+  background-color: #775aae;
+  border: rgb(253, 230, 20);
 }
 
 .btn-info:hover {
-    background-color: rgb(255, 239, 100);
-    border:rgb(255, 239, 100);
+  background-color: #775aae;
+  border: #775aae;
 }
 
 #recommend_button {
-    background-color: #9185A7; 
-    border:#9185A7; 
+  background-color: #9185a7;
+  border: #9185a7;
 }
 
 #recommend_button:hover {
-    background-color: #775aae; 
-    border:#775aae; 
+  color: black;
+  background-color: #775aae;
+  border: #775aae;
+}
+.tui-editor-contents {
+  font-size: 24px !important;
+}
+#search_btn {
+  color: white;
+}
+#search_btn:hover {
+  color: black;
 }

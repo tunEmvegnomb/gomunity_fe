@@ -32,7 +32,7 @@ window.onload = async function loadQuestions(){
         const a_title = document.createElement("a");
         a_title.setAttribute("class", "font_title");
         a_title.setAttribute("onclick", `goDetail(${question.id})`);
-        a_title.innerText = question.title.substr(0,26)+"...";
+        a_title.innerText = question.title.substr(0,22)+"...";
         h5_title.appendChild(a_title);
 
         const p_text = document.createElement("p");
@@ -46,7 +46,6 @@ window.onload = async function loadQuestions(){
         div_card_body.appendChild(div_count);
         
         if(question.image == null){
-            // imagecard.setAttribute("background-image", `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png')`);
             imagecard.style.backgroundImage = `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png')`;
         } else {
             imagecard.setAttribute("background-image", `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${question.image}')`);

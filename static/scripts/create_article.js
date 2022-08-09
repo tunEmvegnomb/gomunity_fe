@@ -20,12 +20,21 @@ window.addEventListener('load', async function updatearticle() {
     } else{
         document.getElementById("btn_create_article").setAttribute("onclick",`updateQuestion(${question_id})`)
         const question_data = await QuestionDetail(question_id)
+        console.log(question_data)
         let title = question_data.title
         let hashtag = question_data.hashtag
         let content = question_data.content
-
+        
+        toastui.Editor({
+            el: document.querySelector('#editor'),
+            previewStyle: 'vertical',
+            height: '500px',
+            initialValue: content
+        });
+        
+        
         document.getElementById("article_title").value = title
         document.getElementById("hashtag").value = hashtag
-        document.getElementById("article_content").value = content
+        // document.getElementById("editorid").value = content
     }
 })

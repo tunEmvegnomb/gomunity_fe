@@ -215,7 +215,7 @@ async function updateQuestion(question_id) {
 
     const title = document.getElementById("article_title").value;
     const hashtag = document.getElementById("hashtag").value;
-    const content = document.getElementById("article_content").value;
+    const content = editor.getHTML();
     const image = document.getElementById("article_image").files[0];
     
     const formdata = new FormData();
@@ -240,6 +240,7 @@ async function updateQuestion(question_id) {
         const response_json = await response.json()
         if (response.status == 200) {
             alert(response_json.message);
+            console.log(editor.getHTML())
         }
         else {
             alert(response_json.message);
