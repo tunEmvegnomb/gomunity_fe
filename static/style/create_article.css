@@ -1,43 +1,55 @@
 .create_article {
-    min-width: 100vh;
-    min-height: 70%;
-    margin-left: 48vh;
-    margin-top: 80px;
+  min-width: 100vh;
+  min-height: 70%;
+  margin-left: 48vh;
+  margin-top: 80px;
 }
 
 .article_title {
-    width: 100%;
-    height: 40px;
-    margin-bottom: 20px;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
 }
 
 .article_category {
-    width: 150px;
-    height: 40px;
-    margin-bottom: 20px;
-    font-family: Arial, Helvetica, sans-serif;
+  width: 150px;
+  height: 40px;
+  margin-bottom: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .article_content {
-    width: 100%;
-    height: 400px;
-    resize: none;
+  width: 100%;
+  height: 400px;
+  resize: none;
 }
 .article_image {
-    width: 150px;
-    height: 40px;
-    margin-bottom: 20px;
+  width: 150px;
+  height: 40px;
+  margin-bottom: 20px;
 }
 
 .btn_create_article {
-    float: right;
-    width: 300px;
-    height: 40px;
-    background-color: #775aae;
-    color: white;
+  float: right;
+  width: 300px;
+  height: 40px;
+  background-color: #775aae;
+  color: white;
 }
 .hashtag {
-    width:100%;
-    margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.ProseMirror {
+  font-size: 24px !important;
+}
+.toastui-editor-contents {
+  font-size: 24px !important;
+}
+#search_btn {
+    color: white;
+  }
+#search_btn:hover {
+    color: black;
 }
 

@@ -48,15 +48,12 @@ window.onload = async function loadDetails() {
     document.getElementById("hashtag").innerText = details.hashtag;
     
     const button_like_question = document.getElementsByClassName("title_like_box")[0];
-    button_like_question.setAttribute("class", "btn btn-primary");
     button_like_question.innerText = " ♡  " + details.like.length;
     button_like_question.setAttribute("onclick", `likeQuestion(${question_id})`);
     if (questionlike.includes(user_id) != true) {
-        button_like_question.setAttribute("class", "btn btn-primary");
         button_like_question.innerText = " ♡  " + details.like.length;
     } else {
-        button_like_question.setAttribute("class", "btn btn-danger");
-        button_like_question.innerText = " ♥  " + details.like.length;
+        button_like_question.innerText = " 💕  " + details.like.length;
     }
     
     const edit_btn = document.getElementById("hidden_edit_btn")
@@ -105,14 +102,11 @@ window.onload = async function loadDetails() {
         button_answer_delete.setAttribute("onclick", `deleteComment(${comment.id})`);
         button_answer_delete.innerText = "삭제";
         button_answer_like.setAttribute("type", "button");
-        button_answer_like.setAttribute("class", "btn btn-primary");
         button_answer_like.innerText = " ♡  " + comment.like.length;
         if (comment.like.includes(user_id) != true) {
-            button_answer_like.setAttribute("class", "btn btn-primary");
             button_answer_like.innerText = " ♡  " + comment.like.length;
         } else {
-            button_answer_like.setAttribute("class", "btn btn-danger");
-            button_answer_like.innerText = " ♥  " + comment.like.length;
+            button_answer_like.innerText = " 💕  " + comment.like.length;
         }
         button_answer_like.setAttribute("id", "Answer_like");
         button_answer_like.setAttribute("onclick", `likeAnswer(${comment.id})`);
