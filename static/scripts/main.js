@@ -52,5 +52,5 @@ window.onload = async function loadQuestions(){
             imagecard.style.backgroundImage = `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${question.image}')`;
         }
     })
-    localStorage.removeItem("question_id")
+    localStorage.removeItem("question_id");
 }

@@ -30,3 +30,14 @@ window.addEventListener('load', async function updatearticle() {
         document.getElementById("hashtag").value = hashtag
     }
 })
+
+// 이미지 업로드 API
+editor.addHook("addImageBlobHook", async function (blob, callback) {
+    console.log("블랍", blob)
+
+    const formdata = new FormData();
+    formdata.append("file", blob)
+    
+    const response_json = await editorImageUpload(formdata);
+    callback(response_json.url, "image")
+});
