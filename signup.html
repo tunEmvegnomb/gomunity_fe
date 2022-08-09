@@ -39,10 +39,10 @@
             <div class="title_img">Create new <br> Gomunity account</div>
         </div>
         <form class="signup">
-            <input id="username" name="username" type="text" placeholder="username">
-            <input id="password" name="password" type="password" placeholder="password">
-            <input id="nickname" name="nickname" type="text" placeholder="nickname">
-            <input id="email" name="email" type="email" placeholder="email">
+            <input id="username" onkeyup="enterSignup()" name="username" type="text" placeholder="username">
+            <input id="password" onkeyup="enterSignup()" name="password" type="password" placeholder="password">
+            <input id="nickname" onkeyup="enterSignup()" name="nickname" type="text" placeholder="nickname">
+            <input id="email" onkeyup="enterSignup()" name="email" type="email" placeholder="email">
             <button type="button" onclick="signup()">Signup</button>
             <a href="login.html">아이디가 이미 있으신가요?</a>
         </form>

@@ -212,12 +212,14 @@ async function createarticle(){
 async function updateQuestion(question_id) {
     const category = document.getElementsByClassName("article_category")[0];
     const category_value = category.options[category.selectedIndex].textContent;
-
+    
     const title = document.getElementById("article_title").value;
     const hashtag = document.getElementById("hashtag").value;
     const content = editor.getHTML();
+    console.log(content)
     const image = document.getElementById("article_image").files[0];
     
+
     const formdata = new FormData();
     formdata.enctype = "multipart/form-data"
     
