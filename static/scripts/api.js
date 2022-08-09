@@ -153,6 +153,24 @@ async function getQuestions(){
     return response_json
 }
 
+// 이미지 업로드 API
+editor.addHook("addImageBlobHook", function (blob, callback) {
+    console.log(blob)
+
+    const formdata = new FormData();
+    formdata.append("file", blob)
+    
+    fetch(`${deploy_base_url}/qna/upload/`, {
+        method: "POST",
+        body: formdata,
+    }).then(response => {
+            console.log(response)
+            return response.json()
+        }).then(json => {
+            console.log(json)
+            callback(json["url"], "image")
+        })
+});
 
 // 질문글 작성
 async function createQuestion() {
