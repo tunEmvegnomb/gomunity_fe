@@ -184,6 +184,11 @@
           </select>
         </div>
         <div>
+          <input type="file" id="article_image" style="display: none;" onchange="thumnailImagePreview(this)"/>
+          <label for="article_image" class="btn-info input_label">썸네일 이미지</label>
+          <div id="preview"></div>
+        </div>
+        <div>
           <div id="editor"></div>
         </div>
         <script>
@@ -199,9 +204,6 @@
         <script src="../static/scripts/api.js"></script>
         <script src="../static/scripts/create_article.js"></script>
 
-        <div>
-          <input type="file" id="article_image" />
-        </div>
         <div>
           <button
             type="button"
