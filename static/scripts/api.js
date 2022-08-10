@@ -1,8 +1,8 @@
-const backend_base_url = "http://127.0.0.1:8000"
+// const backend_base_url = "http://127.0.0.1:8000"
 // const deploy_base_url = "http://3.34.167.27"
-// const deploy_base_url = "https://gomunity.org";
-const frontend_base_url = "http://127.0.0.1:5500"
-// const frontend_base_url = "https://gomunity.shop";
+const deploy_base_url = "https://gomunity.org";
+// const frontend_base_url = "http://127.0.0.1:5500"
+const frontend_base_url = "https://gomunity.shop";
 
 
 // 로그인체크
@@ -39,7 +39,7 @@ async function signup() {
         email: document.getElementById("email").value,
     }
 
-    const response = await fetch(`${backend_base_url}/user/signup/`,{
+    const response = await fetch(`${deploy_base_url}/user/signup/`,{
         headers:{
             Accept:"application/json",
             'Content-type':'application/json',
@@ -64,7 +64,7 @@ async function login_api() {
         username: document.getElementById("username").value,
         password: document.getElementById("password").value
     }
-    const response = await fetch(`${backend_base_url}/user/api/custom/token/`,{
+    const response = await fetch(`${deploy_base_url}/user/api/custom/token/`,{
         headers:{
             Accept:"application/json",
             'Content-type':'application/json'
@@ -111,7 +111,7 @@ window.addEventListener('load', () => {
                   );
                   return response.json();
             };
-            requestRefreshToken(backend_base_url + "/user/api/token/refresh/").then((data)=>{
+            requestRefreshToken(deploy_base_url + "/user/api/token/refresh/").then((data)=>{
                 const accessToken = data.access;
     
                 localStorage.setItem("access", accessToken);
@@ -136,7 +136,7 @@ function logout() {
 
 // 공지사항 조회
 async function getNotices(){
-    const response = await fetch(`${backend_base_url}/webmaster/`,{
+    const response = await fetch(`${deploy_base_url}/webmaster/`,{
         method: 'GET',
     });
     const response_json = await response.json();
@@ -146,7 +146,7 @@ async function getNotices(){
 
 // 질문글 목록 조회
 async function getQuestions(){
-    const response = await fetch(`${backend_base_url}/qna/list/`,{
+    const response = await fetch(`${deploy_base_url}/qna/list/`,{
         method: 'GET',
     });
     const response_json = await response.json();
@@ -156,7 +156,7 @@ async function getQuestions(){
 
 // 블랍 이미지 업로드
 async function editorImageUpload(formdata) {
-    const response = await fetch(`${backend_base_url}/qna/upload/`, {
+    const response = await fetch(`${deploy_base_url}/qna/upload/`, {
         method: "POST",
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
@@ -188,7 +188,7 @@ async function createQuestion() {
         formdata.append('image', image);
     }
     if (category_value === "질의응답"){
-        const response = await fetch(`${backend_base_url}/qna/`,{
+        const response = await fetch(`${deploy_base_url}/qna/`,{
             headers:{
                 Authorization: "Bearer " + localStorage.getItem("access"),
             },
@@ -246,7 +246,7 @@ async function updateQuestion(question_id) {
     }
 
     if (category_value === "질의응답"){
-        const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
+        const response = await fetch(`${deploy_base_url}/qna/${question_id}`,{
             headers:{
                 Authorization: "Bearer " + localStorage.getItem("access"),
             },
@@ -270,7 +270,7 @@ async function updateQuestion(question_id) {
 async function deleteQuestion(question_id) {
     
     if (confirm("정말 삭제하시겠습니까??") == true){
-        const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
+        const response = await fetch(`${deploy_base_url}/qna/${question_id}`,{
             headers:{
                 Authorization: "Bearer " + localStorage.getItem("access"),
                 Accept: "application/json",
@@ -292,7 +292,7 @@ async function deleteQuestion(question_id) {
 
 //질문글 상세조회
 async function QuestionDetail(question_id){
-    const response = await fetch(`${backend_base_url}/qna/${question_id}`,{
+    const response = await fetch(`${deploy_base_url}/qna/${question_id}`,{
         method: 'GET',
     });
     const response_json = await response.json();
@@ -314,7 +314,7 @@ async function postComment() {
         formdata.append('image', comment_img);
     }
 
-    const response = await fetch(`${backend_base_url}/qna/${question_id}/answer/`,{
+    const response = await fetch(`${deploy_base_url}/qna/${question_id}/answer/`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
         },
@@ -350,7 +350,7 @@ async function updateComment(answer_id) {
         formdata.append('image', comment_img);
     }
 
-    const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}`,{
+    const response = await fetch(`${deploy_base_url}/qna/answer/${answer_id}`,{
         headers:{            
             Authorization: "Bearer " + localStorage.getItem("access"),
             // Accept: "application/json",
@@ -378,7 +378,7 @@ async function deleteComment(answer_id) {
         content: document.getElementsByClassName(answer_id)[0].childNodes[0].value
     }
     if (confirm("정말 삭제하시겠습니까??") == true){
-        const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}`,{
+        const response = await fetch(`${deploy_base_url}/qna/answer/${answer_id}`,{
             headers:{
                 Authorization: "Bearer " + localStorage.getItem("access"),
                 Accept: "application/json",
@@ -400,7 +400,7 @@ async function deleteComment(answer_id) {
 
 // 답변 좋아요
 async function likeAnswer(answer_id){
-    const response = await fetch(`${backend_base_url}/qna/like/answer/${answer_id}`,{
+    const response = await fetch(`${deploy_base_url}/qna/like/answer/${answer_id}`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
             Accept: "application/json",
@@ -422,7 +422,7 @@ async function likeAnswer(answer_id){
 
 //질문 좋아요
 async function likeQuestion(question_id){
-    const response = await fetch(`${backend_base_url}/qna/like/question/${question_id}`,{
+    const response = await fetch(`${deploy_base_url}/qna/like/question/${question_id}`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
             Accept: "application/json",
@@ -446,7 +446,7 @@ async function likeQuestion(question_id){
 // 질문글 추천 시스템
 async function ShowRecommend(question_id) {
 
-    const response = await fetch(`${backend_base_url}/qna/recommend/${question_id}`, {
+    const response = await fetch(`${deploy_base_url}/qna/recommend/${question_id}`, {
         method: 'POST',
     })
     const response_json = await response.json();
