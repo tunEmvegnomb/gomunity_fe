@@ -41,3 +41,19 @@ editor.addHook("addImageBlobHook", async function (blob, callback) {
     const response_json = await editorImageUpload(formdata);
     callback(response_json.url, "image")
 });
+
+// 썸네일 미리보기
+function thumnailImagePreview(input) {
+    const base_div = document.querySelector("#preview");
+    base_div.innerHTML = `<img src="" id="preview_thumbnail" class="base-img" height="200" width="200" style="margin-bottom:20px">`
+
+    if (input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        document.getElementById('preview_thumbnail').src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+    } else {
+    document.getElementById('preview_thumbnail').src = "";
+    }
+}

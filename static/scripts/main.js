@@ -2,7 +2,6 @@ window.onload = async function loadQuestions(){
     const questions = await getQuestions();
     const div_cards = document.getElementsByClassName("cards")[0];
     questions.forEach((question) => {
-        console.log(question)
         const div_col = document.createElement("div");
         div_col.setAttribute("class", "col");
         div_cards.appendChild(div_col);
@@ -35,20 +34,20 @@ window.onload = async function loadQuestions(){
         a_title.innerText = question.title.substr(0,22)+"...";
         h5_title.appendChild(a_title);
 
-        const p_text = document.createElement("p");
-        p_text.setAttribute("class", "card-text");
-        p_text.innerHTML = question.content;
-        div_card_body.appendChild(p_text);
+        // const p_text = document.createElement("p");
+        // p_text.setAttribute("class", "card-text");
+        // p_text.innerHTML = question.content;
+        // div_card_body.appendChild(p_text);
 
         const div_count = document.createElement("div");
         div_count.setAttribute("class","count-list");
         div_count.innerText = "　좋아요💕"+ question.like.length+"　　 댓글💬 "+ question.answer.length;
         div_card_body.appendChild(div_count);
-        
+        console.log(question.image);
         if(question.image == null){
-            imagecard.style.backgroundImage = `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png')`;
+            imagecard.style.backgroundImage = `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunitydefault.jpg')`;
         } else {
-            imagecard.setAttribute("background-image", `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${question.image}')`);
+            imagecard.setAttribute("style", "backgroundImage");
             imagecard.style.backgroundImage = `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${question.image}')`;
         }
     })
