@@ -206,11 +206,6 @@ main {
   height: 90px;
 }
 
-#image {
-  width: 320px;
-  height: 320px;
-}
-
 #hashtag {
   color: blue;
 }
@@ -323,4 +318,7 @@ main {
 }
 #search_btn:hover {
   color: black;
+}
+img {
+  cursor: pointer;
 }

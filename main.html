@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../static/style/main.css">
-  <script src="../static/scripts/api.js"></script>
   <script src="../static/scripts/main.js"></script>
+  <script src="../static/scripts/api.js"></script>
   <link href="../static/style/main_mobile.css" media="(max-width:500px)" rel="stylesheet">
 
   <!-- favicon -->
@@ -45,8 +45,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="d-flex" role="search">
-          <input class="form-control me-2" id="search_input" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" id="search_btn" type="submit">Search</button>
+          <input type="text" style="display:none;">
+          <input class="form-control me-2" id="search_input" onkeyup="enterSearch()" type="search" placeholder="Search" aria-label="Search">
+          <button type="button" class="btn btn-outline-success" id="search_btn" onclick="searchFilter()">Search</button>
         </form>
       </div>
       <div class="button_box">

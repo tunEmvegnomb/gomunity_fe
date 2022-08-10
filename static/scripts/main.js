@@ -1,7 +1,13 @@
+
+
 window.onload = async function loadQuestions(){
     const questions = await getQuestions();
     const div_cards = document.getElementsByClassName("cards")[0];
+
+    // 검색 값
+    
     questions.forEach((question) => {
+        
         const div_col = document.createElement("div");
         div_col.setAttribute("class", "col");
         div_cards.appendChild(div_col);
@@ -30,6 +36,7 @@ window.onload = async function loadQuestions(){
         
         const a_title = document.createElement("a");
         a_title.setAttribute("class", "font_title");
+        // a_title.setAttribute("name","font_title");
         a_title.setAttribute("onclick", `goDetail(${question.id})`);
         a_title.innerText = question.title.substr(0,22)+"...";
         h5_title.appendChild(a_title);
@@ -43,7 +50,6 @@ window.onload = async function loadQuestions(){
         div_count.setAttribute("class","count-list");
         div_count.innerText = "　좋아요💕"+ question.like.length+"　　 댓글💬 "+ question.answer.length;
         div_card_body.appendChild(div_count);
-        console.log(question.image);
         if(question.image == null){
             imagecard.style.backgroundImage = `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunitydefault.jpg')`;
         } else {
@@ -53,3 +59,7 @@ window.onload = async function loadQuestions(){
     })
     localStorage.removeItem("question_id");
 }
+
+
+
+
