@@ -1,6 +1,6 @@
 // const backend_base_url = "http://127.0.0.1:8000"
-const deploy_base_url = "http://3.34.167.27"
-// const deploy_base_url = "https://gomunity.org";
+// const deploy_base_url = "http://3.34.167.27"
+const deploy_base_url = "https://gomunity.org";
 //const frontend_base_url = "http://127.0.0.1:5500"
 const frontend_base_url = "https://gomunity.shop";
 

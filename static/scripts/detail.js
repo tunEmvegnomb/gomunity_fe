@@ -1,6 +1,9 @@
 window.onload = async function loadDetails() {
     // 게시글
     const question_id = localStorage.getItem("question_id");
+    if (localStorage.getItem("question_id")) {
+        localStorage.removeItem("question_id")
+    }
     const details = await QuestionDetail(question_id);
     let user_id = "";
     let username = "";
