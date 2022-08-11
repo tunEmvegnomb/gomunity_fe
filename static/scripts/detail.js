@@ -1,6 +1,7 @@
 window.onload = async function loadDetails() {
     // 게시글
     const question_id = localStorage.getItem("question_id");
+    
     const details = await QuestionDetail(question_id);
     let user_id = "";
     let username = "";
@@ -224,4 +225,7 @@ async function loadRecommends(question_id){
         recommend_card.appendChild(recommend_hr);
     })
     recommend_button.style.display = 'none';
+    if (localStorage.getItem("question_id")) {
+        localStorage.removeItem("question_id")
+    }
 }
