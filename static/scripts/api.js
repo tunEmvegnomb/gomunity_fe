@@ -9,8 +9,8 @@ const frontend_base_url = "http://127.0.0.1:5500"
 window.addEventListener('load', async function checkLogin() {
     const payload = localStorage.getItem("payload");
     const parsed_payload = await JSON.parse(payload);
-    const username = document.getElementById("username2");
-    const logoutButton = document.getElementById("logout");
+    const username = document.getElementById("btn-username");
+    const logoutButton = document.getElementById("btn-logout");
 
     if (parsed_payload) {
         username.innerText = parsed_payload.username;
@@ -475,6 +475,17 @@ function enterSearch() {
     }
 }
 
+// async function getSearch(){
+//     let inputvalue = document.getElementById("search_input").value;
+
+//     const response = await fetch(`${backend_base_url}/qna/list/search?search=${inputvalue}`, {
+//         method: 'GET',
+//     });
+//     const response_json = await response.json();
+//     return response_json
+// }
+
+
 //검색기능
 async function searchFilter() {
     let inputvalue = document.getElementById("search_input").value;
@@ -484,9 +495,12 @@ async function searchFilter() {
     })
     const response_json = await response.json();
     const searchedQuestions = response_json;
+
+    // const searchedQuestions = await getSearch();
+    console.log(searchedQuestions);
     const element = document.querySelectorAll(".col");
     element.forEach((card)=>card.remove());
-    
+
     const div_cards = document.getElementsByClassName("cards")[0];
 
     //검색 값
@@ -534,11 +548,11 @@ async function searchFilter() {
         div_count.setAttribute("class","count-list");
         div_count.innerText = "　좋아요💕"+ question.like.length+"　　 댓글💬 "+ question.answer.length;
         div_card_body.appendChild(div_count);
-        if(question.image == null){
+        if(question.image_path == "/media/"){
             imagecard.style.backgroundImage = `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunitydefault.jpg')`;
         } else {
             imagecard.setAttribute("style", "backgroundImage");
-            imagecard.style.backgroundImage = `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${question.image}')`;
+            imagecard.style.backgroundImage = `url('https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${question.image_path}')`;
         }
     })
     localStorage.removeItem("question_id");
