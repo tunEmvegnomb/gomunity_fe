@@ -8,7 +8,7 @@ window.onload = async function loadDetails() {
     try{
         const payload_token = localStorage.getItem("payload");
         user_id = JSON.parse(payload_token).user_id;
-        username = JSON.parse(payload_token).username;
+        username = JSON.parse(payload_token).nickname;
     } catch {
         user_id = "00";
         username = "익명유저";
