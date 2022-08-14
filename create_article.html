@@ -176,16 +176,21 @@
           />
         </div>
         <div>
-          <select class="article_category" name="article_category">
+          <select class="article_category" name="article_category" onchange="showCategory()">
             <option value="none">=== 선택 ===</option>
             <option value="freeboard" disabled>자유</option>
             <option value="qnaboard" selected>질의응답</option>
             <option value="docboard">자료</option>
           </select>
+          <select id="archive-category" class="article_category" style="display: none;">
+            <option value="everyone">공용자료</option>
+            <option value="nabacamp" disabled>내일배움캠프자료</option>
+            <option value="codingco" disabled>팀 코딩의코</option>
+          </select>
         </div>
         <div>
           <input type="file" id="article_image" style="display: none;" onchange="thumnailImagePreview(this)"/>
-          <label for="article_image" class="btn-info input_label">썸네일 이미지</label>
+          <label id="thumbnail-label" for="article_image" class="btn-info input_label" style="display: block;">썸네일 이미지</label>
           <div id="preview"></div>
         </div>
         <div>

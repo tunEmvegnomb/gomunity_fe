@@ -57,3 +57,26 @@ function thumnailImagePreview(input) {
     document.getElementById('preview_thumbnail').src = "";
     }
 }
+
+// 질의응답/자료 옵션선택
+function showCategory() {
+    const articleOption = document.querySelector(".article_category").value;
+    console.log(articleOption);
+    
+    // 질의응답 선택
+    if (articleOption === "qnaboard") {
+        const thumbnail = document.getElementById("thumbnail-label");
+        thumbnail.style.display = "block";
+        const archiveCategory = document.getElementById("archive-category");
+        archiveCategory.style.display = "none";
+    }
+    else if (articleOption === "docboard") {
+        const thumbnail = document.getElementById("thumbnail-label");
+        thumbnail.style.display = "none";
+        const archiveCategory = document.getElementById("archive-category");
+        archiveCategory.style.display = "block";
+    }
+    
+
+
+}
