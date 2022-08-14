@@ -74,15 +74,41 @@
           <a class="nav-link disabled">거북이반 커뮤니티, 거뮤니티</a>
       </li>
       <li class="nav-item">
-        <button type="button" class="btn btn-danger" onclick="window.location.href='create_article.html'">울지마 질문해!🐢</button>
+        <button type="button" class="btn btn-danger" onclick="window.location.href='create_article.html'">꿀팁 공유하기✍</button>
       </li>
     </ul>
 
     <div class="board">
-      <div class="board-option"></div>
+      <div class="board-option">
+        <div class="board-category">
+          
+          
+          
+          
+        </div>
+        <div id="multi-btn" class="btn-group" role="group" aria-label="Basic mixed styles example">
+          <button type="button" class="btn btn-danger">Everyone</button>
+          <button type="button" class="btn btn-warning">Nabacamp</button>
+          <button type="button" class="btn btn-success">Codingco</button>
+        </div>
+
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">추천순</a></li>
+            <li class="breadcrumb-item"><a href="#">가나다순</a></li>
+            <li class="breadcrumb-item active" aria-current="page">조회수순            </li>
+          </ol>
+        </nav>
+      </div>
       <div class="board-contents">
         <ul>
-          <li></li>
+          <li id="contents_column">
+            <div>
+              <a>카테고리</a>
+              <a>제목이 들어갈 영역</a>
+              <a>조회 수</a>
+            </div>
+          </li>
           <li></li>
           <li></li>
           <li></li>
@@ -95,6 +121,9 @@
           <li></li>
           <li></li>
           <li></li>          
+          <li></li>
+          <li></li>
+          <li></li>
         </ul>
         <div class="pagination">
           <a href="#"><</a>

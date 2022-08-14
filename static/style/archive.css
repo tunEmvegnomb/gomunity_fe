@@ -119,9 +119,15 @@
     font-weight: bold;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px,
       rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
-    --bs-btn-focus-shadow-rgb: 119, 90, 174;
+    --bs-btn-focus-shadow-rgb: 255,199,32;
   }
   
+  .btn-success {
+    color: white;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px,
+      rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
+  }
   .card-body {
     height: 40%;
     overflow: hidden;
@@ -241,22 +247,28 @@
 
   .board {
     width: 1000px;
-    height: 900px;
-    background-color: #198754;
-    margin: 80px 0 0 550px;
+    height: 94vh;
+    background-color: #84bf8b;
+    margin: 60px 0 0 550px;
   }
   
   .board-option {
     width: 100%;
     height: 15%;
-    background-color: #775aae;
+    margin-left: 30px;
+    /* background-color: #775aae; */
   }
 
   .board-contents {
     width: 100%;
     height: 85%;
-    background-color: #84bf8b;
-    padding: 15px;
+    /* background-color: #84bf8b; */
+    /* padding: 15px; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .board-contents ul {
@@ -268,26 +280,69 @@
   }
 
   .board-contents ul li {
-    width: 800px;
+    width: 950px;
     height: 40px;
     background-color: aliceblue;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
+    box-shadow: 1px 1px rgb(86, 120, 149);
+    /* box-shadow: 0 0 0 2.5px #59a562; */
     list-style: none;
+    padding: 0 15px;
+
+    border-radius: 5px;
+  }
+
+  .board-contents ul li div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%;
+  }
+
+  .board-contents ul li div a {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .pagination{
-    width: 100%;
+    width: 950px;
     height: 60px;
-    background-color: #775aae;
+    /* background-color: #775aae; */
 
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    margin-left: 10px;
   }
 
   .pagination a {
-    color: black;
+    color: white;
     font-size: 20px;
-    font-weight: thin;
+    font-weight: bold;
+    background-color: #775aae;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+
+    border-radius: 5px;
+    box-shadow: 2px 2px #291848;
+  }
+
+  .board-filter {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .breadcrumb {
+    margin-top: 20px;
+    font-size: 20px;
+  }
+
+  #multi-btn {
+    margin-top: 14px;
   }
