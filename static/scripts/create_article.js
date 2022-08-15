@@ -76,7 +76,4 @@ function showCategory() {
         const archiveCategory = document.getElementById("archive-category");
         archiveCategory.style.display = "block";
     }
-    
-
-
 }

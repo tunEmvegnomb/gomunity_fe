@@ -573,3 +573,14 @@ async function searchFilter() {
     })
     localStorage.removeItem("question_id");
     }
+
+
+// 자료글 조회
+async function getArchive() {
+
+    const response = await fetch(`${backend_base_url}/archive/list/`, {
+        method: 'GET',
+    })
+    const response_json = await response.json();
+    return response_json;
+}
