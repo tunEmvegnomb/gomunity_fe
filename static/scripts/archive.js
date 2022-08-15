@@ -13,9 +13,10 @@ window.onload = async function loadArchiveList(){
 
         // HTML Element 값 넣기
         archiveTitle.innerText = archive.title;
-        archiveTitle.setAttribute("href", `goArchiveDetail(${index})`);
+        archiveTitle.setAttribute("onclick", `goArchiveDetail(${archive.id})`);
+        archiveTitle.setAttribute("class", "archivetitle");
         archiveCategory.innerText = archive.article_category;
-        archiveAuthor.innerText = archive.user_nickname;
+        archiveAuthor.innerText = archive.user;
         archiveLike.innerText = archive.like.length;
 
 

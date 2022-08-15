@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>거북이반 커뮤니티, 거뮤니티 🐢메인페이지</title>
+    <title>거북이반 커뮤니티, 거뮤니티 🐢게시글 작성</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -179,13 +179,13 @@
           <select class="article_category" name="article_category" onchange="showCategory()">
             <option value="none">=== 선택 ===</option>
             <option value="freeboard" disabled>자유</option>
-            <option value="qnaboard" selected>질의응답</option>
+            <option value="qnaboard">질의응답</option>
             <option value="docboard">자료</option>
           </select>
           <select id="archive-category" class="article_category" style="display: none;">
-            <option value="everyone">공용자료</option>
-            <option value="nabacamp" disabled>내일배움캠프자료</option>
-            <option value="codingco" disabled>팀 코딩의코</option>
+            <option value="1">공용자료</option>
+            <option value="2" disabled>내일배움캠프자료</option>
+            <option value="3" disabled>팀 코딩의코</option>
           </select>
         </div>
         <div>
@@ -214,7 +214,7 @@
             type="button"
             id="btn_create_article"
             class="btn_create_article"
-            onclick="createQuestion()"
+            onclick="handleCreateArticle()"
           >
             작성하기
           </button>

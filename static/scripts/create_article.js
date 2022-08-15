@@ -15,31 +15,31 @@ window.addEventListener('load', async function updatearticle() {
     }
 
     if(!question_id){
-        document.getElementById("btn_create_article").setAttribute("onclick",`createQuestion()`)    
+        document.getElementById("btn_create_article").setAttribute("onclick",`handleCreateArticle()`);    
 
     } else{
-        document.getElementById("btn_create_article").setAttribute("onclick",`updateQuestion(${question_id})`)
-        const question_data = await QuestionDetail(question_id)
-        let title = question_data.title
-        let hashtag = question_data.hashtag
-        let content = question_data.content
+        document.getElementById("btn_create_article").setAttribute("onclick",`updateQuestion(${question_id})`);
+        const question_data = await QuestionDetail(question_id);
+        let title = question_data.title;
+        let hashtag = question_data.hashtag;
+        let content = question_data.content;
 
         editor.setHTML(content);
         
-        document.getElementById("article_title").value = title
-        document.getElementById("hashtag").value = hashtag
+        document.getElementById("article_title").value = title;
+        document.getElementById("hashtag").value = hashtag;
     }
 })
 
 // 이미지 업로드 API
 editor.addHook("addImageBlobHook", async function (blob, callback) {
-    console.log("블랍", blob)
+    console.log("블랍", blob);
 
     const formdata = new FormData();
-    formdata.append("file", blob)
+    formdata.append("file", blob);
     
     const response_json = await editorImageUpload(formdata);
-    callback(response_json.url, "image")
+    callback(response_json.url, "image");
 });
 
 // 썸네일 미리보기

@@ -346,3 +346,6 @@
   #multi-btn {
     margin-top: 14px;
   }
+  .archivetitle {
+    cursor: pointer;
+  }

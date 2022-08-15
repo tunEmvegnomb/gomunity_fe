@@ -183,11 +183,22 @@ async function editorImageUpload(formdata) {
 }
 
 
-// 질문글 작성
-async function createQuestion() {
+// 게시글 옵션에 따른 작성 API로 보내는 핸들링함수
+function handleCreateArticle() {
     const category = document.getElementsByClassName("article_category")[0];
     const category_value = category.options[category.selectedIndex].textContent;
-    
+
+    if (category_value == "질의응답") {
+        createQuestion();
+    }
+    else if (category_value == "자료") {
+        postArchive();
+    }
+}
+
+
+// 질문글 작성
+async function createQuestion() {
     const title = document.getElementById("article_title").value;
     const hashtag = document.getElementById("hashtag").value;
     const content = editor.getHTML();
@@ -202,23 +213,21 @@ async function createQuestion() {
     if (image != undefined){
         formdata.append('image', image);
     }
-    if (category_value === "질의응답"){
-        const response = await fetch(`${backend_base_url}/qna/`,{
-            headers:{
-                Authorization: "Bearer " + localStorage.getItem("access"),
-            },
-            method:'POST',
-            body:formdata
-        })
-        const response_json = await response.json()
+    const response = await fetch(`${backend_base_url}/qna/`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+        },
+        method:'POST',
+        body:formdata
+    })
+    const response_json = await response.json()
 
-        if (response.status == 200){
-            alert(response_json.message);
-        } else {
-            alert(response_json.message);
-        }
-        window.location.replace('main.html');
+    if (response.status == 200){
+        alert(response_json.message);
+    } else {
+        alert(response_json.message);
     }
+    window.location.replace('main.html');
 }
 
 
@@ -583,4 +592,60 @@ async function getArchive() {
     })
     const response_json = await response.json();
     return response_json;
+}
+
+// 자료 상세 리다이렉트
+async function goArchiveDetail(archive_id) {
+    localStorage.setItem("archive_id", archive_id);
+    location.href = '/detail_archive.html';
+}
+
+// 자료글 상세조회
+async function getArchiveDetail(archive_id) {
+    const response = await fetch(`${backend_base_url}/archive/${archive_id}/`, {
+        method: 'GET',
+    })
+    const response_json = await response.json();
+    return response_json;
+}
+
+//자료글 작성하기
+async function postArchive() {
+    // 자료글 폼데이터
+    const archiveCategory = document.querySelector("#archive-category").value;
+    const title = document.getElementById("article_title").value;
+    const hashtag = document.getElementById("hashtag").value;
+    const content = editor.getHTML();
+
+    const formdata = new FormData();
+    formdata.enctype = "multipart/form-data"
+    formdata.append('title', title);
+    formdata.append('hashtag', hashtag);
+    formdata.append('content', content);
+    formdata.append('category', archiveCategory);
+
+    console.log(formdata);
+
+    const response = await fetch(`${backend_base_url}/archive/`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+        },
+        method:'POST',
+        body:formdata
+    })
+    const response_json = await response.json();
+    
+    if (response.status == 200){
+        alert(response_json.message);
+    } else {
+        console.log(response_json);
+        alert(response_json.message);
+    }
+    window.location.replace('archive.html');
+}
+
+
+// 자료글 수정하기
+async function updateArchive(archive_id) {
+    
 }
