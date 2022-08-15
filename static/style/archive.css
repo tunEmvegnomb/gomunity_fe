@@ -346,3 +346,12 @@
   #multi-btn {
     margin-top: 14px;
   }
+  .archivetitle {
+    cursor: pointer;
+    width: 50%;
+    vertical-align: middle !important;
+  }
+
+  .contents-author {
+    width: 150px;
+  }

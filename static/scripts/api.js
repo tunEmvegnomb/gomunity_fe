@@ -1,8 +1,8 @@
-const backend_base_url = "http://127.0.0.1:8000"
+// const backend_base_url = "http://127.0.0.1:8000"
 // const deploy_base_url = "http://3.34.167.27"
-// const deploy_base_url = "https://gomunity.org";
-const frontend_base_url = "http://127.0.0.1:5500"
-// const frontend_base_url = "https://gomunity.shop";
+const deploy_base_url = "https://gomunity.org";
+// const frontend_base_url = "http://127.0.0.1:5500"
+const frontend_base_url = "https://gomunity.shop";
 
 
 // 로그인체크
@@ -39,7 +39,7 @@ async function signup() {
         email: document.getElementById("email").value,
     }
 
-    const response = await fetch(`${backend_base_url}/user/signup/`,{
+    const response = await fetch(`${deploy_base_url}/user/signup/`,{
         headers:{
             Accept:"application/json",
             'Content-type':'application/json',
@@ -79,7 +79,7 @@ async function login_api() {
         username: document.getElementById("username").value,
         password: document.getElementById("password").value
     }
-    const response = await fetch(`${backend_base_url}/user/api/custom/token/`,{
+    const response = await fetch(`${deploy_base_url}/user/api/custom/token/`,{
         headers:{
             Accept:"application/json",
             'Content-type':'application/json'
@@ -126,7 +126,7 @@ window.addEventListener('load', () => {
                   );
                   return response.json();
             };
-            requestRefreshToken(backend_base_url + "/user/api/token/refresh/").then((data)=>{
+            requestRefreshToken(deploy_base_url + "/user/api/token/refresh/").then((data)=>{
                 const accessToken = data.access;
     
                 localStorage.setItem("access", accessToken);
@@ -151,7 +151,7 @@ function logout() {
 
 // 공지사항 조회
 async function getNotices(){
-    const response = await fetch(`${backend_base_url}/webmaster/`,{
+    const response = await fetch(`${deploy_base_url}/webmaster/`,{
         method: 'GET',
     });
     const response_json = await response.json();
@@ -161,7 +161,7 @@ async function getNotices(){
 
 // 질문글 목록 조회
 async function getQuestions(){
-    const response = await fetch(`${backend_base_url}/qna/list/`,{
+    const response = await fetch(`${deploy_base_url}/qna/list/`,{
         method: 'GET',
     });
     const response_json = await response.json();
@@ -171,7 +171,7 @@ async function getQuestions(){
 
 // 블랍 이미지 업로드
 async function editorImageUpload(formdata) {
-    const response = await fetch(`${backend_base_url}/qna/upload/`, {
+    const response = await fetch(`${deploy_base_url}/qna/upload/`, {
         method: "POST",
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
@@ -183,11 +183,22 @@ async function editorImageUpload(formdata) {
 }
 
 
-// 질문글 작성
-async function createQuestion() {
+// 게시글 옵션에 따른 작성 API로 보내는 핸들링함수
+function handleCreateArticle() {
     const category = document.getElementsByClassName("article_category")[0];
     const category_value = category.options[category.selectedIndex].textContent;
-    
+
+    if (category_value == "질의응답") {
+        createQuestion();
+    }
+    else if (category_value == "자료") {
+        postArchive();
+    }
+}
+
+
+// 질문글 작성
+async function createQuestion() {
     const title = document.getElementById("article_title").value;
     const hashtag = document.getElementById("hashtag").value;
     const content = editor.getHTML();
@@ -202,23 +213,21 @@ async function createQuestion() {
     if (image != undefined){
         formdata.append('image', image);
     }
-    if (category_value === "질의응답"){
-        const response = await fetch(`${backend_base_url}/qna/`,{
-            headers:{
-                Authorization: "Bearer " + localStorage.getItem("access"),
-            },
-            method:'POST',
-            body:formdata
-        })
-        const response_json = await response.json()
+    const response = await fetch(`${deploy_base_url}/qna/`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+        },
+        method:'POST',
+        body:formdata
+    })
+    const response_json = await response.json()
 
-        if (response.status == 200){
-            alert(response_json.message);
-        } else {
-            alert(response_json.message);
-        }
-        window.location.replace('main.html');
+    if (response.status == 200){
+        alert(response_json.message);
+    } else {
+        alert(response_json.message);
     }
+    window.location.replace('main.html');
 }
 
 
@@ -261,7 +270,7 @@ async function updateQuestion(question_id) {
     }
 
     if (category_value === "질의응답"){
-        const response = await fetch(`${backend_base_url}/qna/${question_id}/`,{
+        const response = await fetch(`${deploy_base_url}/qna/${question_id}/`,{
             headers:{
                 Authorization: "Bearer " + localStorage.getItem("access"),
             },
@@ -285,7 +294,7 @@ async function updateQuestion(question_id) {
 async function deleteQuestion(question_id) {
     
     if (confirm("정말 삭제하시겠습니까??") == true){
-        const response = await fetch(`${backend_base_url}/qna/${question_id}/`,{
+        const response = await fetch(`${deploy_base_url}/qna/${question_id}/`,{
             headers:{
                 Authorization: "Bearer " + localStorage.getItem("access"),
                 Accept: "application/json",
@@ -307,7 +316,7 @@ async function deleteQuestion(question_id) {
 
 //질문글 상세조회
 async function QuestionDetail(question_id){
-    const response = await fetch(`${backend_base_url}/qna/${question_id}/`,{
+    const response = await fetch(`${deploy_base_url}/qna/${question_id}/`,{
         method: 'GET',
     });
     const response_json = await response.json();
@@ -329,7 +338,7 @@ async function postComment() {
         formdata.append('image', comment_img);
     }
 
-    const response = await fetch(`${backend_base_url}/qna/${question_id}/answer/`,{
+    const response = await fetch(`${deploy_base_url}/qna/${question_id}/answer/`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
         },
@@ -338,7 +347,7 @@ async function postComment() {
     })
 
     const response_json = await response.json()
-    console.log(response_json)
+    
     if (response.status == 200) {
         alert(response_json.message);
     }
@@ -365,7 +374,7 @@ async function updateComment(answer_id) {
         formdata.append('image', comment_img);
     }
 
-    const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}/`,{
+    const response = await fetch(`${deploy_base_url}/qna/answer/${answer_id}/`,{
         headers:{            
             Authorization: "Bearer " + localStorage.getItem("access"),
             // Accept: "application/json",
@@ -393,7 +402,7 @@ async function deleteComment(answer_id) {
         content: document.getElementsByClassName(answer_id)[0].childNodes[0].value
     }
     if (confirm("정말 삭제하시겠습니까??") == true){
-        const response = await fetch(`${backend_base_url}/qna/answer/${answer_id}/`,{
+        const response = await fetch(`${deploy_base_url}/qna/answer/${answer_id}/`,{
             headers:{
                 Authorization: "Bearer " + localStorage.getItem("access"),
                 Accept: "application/json",
@@ -415,7 +424,7 @@ async function deleteComment(answer_id) {
 
 // 답변 좋아요
 async function likeAnswer(answer_id){
-    const response = await fetch(`${backend_base_url}/qna/like/answer/${answer_id}/`,{
+    const response = await fetch(`${deploy_base_url}/qna/like/answer/${answer_id}/`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
             Accept: "application/json",
@@ -437,7 +446,7 @@ async function likeAnswer(answer_id){
 
 //질문 좋아요
 async function likeQuestion(question_id){
-    const response = await fetch(`${backend_base_url}/qna/like/question/${question_id}/`,{
+    const response = await fetch(`${deploy_base_url}/qna/like/question/${question_id}/`,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem("access"),
             Accept: "application/json",
@@ -462,7 +471,7 @@ async function likeQuestion(question_id){
 // 질문글 추천 시스템
 async function ShowRecommend(question_id) {
 
-    const response = await fetch(`${backend_base_url}/qna/recommend/${question_id}/`, {
+    const response = await fetch(`${deploy_base_url}/qna/recommend/${question_id}/`, {
         method: 'POST',
     })
     const response_json = await response.json();
@@ -494,7 +503,7 @@ function enterSearch() {
 // async function getSearch(){
 //     let inputvalue = document.getElementById("search_input").value;
 
-//     const response = await fetch(`${backend_base_url}/qna/list/search?search=${inputvalue}`, {
+//     const response = await fetch(`${deploy_base_url}/qna/list/search?search=${inputvalue}`, {
 //         method: 'GET',
 //     });
 //     const response_json = await response.json();
@@ -506,7 +515,7 @@ function enterSearch() {
 async function searchFilter() {
     let inputvalue = document.getElementById("search_input").value;
 
-    const response = await fetch(`${backend_base_url}/qna/list/search?search=${inputvalue}`, {
+    const response = await fetch(`${deploy_base_url}/qna/list/search?search=${inputvalue}`, {
         method: 'GET',
     })
     const response_json = await response.json();
@@ -573,3 +582,271 @@ async function searchFilter() {
     })
     localStorage.removeItem("question_id");
     }
+
+
+// 자료글 조회
+async function getArchive() {
+
+    const response = await fetch(`${deploy_base_url}/archive/list/`, {
+        method: 'GET',
+    })
+    const response_json = await response.json();
+    return response_json;
+}
+
+// 자료 상세 리다이렉트
+async function goArchiveDetail(archive_id) {
+    localStorage.setItem("archive_id", archive_id);
+    location.href = '/detail_archive.html';
+}
+
+// 자료글 상세조회
+async function getArchiveDetail(archive_id) {
+    const response = await fetch(`${deploy_base_url}/archive/${archive_id}/`, {
+        method: 'GET',
+    })
+    const response_json = await response.json();
+    return response_json;
+}
+
+//자료글 작성하기
+async function postArchive() {
+    // 자료글 폼데이터
+    const archiveCategory = document.querySelector("#archive-category").value;
+    const title = document.getElementById("article_title").value;
+    const hashtag = document.getElementById("hashtag").value;
+    const content = editor.getHTML();
+
+    const formdata = new FormData();
+    formdata.enctype = "multipart/form-data"
+    formdata.append('title', title);
+    formdata.append('hashtag', hashtag);
+    formdata.append('content', content);
+    formdata.append('category', archiveCategory);
+
+    const response = await fetch(`${deploy_base_url}/archive/`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+        },
+        method:'POST',
+        body:formdata
+    })
+    const response_json = await response.json();
+    
+    if (response.status == 200){
+        alert(response_json.message);
+    } else {
+        console.log(response_json);
+        alert(response_json.message);
+    }
+    window.location.replace('archive.html');
+}
+
+async function goArchive(archive_id){
+    localStorage.setItem("archive_id", archive_id);
+    location.href = '/create_article.html';
+}
+
+
+// 자료글 수정하기
+async function updateArchive(archive_id) {
+    const archiveCategory = document.querySelector("#archive-category").value;
+    const title = document.getElementById("article_title").value;
+    const hashtag = document.getElementById("hashtag").value;
+    const content = editor.getHTML();
+    console.log(content)
+
+    const formdata = new FormData();
+    formdata.enctype = "multipart/form-data"
+    formdata.append('title', title);
+    formdata.append('hashtag', hashtag);
+    formdata.append('content', content);
+    formdata.append('category', archiveCategory);
+
+    const response = await fetch(`${deploy_base_url}/archive/${archive_id}/`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+        },
+        method:'PUT',
+        body:formdata
+    })
+    const response_json = await response.json();
+    
+    if (response.status == 200){
+        alert(response_json.message);
+    } else {
+        console.log(response_json);
+        alert(response_json.message);
+    }
+    location.href = '/detail_archive.html';
+}
+
+// 자료글 삭제
+async function deleteArchive(archive_id) {
+    if (confirm("정말 삭제하시겠습니까??") == true){
+        const response = await fetch(`${deploy_base_url}/archive/${archive_id}/`,{
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("access"),
+            },
+            method:'DELETE',
+            // body:formdata
+        })
+        const response_json = await response.json()
+        
+        if (response.status == 200) {
+            alert(response_json.message);
+        }
+        else {
+            alert(response_json.message);
+        }
+        window.location.replace('archive.html');
+    }}
+
+// 자료글 답변 작성
+async function postArchiveComment() {
+    const archive_id = localStorage.getItem("archive_id");
+    const comment = document.getElementById("create_comment").value;
+    let comment_img = document.getElementById("comment_img").files[0];
+
+    const formdata = new FormData();
+    formdata.enctype = "multipart/form-data"
+    
+    formdata.append('content', comment);
+    if (comment_img != undefined){
+        formdata.append('image', comment_img);
+    }
+    
+    const response = await fetch(`${deploy_base_url}/archive/${archive_id}/answer/`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+        },
+        method: 'POST',
+        body: formdata
+    })
+
+    const response_json = await response.json()
+    console.log(response_json);
+    if (response.status == 200) {
+        alert(response_json.message);
+        console.log(response_json.message);
+    }
+    else if(user_id="00"){
+        alert("로그인이 필요하다북!");
+    }
+    else {
+        alert(response_json.message);
+        console.log("else"+response_json.message);
+    }
+    window.location.replace(`detail_archive.html`);
+}
+
+// 자료글 답변 수정
+async function updateArchiveComment(answer_id) {
+    const comment = document.getElementsByClassName(answer_id)[0].childNodes[0].value;
+    let comment_img = document.getElementsByClassName(answer_id)[0].childNodes[1].childNodes[0].files[0];
+
+    const formdata = new FormData();
+    formdata.enctype = "multipart/form-data"
+    
+    formdata.append('content', comment);
+    if(comment_img != undefined){
+        formdata.append('image', comment_img);
+    }
+
+    const response = await fetch(`${deploy_base_url}/archive/answer/${answer_id}/`,{
+        headers:{            
+            Authorization: "Bearer " + localStorage.getItem("access"),
+        },
+        method: 'PUT',
+        body: formdata
+    })
+
+    const response_json = await response.json()
+
+    if (response.status == 200) {
+        alert(response_json.message);
+    }
+    else {
+        alert(response_json.message);
+    }
+    window.location.reload();
+}
+
+// 자료글 답변삭제
+async function deleteArchiveComment(answer_id) {
+    const comment_data = {
+        content: document.getElementsByClassName(answer_id)[0].childNodes[0].value
+    }
+    if (confirm("정말 삭제하시겠습니까??") == true){
+        const response = await fetch(`${deploy_base_url}/archive/answer/${answer_id}/`,{
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("access"),
+                Accept: "application/json",
+                'Content-type': 'application/json',
+            },
+            method: 'DELETE',
+            body: JSON.stringify(comment_data)
+        })
+        const response_json = await response.json()
+        if (response.status == 200) {
+            alert(response_json.message);
+        }
+        else {
+            alert(response_json.message);
+        }
+        window.location.reload();
+    }}
+
+// 자료글 좋아요
+async function archiveLike(archive_id){
+    const response = await fetch(`${deploy_base_url}/archive/like/archive/${archive_id}/`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+            Accept: "application/json",
+            'Content-type': 'application/json',
+        },
+        method: 'POST',
+    })
+
+    console.log(response)
+    const response_json = await response.json()
+
+    if (response.status == 200) {
+        alert(response_json.message);
+    }
+    else {
+        alert("로그인이 안됐다북!");
+    }
+    window.location.reload();
+}
+
+// 자료글 답변 좋아요
+async function archivelikeAnswer(answer_id){
+    const response = await fetch(`${deploy_base_url}/archive/like/answer/${answer_id}/`,{
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("access"),
+            Accept: "application/json",
+            'Content-type': 'application/json',
+        },
+        method: 'POST',
+    })
+
+    const response_json = await response.json()
+    if (response.status == 200) {
+        alert(response_json.message);
+    }
+    else {
+        alert("로그인이 안됐다북!");
+    }
+    window.location.reload();
+}
+
+// // 자료글 추천 시스템
+// async function ShowarchiveRecommend(archive_id) {
+
+//     const response = await fetch(`${deploy_base_url}/qna/recommend/${question_id}/`, {
+//         method: 'POST',
+//     })
+//     const response_json = await response.json();
+//     return response_json;
+// }
