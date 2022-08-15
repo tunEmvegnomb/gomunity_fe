@@ -3,12 +3,14 @@ window.onload = async function loadDetails() {
     const question_id = localStorage.getItem("question_id");
     
     const details = await QuestionDetail(question_id);
+    console.log(details);
     let user_id = "";
     let username = "";
     try{
         const payload_token = localStorage.getItem("payload");
         user_id = JSON.parse(payload_token).user_id;
-        username = JSON.parse(payload_token).nickname;
+        username = JSON.parse(payload_token).username;
+        console.log("유저네임은 ", username);
     } catch {
         user_id = "00";
         username = "익명유저";
@@ -66,7 +68,6 @@ window.onload = async function loadDetails() {
     // 댓글
     const comments = details.answer;
     const div_answer_list = document.getElementsByClassName("answer_list")[0];
-    
 
     comments.forEach((comment) => {
 
