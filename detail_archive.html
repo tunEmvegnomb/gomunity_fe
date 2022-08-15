@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>거북이반 커뮤니티, 거뮤니티 디테일 페이지</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../static/scripts/api.js"></script>
+    <!-- <script src="../static/scripts/detail.js"></script> -->
+    <link rel="stylesheet" href="../static/style/main.css" />
+    <link rel="stylesheet" href="../static/style/detail.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://uicdn.toast.com/editor/2.0.0/toastui-editor.min.css"
+    />
+
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      href="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/manifest.json"
+    />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/favicon/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="main.html">Gomunity</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              id="search_input"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button
+              class="btn btn-outline-success"
+              id="search_btn"
+              type="submit"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+        <div class="button_box">
+          <button type="button" id="btn-username" class="btn btn-info"></button>
+          <button type="button" id="btn-logout" class="btn btn-warning"></button>
+        </div>
+      </div>
+    </nav>
+    <div class="wrap">
+      <main>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html"
+              >공지사항 게시판</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="main.html">질의응답 게시판</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">자유게시판 <br />🚧공사중</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="archive.html">자료게시판</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled"
+              >거북이반 커뮤니티, 거뮤니티 🚧공사중</a
+            >
+          </li>
+        </ul>
+      </main>
+
+      <div class="detail">
+        <div class="title_box">
+          <div class="title_box_child">
+            <div class="question_title">
+              <h1 id="question_main_title">자료글 상세조회(제목)</h1>
+              <h3 id="hashtag"></h3>
+            </div>
+            <div id="user_info" class="user_info">
+              <div id="user_name"></div>
+              <div id="created_at" type="date"></div>
+              <br />
+              <button
+                style="height: 40px"
+                class="title_like_box"
+                id="Question_like"
+              ></button>
+            </div>
+          </div>
+          <div class="btn_list">
+            <div id="hidden_edit_btn" class="hidden_edit_btn">
+              <button
+                type="button"
+                id="updatequestion"
+                class="btn btn-warning put_question_btn"
+              >
+                수정
+              </button>
+              <button
+                type="button"
+                id="deletequestion"
+                class="btn btn-danger del_question_btn"
+              >
+                삭제
+              </button>
+            </div>
+            <button
+              type="button"
+              class="btn btn-success postquestion_btn"
+              onclick="createarticle()"
+            >
+              나도 꿀팁 게시하기🔥
+            </button>
+          </div>
+        </div>
+
+        <hr style="margin-top: 30px" />
+
+        <div class="question_img" id="question_img">
+          <!-- <img id="image" /> -->
+        </div>
+        <div id="viewer" class="question_post">
+
+        </div>
+        <hr />
+
+        <div class="input-group">
+
+          <input type="file" id="comment_img" />
+          <div class="comment_box">
+            <textarea
+              cols="50"
+              rows="5"
+              class="form-control"
+              id="create_comment"
+              placeholder="토끼들 출동하세요"
+              aria-label="With textarea"
+            ></textarea>
+            <button type="button" class="btn btn-info" onclick="postComment()">
+              작성
+            </button>
+          </div>
+        </div>
+        <div class="answer_list">
+          <div class="answer_box">
+            
+          </div>
+          <hr />
+        </div>
+      </div>
+
+      <aside class="recommend_question">
+        <div>
+          이봐 거북이🐢 <br />이 글도 보라구! <br />도움이 될 지도 몰라!?
+        </div>
+        <hr />
+        <div>
+          <button id="recommend_button" type="button" class="btn btn-success">
+            자료 추천 받기 클릭!
+          </button>
+        </div>
+        <div class="recommend_question_list">
+          <div class="recommend">
+
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://uicdn.toast.com/editor/2.0.0/toastui-editor-all.min.js"></script>
+    <script></script>
+  </body>
+</html>
