@@ -17,6 +17,7 @@ window.onload = async function loadArchiveList(){
         archiveTitle.setAttribute("class", "archivetitle");
         archiveCategory.innerText = archive.article_category;
         archiveAuthor.innerText = archive.user;
+        archiveAuthor.setAttribute("class", "contents-author");
         archiveLike.innerText = archive.like.length;
 
 

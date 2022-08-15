@@ -19,24 +19,24 @@ window.onload = async function loadDetails() {
 
     document.getElementById("archive_main_title").innerText = details.title;
     document.getElementById("hashtag").innerText = details.hashtag;
-    document.getElementById("user_name").innerText = "작성자" + " : " + details.user_nickname;
+    document.getElementById("user_name").innerText = "작성자" + " : " + details.user;
     document.getElementById("created_at").innerText = (details.created_at).split("T")[0] +" "+ ((details.created_at).split("T")[1]).split(".")[0];
     
 
-    // //게시글 작성자일 때, 수정삭제버튼 표시
-    // const edit_btn = document.getElementById("hidden_edit_btn")
+    //게시글 작성자일 때, 수정삭제버튼 표시
+    const edit_btn = document.getElementById("hidden_edit_btn")
 
-    // if(username !== details.user){
-    //     edit_btn.style.visibility = 'hidden';
-    // }
-    // document.getElementById("deletequestion").setAttribute("onclick",`deleteQuestion(${archive_id})`)
-    // document.getElementById("updatequestion").setAttribute("onclick",`goarticle(${archive_id})`)
+    if(username !== details.user){
+        edit_btn.style.visibility = 'hidden';
+    }
+    document.getElementById("deletequestion").setAttribute("onclick",`deleteArchive(${archive_id})`)
+    document.getElementById("updatequestion").setAttribute("onclick",`goArchive(${archive_id})`)
 
     const questionlike = details.like;
     
     const button_like_question = document.getElementsByClassName("title_like_box")[0];
     button_like_question.innerText = " ♡  " + details.like.length;
-    button_like_question.setAttribute("onclick", `likeQuestion(${archive_id})`);
+    button_like_question.setAttribute("onclick", `archiveLike(${archive_id})`);
     if (questionlike.includes(user_id) != true) {
         button_like_question.innerText = " ♡  " + details.like.length;
     } else {
@@ -51,9 +51,9 @@ window.onload = async function loadDetails() {
         initialValue: details.content
     });
     
-    // 질문글 추천 버튼
-    const recommend_button = document.getElementById("recommend_button");
-    recommend_button.setAttribute("onclick", `loadRecommends(${archive_id})`);
+    // // 질문글 추천 버튼
+    // const recommend_button = document.getElementById("recommend_button");
+    // recommend_button.setAttribute("onclick", `loadRecommends(${archive_id})`);
 
     // 이미지 클릭시 새로운탭에서 원본이미지 확인
     let img = document.getElementsByTagName("img");
@@ -62,18 +62,17 @@ window.onload = async function loadDetails() {
      }
 
 
-//     // if (details.image != null){
-//     //     document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${details.image}`);
-//     // } else {
-//     //     document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png`);
-//     // }
+    // if (details.image != null){
+   //     document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${details.image}`);
+    // } else {
+    //     document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png`);
+    // }
 
-
-    
 
     // 댓글
     const comments = details.archive_answer;
     const div_answer_list = document.getElementsByClassName("answer_list")[0];
+    console.log(comments);
 
     comments.forEach((comment) => {
 
@@ -107,7 +106,7 @@ window.onload = async function loadDetails() {
         button_answer_edit.innerText = "수정"
         button_answer_delete.setAttribute("class", "btn btn-danger answer-btn2");
         button_answer_delete.setAttribute("type", "button");
-        button_answer_delete.setAttribute("onclick", `deleteComment(${comment.id})`);
+        button_answer_delete.setAttribute("onclick", `deleteArchiveComment(${comment.id})`);
         button_answer_delete.innerText = "삭제";
         button_answer_like.setAttribute("type", "button");
         button_answer_like.innerText = " ♡  " + comment.like.length;
@@ -117,7 +116,7 @@ window.onload = async function loadDetails() {
             button_answer_like.innerText = " 💕  " + comment.like.length;
         }
         button_answer_like.setAttribute("id", "Answer_like");
-        button_answer_like.setAttribute("onclick", `likeAnswer(${comment.id})`);
+        button_answer_like.setAttribute("onclick", `archivelikeAnswer(${comment.id})`);
 
         div_answer_user.innerText = comment.user;
         div_answer_text.innerText = comment.content;
@@ -136,90 +135,88 @@ window.onload = async function loadDetails() {
         div_answer_list.appendChild(hr_underbar);
         div_answer_like.appendChild(button_answer_like);
 
-    }) 
-}
-//         //답변 이미지
-//         if (comment.image == null){
-//             div_answer_image.style.display = 'none';
-//         } else {
-//             answer_image.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${comment.image}`)
-//             div_answer_image.appendChild(answer_image);
-//         }
-//         //수정, 삭제 버튼 보여주기 숨기기
-//         if (username !== comment.user) {
-//             div_answer_edit.style.visibility = 'hidden';
-//             div_answer_edit.style.display = 'none';
-//         }
+        //답변 이미지
+        if (comment.image == null){
+            div_answer_image.style.display = 'none';
+        } else {
+            answer_image.setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${comment.image}`)
+            div_answer_image.appendChild(answer_image);
+        }
+        //수정, 삭제 버튼 보여주기 숨기기
+        if (username !== comment.user) {
+            div_answer_edit.style.visibility = 'hidden';
+            div_answer_edit.style.display = 'none';
+        }
         
-
-//         //히든 인풋 박스 요소
-//         const hidden_edit_box = document.createElement("div");
-//         const hidden_input = document.createElement("textarea");
-//         const hidden_btn_list = document.createElement("div");
-//         const hidden_input_img = document.createElement("input")
-//         const hidden_edit_button = document.createElement("button");
-
-//         hidden_edit_box.setAttribute("id", "answer_edit_box");
-//         hidden_edit_box.setAttribute("class", comment.id);
-//         hidden_input.setAttribute("class", "answer_edit_input");
-//         hidden_edit_button.setAttribute("class", "btn btn-success answer-btn");
-//         hidden_edit_button.setAttribute("onclick", `updateComment(${comment.id})`);
-//         hidden_edit_button.innerText = "수정완료";
-//         hidden_btn_list.setAttribute("class", "comment_edit_photo");
-//         hidden_input_img.setAttribute("type", "file");
-
-//         div_answer_comment.appendChild(hidden_edit_box);
-//         hidden_edit_box.appendChild(hidden_input);
-//         hidden_edit_box.appendChild(hidden_btn_list);
-//         hidden_btn_list.appendChild(hidden_input_img);
-//         hidden_btn_list.appendChild(hidden_edit_button);
-//         hidden_edit_box.style.display = 'none';
-//     })
-// }
-// // 답변 수정할 때 나오는 박스
-// function openEditBox(answer_number) {
-//     const hidden_edit_box = document.getElementsByClassName(answer_number)[0];
-//     if (hidden_edit_box.style.display != 'block'){
-//         hidden_edit_box.style.display = 'block';
-//         let find_comment_text = hidden_edit_box.parentElement;
-//         find_comment_text = find_comment_text.childNodes[2];
-//         find_comment_text.style.display = 'none';
-//         hidden_edit_box.childNodes[0].innerText = find_comment_text.innerText;
-//         const edit_button = hidden_edit_box.parentElement.parentElement.childNodes[2].childNodes[0];
-//         edit_button.setAttribute("class", "btn btn-dark answer-btn");
-//         edit_button.textContent = "취소";
-//     }
-//     else {
-//         hidden_edit_box.style.display = 'none';
-//         let find_comment_text = hidden_edit_box.parentElement;
-//         find_comment_text = find_comment_text.childNodes[2];
-//         find_comment_text.style.display = 'block';
-//         const edit_button = hidden_edit_box.parentElement.parentElement.childNodes[2].childNodes[0];
-//         edit_button.setAttribute("class", "btn btn-warning answer-btn");
-//         edit_button.textContent = "수정";
+    
+        //히든 인풋 박스 요소
+        const hidden_edit_box = document.createElement("div");
+        const hidden_input = document.createElement("textarea");
+        const hidden_btn_list = document.createElement("div");
+        const hidden_input_img = document.createElement("input")
+        const hidden_edit_button = document.createElement("button");
+    
+        hidden_edit_box.setAttribute("id", "answer_edit_box");
+        hidden_edit_box.setAttribute("class", comment.id);
+        hidden_input.setAttribute("class", "answer_edit_input");
+        hidden_edit_button.setAttribute("class", "btn btn-success answer-btn");
+        hidden_edit_button.setAttribute("onclick", `updateArchiveComment(${comment.id})`);
+        hidden_edit_button.innerText = "수정완료";
+        hidden_btn_list.setAttribute("class", "comment_edit_photo");
+        hidden_input_img.setAttribute("type", "file");
+    
+        div_answer_comment.appendChild(hidden_edit_box);
+        hidden_edit_box.appendChild(hidden_input);
+        hidden_edit_box.appendChild(hidden_btn_list);
+        hidden_btn_list.appendChild(hidden_input_img);
+        hidden_btn_list.appendChild(hidden_edit_button);
+        hidden_edit_box.style.display = 'none';
+    })
+    }
+    // 답변 수정할 때 나오는 박스
+    function openEditBox(answer_number) {
+    const hidden_edit_box = document.getElementsByClassName(answer_number)[0];
+    if (hidden_edit_box.style.display != 'block'){
+        hidden_edit_box.style.display = 'block';
+        let find_comment_text = hidden_edit_box.parentElement;
+        find_comment_text = find_comment_text.childNodes[2];
+        find_comment_text.style.display = 'none';
+        hidden_edit_box.childNodes[0].innerText = find_comment_text.innerText;
+        const edit_button = hidden_edit_box.parentElement.parentElement.childNodes[2].childNodes[0];
+        edit_button.setAttribute("class", "btn btn-dark answer-btn");
+        edit_button.textContent = "취소";
+    }
+    else {
+        hidden_edit_box.style.display = 'none';
+        let find_comment_text = hidden_edit_box.parentElement;
+        find_comment_text = find_comment_text.childNodes[2];
+        find_comment_text.style.display = 'block';
+        const edit_button = hidden_edit_box.parentElement.parentElement.childNodes[2].childNodes[0];
+        edit_button.setAttribute("class", "btn btn-warning answer-btn");
+        edit_button.textContent = "수정";
         
-//     }
-// }
-
-// // 추천 데이터를 넣어줄 HTML 엘리먼트 생성
-// async function loadRecommends(question_id){
-//     const recommends = await ShowRecommend(question_id);
+    }
+    }
+    
+//     // 추천 데이터를 넣어줄 HTML 엘리먼트 생성
+//     async function loadRecommends(archive_id){
+//     const recommends = await ShowRecommend(archive_id);
     
 //     // 여긴 선언된 디테일스를 가져올 수 없습니다
-
+    
 //     recommends.forEach((recommend) => {
 //         const recommend_div = document.getElementsByClassName("recommend")[0];
 //         const recommend_card = document.createElement("div");
 //         const recommend_image = document.createElement("div");
 //         const recommend_title = document.createElement("div");
 //         const recommend_hr = document.createElement("hr");
-
+    
 //         recommend_card.setAttribute("class", "recommend_card");
 //         recommend_image.setAttribute("class", "recommend_image");
 //         recommend_title.setAttribute("class", "recommend_title");
 //         recommend_title.innerHTML = `<a onclick=goDetail(${recommend.id})>${recommend.title}</a>`;
 //         recommend_hr.style.width = "100%";
-
+    
 //         if (recommend.image == null){
 //             recommend_image.style.backgroundImage = `url(https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png)`;    
 //         } else {
@@ -231,6 +228,8 @@ window.onload = async function loadDetails() {
 //         recommend_card.appendChild(recommend_title);
 //         recommend_card.appendChild(recommend_hr);
 //     })
+    
+// }
 //     recommend_button.style.display = 'none';
 //     if (localStorage.getItem("question_id")) {
 //         localStorage.removeItem("question_id")

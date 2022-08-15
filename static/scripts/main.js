@@ -56,6 +56,7 @@ window.onload = async function loadQuestions(){
         }
     })
     localStorage.removeItem("question_id");
+    localStorage.removeItem("archive_id");
 }
 
 
