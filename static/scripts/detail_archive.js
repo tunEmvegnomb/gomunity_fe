@@ -172,9 +172,10 @@ window.onload = async function loadDetails() {
         hidden_btn_list.appendChild(hidden_edit_button);
         hidden_edit_box.style.display = 'none';
     })
-    }
+    localStorage.removeItem("question_id");
+}
     // 답변 수정할 때 나오는 박스
-    function openEditBox(answer_number) {
+function openEditBox(answer_number) {
     const hidden_edit_box = document.getElementsByClassName(answer_number)[0];
     if (hidden_edit_box.style.display != 'block'){
         hidden_edit_box.style.display = 'block';
@@ -193,10 +194,12 @@ window.onload = async function loadDetails() {
         find_comment_text.style.display = 'block';
         const edit_button = hidden_edit_box.parentElement.parentElement.childNodes[2].childNodes[0];
         edit_button.setAttribute("class", "btn btn-warning answer-btn");
-        edit_button.textContent = "수정";
-        
+        edit_button.textContent = "수정";   
     }
-    }
+    
+}
+
+
     
 //     // 추천 데이터를 넣어줄 HTML 엘리먼트 생성
 //     async function loadRecommends(archive_id){
@@ -234,4 +237,5 @@ window.onload = async function loadDetails() {
 //     if (localStorage.getItem("question_id")) {
 //         localStorage.removeItem("question_id")
 //     }
+
 // }

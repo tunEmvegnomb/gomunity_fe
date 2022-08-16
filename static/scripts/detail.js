@@ -169,6 +169,7 @@ window.onload = async function loadDetails() {
         hidden_btn_list.appendChild(hidden_edit_button);
         hidden_edit_box.style.display = 'none';
     })
+    localStorage.removeItem("archive_id");
 }
 // 답변 수정할 때 나오는 박스
 function openEditBox(answer_number) {
@@ -226,7 +227,5 @@ async function loadRecommends(question_id){
         recommend_card.appendChild(recommend_hr);
     })
     recommend_button.style.display = 'none';
-    if (localStorage.getItem("question_id")) {
-        localStorage.removeItem("question_id")
-    }
 }
+

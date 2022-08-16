@@ -242,6 +242,7 @@ async function goarticle(question_id){
 }
 async function createarticle(){
     localStorage.removeItem("question_id");
+    localStorage.removeItem("archive_id");
     location.href = '/create_article.html';
 }
 
@@ -254,10 +255,8 @@ async function updateQuestion(question_id) {
     const title = document.getElementById("article_title").value;
     const hashtag = document.getElementById("hashtag").value;
     const content = editor.getHTML();
-    console.log(content)
     const image = document.getElementById("article_image").files[0];
     
-
     const formdata = new FormData();
     formdata.enctype = "multipart/form-data"
     

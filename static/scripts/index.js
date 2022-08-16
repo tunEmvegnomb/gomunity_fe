@@ -13,6 +13,8 @@ window.onload = async function loadNotices(){
         notice_list.appendChild(noticeContent);
         noticeContent.appendChild(hr_underbar);
     })
+    localStorage.removeItem("question_id");
+    localStorage.removeItem("archive_id");
 }
 window.addEventListener('load', async function checkLogin() {
     const payload = localStorage.getItem("payload")
