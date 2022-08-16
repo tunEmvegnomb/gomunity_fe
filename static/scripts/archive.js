@@ -33,8 +33,8 @@ window.onload = async function loadArchiveList(){
 
 
     });
-
-    // localStorage.removeItem("question_id");
+    localStorage.removeItem("question_id");
+    localStorage.removeItem("archive_id");
 }
 
 
