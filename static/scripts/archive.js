@@ -3,7 +3,6 @@ window.onload = async function loadArchiveList(){
 
     // 반복문으로 자료게시글 목록에 데이터 넣기
     archiveList.forEach((archive, index) => {
-        console.log(archive);
         // 목록에 들어갈 HTML Element 생성
         const archiveDiv = document.createElement("div");
         const archiveTitle = document.createElement("a");

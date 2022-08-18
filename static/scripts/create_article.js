@@ -54,7 +54,6 @@ window.addEventListener('load', async function updatearticle() {
 
 // 이미지 업로드 API
 editor.addHook("addImageBlobHook", async function (blob, callback) {
-    console.log("블랍", blob);
 
     const formdata = new FormData();
     formdata.append("file", blob);
@@ -82,7 +81,6 @@ function thumnailImagePreview(input) {
 // 질의응답/자료 옵션선택
 function showCategory() {
     const articleOption = document.querySelector(".article_category").value;
-    console.log(articleOption);
     
     // 질의응답 선택
     if (articleOption === "qnaboard") {

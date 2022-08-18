@@ -57,6 +57,4 @@ window.addEventListener('load', async function checkLogin() {
 window.addEventListener("load", ()=>{
     const div_small_main = document.getElementsByClassName("small_main")[0];
     const div_big_main = document.getElementsByClassName("big_main")[0];
-    // div_small_main.appendChild(div_big_main);
-    // div_big_main.style.display="none";
 })
