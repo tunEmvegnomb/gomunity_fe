@@ -3,14 +3,12 @@ window.onload = async function loadDetails() {
     const question_id = localStorage.getItem("question_id");
     
     const details = await QuestionDetail(question_id);
-    console.log(details);
     let user_id = "";
     let username = "";
     try{
         const payload_token = localStorage.getItem("payload");
         user_id = JSON.parse(payload_token).user_id;
         username = JSON.parse(payload_token).username;
-        console.log("유저네임은 ", username);
     } catch {
         user_id = "00";
         username = "익명유저";
@@ -31,12 +29,6 @@ window.onload = async function loadDetails() {
     document.getElementById("user_name").innerText = "작성자" + " : " + details.user;
     document.getElementById("created_at").innerText = (details.created_at).split("T")[0] +" "+ ((details.created_at).split("T")[1]).split(".")[0];
     document.getElementById("question_main_title").innerText = details.title;
-        
-    // if (details.image != null){
-    //     document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${details.image}`);
-    // } else {
-    //     document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png`);
-    // }
 
     // 마크다운 조회
     const viewer = toastui.Editor.factory({
@@ -129,7 +121,6 @@ window.onload = async function loadDetails() {
         div_answer_edit.appendChild(button_answer_delete);
         div_answer_list.appendChild(hr_underbar);
         div_answer_like.appendChild(button_answer_like);
-
         
 
         //답변 이미지

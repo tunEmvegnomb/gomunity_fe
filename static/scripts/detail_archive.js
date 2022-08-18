@@ -7,7 +7,6 @@ window.onload = async function loadDetails() {
         const payload_token = localStorage.getItem("payload");
         user_id = JSON.parse(payload_token).user_id;
         username = JSON.parse(payload_token).username;
-        console.log("유저네임은 ", username);
     } catch {
         user_id = "00";
         username = "익명유저";
@@ -15,7 +14,6 @@ window.onload = async function loadDetails() {
     const archive_id = localStorage.getItem("archive_id");
     
     const details = await getArchiveDetail(archive_id);
-    console.log(details);
 
     document.getElementById("archive_main_title").innerText = details.title;
     document.getElementById("hashtag").innerText = details.hashtag;
@@ -51,28 +49,15 @@ window.onload = async function loadDetails() {
         initialValue: details.content
     });
     
-    // // 질문글 추천 버튼
-    // const recommend_button = document.getElementById("recommend_button");
-    // recommend_button.setAttribute("onclick", `loadRecommends(${archive_id})`);
-
     // 이미지 클릭시 새로운탭에서 원본이미지 확인
     let img = document.getElementsByTagName("img");
     for (let target_image of img){
         img.item(target_image).onclick = () => {window.open(target_image.src)};
      }
 
-
-    // if (details.image != null){
-   //     document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${details.image}`);
-    // } else {
-    //     document.getElementById("image").setAttribute("src", `https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png`);
-    // }
-
-
     // 댓글
     const comments = details.archive_answer;
     const div_answer_list = document.getElementsByClassName("answer_list")[0];
-    console.log(comments);
 
     comments.forEach((comment) => {
 
@@ -198,44 +183,3 @@ function openEditBox(answer_number) {
     }
     
 }
-
-
-    
-//     // 추천 데이터를 넣어줄 HTML 엘리먼트 생성
-//     async function loadRecommends(archive_id){
-//     const recommends = await ShowRecommend(archive_id);
-    
-//     // 여긴 선언된 디테일스를 가져올 수 없습니다
-    
-//     recommends.forEach((recommend) => {
-//         const recommend_div = document.getElementsByClassName("recommend")[0];
-//         const recommend_card = document.createElement("div");
-//         const recommend_image = document.createElement("div");
-//         const recommend_title = document.createElement("div");
-//         const recommend_hr = document.createElement("hr");
-    
-//         recommend_card.setAttribute("class", "recommend_card");
-//         recommend_image.setAttribute("class", "recommend_image");
-//         recommend_title.setAttribute("class", "recommend_title");
-//         recommend_title.innerHTML = `<a onclick=goDetail(${recommend.id})>${recommend.title}</a>`;
-//         recommend_hr.style.width = "100%";
-    
-//         if (recommend.image == null){
-//             recommend_image.style.backgroundImage = `url(https://s3.ap-northeast-2.amazonaws.com/gomunity.shop/media/gomunity.png)`;    
-//         } else {
-//             recommend_image.style.backgroundImage = `url(https://s3.ap-northeast-2.amazonaws.com/gomunity.shop${recommend.image})`;
-//         }
-        
-//         recommend_div.appendChild(recommend_card);
-//         recommend_card.appendChild(recommend_image);
-//         recommend_card.appendChild(recommend_title);
-//         recommend_card.appendChild(recommend_hr);
-//     })
-    
-// }
-//     recommend_button.style.display = 'none';
-//     if (localStorage.getItem("question_id")) {
-//         localStorage.removeItem("question_id")
-//     }
-
-// }

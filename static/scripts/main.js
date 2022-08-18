@@ -14,11 +14,6 @@ window.onload = async function loadQuestions(){
         div_h100.setAttribute("class", "card h-100")
         div_col.appendChild(div_h100);
 
-        // const imagecard = document.createElement("img");
-        // imagecard.setAttribute("class", "card-image");
-        // imagecard.setAttribute("onclick", `goDetail(${question.id})`);
-        // div_h100.appendChild(imagecard);
-
         const imagecard = document.createElement("div");
         imagecard.setAttribute("class", "card-image");
         imagecard.setAttribute("onclick", `goDetail(${question.id})`);
@@ -34,15 +29,9 @@ window.onload = async function loadQuestions(){
         
         const a_title = document.createElement("a");
         a_title.setAttribute("class", "font_title");
-        // a_title.setAttribute("name","font_title");
         a_title.setAttribute("onclick", `goDetail(${question.id})`);
         a_title.innerText = question.title.substr(0,22)+"...";
         h5_title.appendChild(a_title);
-
-        // const p_text = document.createElement("p");
-        // p_text.setAttribute("class", "card-text");
-        // p_text.innerHTML = question.content;
-        // div_card_body.appendChild(p_text);
 
         const div_count = document.createElement("div");
         div_count.setAttribute("class","count-list");

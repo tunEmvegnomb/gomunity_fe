@@ -279,7 +279,6 @@ async function updateQuestion(question_id) {
         const response_json = await response.json()
         if (response.status == 200) {
             alert(response_json.message);
-            console.log(editor.getHTML())
         }
         else {
             alert(response_json.message);
@@ -454,7 +453,6 @@ async function likeQuestion(question_id){
         method: 'POST',
     })
 
-    console.log(response)
     const response_json = await response.json()
 
     if (response.status == 200) {
@@ -520,8 +518,6 @@ async function searchFilter() {
     const response_json = await response.json();
     const searchedQuestions = response_json;
 
-    // const searchedQuestions = await getSearch();
-    console.log(searchedQuestions);
     const element = document.querySelectorAll(".col");
     element.forEach((card)=>card.remove());
 
@@ -635,7 +631,6 @@ async function postArchive() {
     if (response.status == 200){
         alert(response_json.message);
     } else {
-        console.log(response_json);
         alert(response_json.message);
     }
     window.location.replace('archive.html');
@@ -653,7 +648,6 @@ async function updateArchive(archive_id) {
     const title = document.getElementById("article_title").value;
     const hashtag = document.getElementById("hashtag").value;
     const content = editor.getHTML();
-    console.log(content)
 
     const formdata = new FormData();
     formdata.enctype = "multipart/form-data"
@@ -674,7 +668,6 @@ async function updateArchive(archive_id) {
     if (response.status == 200){
         alert(response_json.message);
     } else {
-        console.log(response_json);
         alert(response_json.message);
     }
     location.href = '/detail_archive.html';
@@ -724,17 +717,14 @@ async function postArchiveComment() {
     })
 
     const response_json = await response.json()
-    console.log(response_json);
     if (response.status == 200) {
         alert(response_json.message);
-        console.log(response_json.message);
     }
     else if(user_id="00"){
         alert("로그인이 필요하다북!");
     }
     else {
         alert(response_json.message);
-        console.log("else"+response_json.message);
     }
     window.location.replace(`detail_archive.html`);
 }
@@ -807,7 +797,6 @@ async function archiveLike(archive_id){
         method: 'POST',
     })
 
-    console.log(response)
     const response_json = await response.json()
 
     if (response.status == 200) {
